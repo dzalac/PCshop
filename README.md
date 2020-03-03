@@ -1,35 +1,34 @@
-# Inicijalne upute za prijavu projekta iz Programskog inženjerstva
-
-Poštovane kolegice i kolege, 
-
-čestitamo vam jer ste uspješno prijavili svoj projektni tim na kolegiju Programsko inženjerstvo, te je za vas automatski kreiran repozitorij koji ćete koristiti za verzioniranje vašega koda, ali i za pisanje dokumentacije.
-
-Ovaj dokument (README.md) predstavlja **osobnu iskaznicu vašeg projekta**. Vaš prvi zadatak, ukoliko niste odabrali da želite raditi na projektu sa gospodarstvom je **prijaviti vlastiti projektni prijedlog** na način da ćete prijavu vašeg projekta, sukladno uputama danim u ovom tekstu, napisati upravo u ovaj dokument, umjesto ovoga teksta.
-
-Za upute o sintaksi koju možete koristiti u ovom dokumentu i kod pisanje vaše projektne dokumentacije pogledajte [ovaj link](https://guides.github.com/features/mastering-markdown/).
-
-Nakon vaše prijave bit će vam dodijeljen mentor s kojim ćete tijekom semestra raditi na ovom projektu. A sada, vrijeme je da prijavite vaš projekt. Za prijavu vašeg projektnog prijedloga molimo vas koristite **predložak** koji je naveden u nastavku, a započnite tako da kliknete na *olovku* u desnom gornjem kutu ovoga dokumenta :) 
-
-# Naziv projekta
-(u redak iznad navedite kratki proizvoljni naziv projekta prikladan akademskoj zajednici, a ovaj tekst obrišite)
-
 ## Projektni tim
 
 Ime i prezime | E-mail adresa (FOI) | JMBAG | Github korisničko ime
 ------------  | ------------------- | ----- | ---------------------
-Ime i prezime | mojaadresa@foi.hr | 000000000 | githubuser
-Ime i prezime | ... | ... | ...
+Patrik Noah Šikač | psikac@foi.hr | 0016130318 | psikac
+Dominik Štefičar | dsteficar@foi.hr | 0016134642 | dsteficar
+Dino Žalac | dzalac@foi.hr | 0016134803 | dzalac
 
 ## Opis domene
-Umjesto ovih uputa opišite domenu ili problem koji pokrivate vašim  projektom. Domena može biti proizvoljna, ali obratite pozornost da sukladno ishodima učenja, domena omogući primjenu zahtijevanih koncepata kako je to navedeno u sljedećem poglavlju. Priložite odgovarajuće skice gdje je to prikladno.
+Domena koju ćemo ovim projektom pokriti je web trgovina računalnom opremom. Web trgovina ima različite razine pristupa poput gosta, registriranog kupca i administratora. Web trgovina će biti kategorizirana po vrstama robe, npr. komponente računala će se dijeliti na matične ploče, grafičke kartice, radne memorije, itd. Kupac može stavljati odabrane proizvode u košaricu i na kraju naručiti dotične proizvode. Moguće je birati načine plaćanja i dostave. Također će biti dostupne kontakt informacije i informacije o trgovcu.
 
 ## Specifikacija projekta
-Umjesto ovih uputa opišite zahtjeve za funkcionalnošću programskog proizvoda. Pobrojite osnovne funkcionalnosti i za svaku naznačite ime odgovornog člana tima. Opišite buduću arhitekturu programskog proizvoda. Obratite pozornost da bi arhitektura trebala biti višeslojna s odvojenom (dislociranom) bazom podatka. Također uzmite u obzir da bi svaki član tima treba biti odgovorana za otprilike 3 funkcionalnosti, te da bi opterećenje članova tima trebalo biti ujednačeno. Priložite odgovarajuće dijagrame i skice gdje je to prikladno. Funkcionalnosti sustava bobrojite u tablici ispod koristeći predložak koji slijedi:
+
 
 Oznaka | Naziv | Kratki opis | Odgovorni član tima
 ------ | ----- | ----------- | -------------------
-F01 | Login | Za pristup dnevniku potrebnba je autentikacija korisnika pomoću login funkcionalnosti. Korisnik se logira s podacima koji su mu dodijeljeni prilikom ... | Zlatko Stapić
-F02 | Pregled dnevnika | .... | ...
+F01 | Login | Kako bi se mogla izvršiti narudžba, odnosno kupnja, potrebno je da korisnik pristupi svom računu na trgovini ili kreira isti u slučaju da već nije | Dino Žalac
+F02 | Početna stranica | Na početnoj se stranici nalaze trenutne akcije i novosti te se može pristupiti ostatku ponude koja je kategorizirana. Također se može odavde pristupiti informacijama o poduzeću, kontaktu, košarici i profilu korisnika | Dino Žalac
+F03 | Košarica | U košaricu se dodaju artikli koji se žele kupiti te se dalje preko košarice nastavlja kupnja, tj. naručivanje | Dino Žalac
+F04 | Katalog | Katalog služi za pregled svih artikala i posložen je po kategorijama. Postoji mogućnost sortiranja proizvoda po određenim kriterijima, npr. po cijeni. | Dominik Štefičar
+F05 | Blagajna | Blagajni se pristupa preko košarice i na njoj finaliziramo kupnju. Korisnik unosi adresu dostave, odabire način plaćanja te potvrđuje narudžbu.  | Dominik Štefičar
+F06 | Kontakt i informacije | Ovdje se nalaze informacije o poduzeću ukoliko korisnik želi stupiti u direktan kontakt ili saznati neke informacije o poduzeću. | Dominik Štefičar
+F07 | Unos, ažuriranje i brisanje artikala | Administrator može unositi, brisati i ažurirati artikle u bazi podataka trgovine | Patrik Noah Šikač
+F08 | Posebne ponude | Moguće je korisniku prikazati određene artikle koji su na sniženju, najprodavaniji, novi u ponudi, itd. | Patrik Noah Šikač
+F09 | Tražilica | Korisnik može tražiti proizvode po određenim kriterijima pomoću tražilice | Patrik Noah Šikač
 
 ## Tehnologije i oprema
-Umjesto ovih uputa jasno popišite sve tehnologije, alate i opremu koju ćete koristiti pri implementaciji vašeg rješenja. Ne zaboravite planirati korištenje tehnologija u aktivnostima kao što su projektni menadžment ili priprema dokumentacije. Tehnologije koje ćete koristiti bi trebale biti javno dostupne, a ako ih ne budemo obrađivali na vježbama u vašoj dokumentaciji ćete morati navesti način preuzimanja, instaliranja i korištenja onih tehnologija koje su neopbodne kako bi se vaš programski proizvod preveo i pokrenuo. Pazite da svi alati koje ćete koristiti moraju imati odgovarajuću licencu.
+* Microsoft Visual Studio
+* Datagrip
+* Lucidchart
+* Github
+* Microsoft Office
+* Microsoft Project
+
