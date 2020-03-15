@@ -1,3 +1,5 @@
+## PI20-011 Web trgovina računalnom opremom
+
 ## Projektni tim
 
 Ime i prezime | E-mail adresa (FOI) | JMBAG | Github korisničko ime
