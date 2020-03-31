@@ -1,4 +1,4 @@
-## PI20-011 Web trgovina računalnom opremom
+## PI20-011 Desktop PC Shop
 
 ## Projektni tim
 
@@ -9,7 +9,7 @@ Dominik Štefičar | dsteficar@foi.hr | 0016134642 | dsteficar
 Dino Žalac | dzalac@foi.hr | 0016134803 | dzalac
 
 ## Opis domene
-Domena koju ćemo ovim projektom pokriti je web trgovina računalnom opremom. Web trgovina ima različite razine pristupa poput gosta, registriranog kupca i administratora. Web trgovina će biti kategorizirana po vrstama robe, npr. komponente računala će se dijeliti na matične ploče, grafičke kartice, radne memorije, itd. Kupac može stavljati odabrane proizvode u košaricu i na kraju naručiti dotične proizvode. Moguće je birati načine plaćanja i dostave. Također će biti dostupne kontakt informacije i informacije o trgovcu.
+Domena koju ćemo ovim projektom pokriti je desktop implementacija trgovine računalnom opremom u programskom jeziku C#. Aplikacija ima različite razine pristupa poput gosta, registriranog kupca i administratora. Web trgovina će biti kategorizirana po vrstama robe, npr. komponente računala će se dijeliti na matične ploče, grafičke kartice, radne memorije, itd. Kupac može stavljati odabrane proizvode u košaricu i na kraju naručiti dotične proizvode. Moguće je birati načine plaćanja i dostave. Također će biti dostupne kontakt informacije i informacije o trgovcu.
 
 ## Specifikacija projekta
 
@@ -27,10 +27,10 @@ F08 | Posebne ponude | Moguće je korisniku prikazati određene artikle koji su 
 F09 | Tražilica | Korisnik može tražiti proizvode po određenim kriterijima pomoću tražilice | Patrik Noah Šikač
 
 ## Tehnologije i oprema
-* Microsoft Visual Studio
-* Datagrip
-* Lucidchart
-* Github
-* Microsoft Office
-* Microsoft Project
+* Microsoft Visual Studio - izrada aplikacije u programskom jeziku C#
+* Datagrip - izrada baze podataka
+* Lucidchart - kreiranje dijagrama
+* Github - verzioniranje koda
+* Microsoft Office - pisanje dokumentacije
+* Microsoft Project - upravljanje projektom
 
