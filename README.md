@@ -28,7 +28,7 @@ F09 | Tražilica | Korisnik može tražiti proizvode po određenim kriterijima p
 
 ## Tehnologije i oprema
 * Microsoft Visual Studio - izrada aplikacije u programskom jeziku C#
-* Datagrip - izrada baze podataka
+* SQL Server Management Studio - izrada MS SQL baze podataka
 * Lucidchart - kreiranje dijagrama
 * Github - verzioniranje koda
 * Microsoft Office - pisanje dokumentacije
