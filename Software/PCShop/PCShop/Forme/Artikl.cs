@@ -1,0 +1,67 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using PCShop.Forme;
+using PCShop.Klase;
+
+namespace PCShop.Forme
+{
+    public partial class FrmArtikli : Form
+    {
+        public Artikl artikl;
+        public FrmArtikli(Artikl unosArtikl)
+        {
+            InitializeComponent();
+            artikl = unosArtikl;
+            Osvjezi(artikl);
+        }
+
+        public void Osvjezi(Artikl artikl)
+        {
+            lblNaziv.Text = artikl.Naziv;
+            lblCijena.Text = artikl.Cijena.ToString();
+            rtbxOpis.Text = artikl.Opis;
+            pbSlika.Image = Image.FromFile(artikl.Slika);
+            
+        }
+
+        private void LblCijena_Click(object sender, EventArgs e)
+        {
+                       
+        }
+
+        private void FrmArtikl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 112)
+            {
+                string helpFile = System.IO.Path.GetFullPath(@"..\..\Korisnicka_dokumentacija.chm");
+
+                if (System.IO.File.Exists(helpFile))
+                {
+                    Help.ShowHelp(this, helpFile);
+                }
+            }
+        }
+
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+            int kolicina = int.Parse(tbxKolicina.Text);
+            if (tbxKolicina.Text != "")
+            {
+            Kosarica.opcaKosarica.StavkeKosarice.Add(new StavkaNarudzbe(kolicina, artikl));
+            }
+            MessageBox.Show("Artikl je dodan u košaricu");
+        }
+
+        private void btnOdustani_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+    }
+}

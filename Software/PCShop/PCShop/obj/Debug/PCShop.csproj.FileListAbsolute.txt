@@ -1,0 +1,14 @@
+C:\Users\Shtef\source\repos\PCShop\PCShop\bin\Debug\PCShop.exe.config
+C:\Users\Shtef\source\repos\PCShop\PCShop\bin\Debug\PCShop.exe
+C:\Users\Shtef\source\repos\PCShop\PCShop\bin\Debug\PCShop.pdb
+C:\Users\Shtef\source\repos\PCShop\PCShop\obj\Debug\PCShop.csprojAssemblyReference.cache
+C:\Users\Shtef\source\repos\PCShop\PCShop\obj\Debug\PCShop.Properties.Resources.resources
+C:\Users\Shtef\source\repos\PCShop\PCShop\obj\Debug\PCShop.csproj.GenerateResource.cache
+C:\Users\Shtef\source\repos\PCShop\PCShop\obj\Debug\PCShop.exe
+C:\Users\Shtef\source\repos\PCShop\PCShop\obj\Debug\PCShop.pdb
+C:\Users\Shtef\source\repos\PCShop\PCShop\obj\Debug\PCShop.frmKosarica.resources
+C:\Users\Shtef\source\repos\PCShop\PCShop\obj\Debug\PCShop.frmPrijava.resources
+C:\Users\Shtef\source\repos\PCShop\PCShop\obj\Debug\PCShop.frmKatalog.resources
+C:\Users\Shtef\source\repos\PCShop\PCShop\obj\Debug\PCShop.frmRegistracija.resources
+C:\Users\Shtef\source\repos\PCShop\PCShop\obj\Debug\PCShop.Forme.frmArtikli.resources
+C:\Users\Shtef\source\repos\PCShop\PCShop\obj\Debug\PCShop.frmBlagajna.resources
