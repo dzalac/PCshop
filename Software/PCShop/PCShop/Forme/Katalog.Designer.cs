@@ -41,6 +41,8 @@
             this.lblTvrdiDiskovi = new System.Windows.Forms.Label();
             this.lblMaticnePloce = new System.Windows.Forms.Label();
             this.Panel = new System.Windows.Forms.Panel();
+            this.rbtnPopust = new System.Windows.Forms.RadioButton();
+            this.rbtnNoviProizodi = new System.Windows.Forms.RadioButton();
             this.btnOtvoriArtikl = new System.Windows.Forms.Button();
             this.btnSortNazivUzlazno = new System.Windows.Forms.Button();
             this.btnSortCijenaUzlazno = new System.Windows.Forms.Button();
@@ -57,13 +59,13 @@
             this.lblKorisnikoIme = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnArtikli = new System.Windows.Forms.Button();
             this.btnPrijava = new System.Windows.Forms.Button();
             this.btnRegistracija = new System.Windows.Forms.Button();
             this.btnTrazi = new System.Windows.Forms.Button();
             this.btnKosarica = new System.Windows.Forms.Button();
             this.btnKontakt = new System.Windows.Forms.Button();
             this.txbPretraga = new System.Windows.Forms.TextBox();
-            this.btnArtikli = new System.Windows.Forms.Button();
             this.Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArtikli)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPosebna)).BeginInit();
@@ -152,6 +154,8 @@
             // Panel
             // 
             this.Panel.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.Panel.Controls.Add(this.rbtnPopust);
+            this.Panel.Controls.Add(this.rbtnNoviProizodi);
             this.Panel.Controls.Add(this.btnOtvoriArtikl);
             this.Panel.Controls.Add(this.btnSortNazivUzlazno);
             this.Panel.Controls.Add(this.btnSortCijenaUzlazno);
@@ -166,10 +170,38 @@
             this.Panel.Controls.Add(this.label1);
             this.Panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel.Location = new System.Drawing.Point(258, 79);
-            this.Panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel.Margin = new System.Windows.Forms.Padding(4);
             this.Panel.Name = "Panel";
             this.Panel.Size = new System.Drawing.Size(1301, 715);
             this.Panel.TabIndex = 17;
+            this.Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            // 
+            // rbtnPopust
+            // 
+            this.rbtnPopust.AutoSize = true;
+            this.rbtnPopust.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnPopust.ForeColor = System.Drawing.SystemColors.Control;
+            this.rbtnPopust.Location = new System.Drawing.Point(324, 19);
+            this.rbtnPopust.Name = "rbtnPopust";
+            this.rbtnPopust.Size = new System.Drawing.Size(144, 24);
+            this.rbtnPopust.TabIndex = 26;
+            this.rbtnPopust.TabStop = true;
+            this.rbtnPopust.Text = "Sniženi proizvodi";
+            this.rbtnPopust.UseVisualStyleBackColor = true;
+            this.rbtnPopust.CheckedChanged += new System.EventHandler(this.rbtnPopust_CheckedChanged);
+            // 
+            // rbtnNoviProizodi
+            // 
+            this.rbtnNoviProizodi.AutoSize = true;
+            this.rbtnNoviProizodi.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnNoviProizodi.ForeColor = System.Drawing.SystemColors.Control;
+            this.rbtnNoviProizodi.Location = new System.Drawing.Point(474, 19);
+            this.rbtnNoviProizodi.Name = "rbtnNoviProizodi";
+            this.rbtnNoviProizodi.Size = new System.Drawing.Size(128, 24);
+            this.rbtnNoviProizodi.TabIndex = 26;
+            this.rbtnNoviProizodi.TabStop = true;
+            this.rbtnNoviProizodi.Text = "Novi proizvodi";
+            this.rbtnNoviProizodi.UseVisualStyleBackColor = true;
             // 
             // btnOtvoriArtikl
             // 
@@ -177,7 +209,7 @@
             this.btnOtvoriArtikl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOtvoriArtikl.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOtvoriArtikl.Location = new System.Drawing.Point(1019, 623);
-            this.btnOtvoriArtikl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOtvoriArtikl.Margin = new System.Windows.Forms.Padding(4);
             this.btnOtvoriArtikl.Name = "btnOtvoriArtikl";
             this.btnOtvoriArtikl.Size = new System.Drawing.Size(134, 46);
             this.btnOtvoriArtikl.TabIndex = 25;
@@ -191,7 +223,7 @@
             this.btnSortNazivUzlazno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortNazivUzlazno.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSortNazivUzlazno.Location = new System.Drawing.Point(640, 623);
-            this.btnSortNazivUzlazno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSortNazivUzlazno.Margin = new System.Windows.Forms.Padding(4);
             this.btnSortNazivUzlazno.Name = "btnSortNazivUzlazno";
             this.btnSortNazivUzlazno.Size = new System.Drawing.Size(100, 46);
             this.btnSortNazivUzlazno.TabIndex = 24;
@@ -205,7 +237,7 @@
             this.btnSortCijenaUzlazno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortCijenaUzlazno.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSortCijenaUzlazno.Location = new System.Drawing.Point(272, 623);
-            this.btnSortCijenaUzlazno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSortCijenaUzlazno.Margin = new System.Windows.Forms.Padding(4);
             this.btnSortCijenaUzlazno.Name = "btnSortCijenaUzlazno";
             this.btnSortCijenaUzlazno.Size = new System.Drawing.Size(100, 46);
             this.btnSortCijenaUzlazno.TabIndex = 23;
@@ -219,7 +251,7 @@
             this.btnOsvjeziPopis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOsvjeziPopis.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOsvjeziPopis.Location = new System.Drawing.Point(1161, 623);
-            this.btnOsvjeziPopis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOsvjeziPopis.Margin = new System.Windows.Forms.Padding(4);
             this.btnOsvjeziPopis.Name = "btnOsvjeziPopis";
             this.btnOsvjeziPopis.Size = new System.Drawing.Size(127, 46);
             this.btnOsvjeziPopis.TabIndex = 22;
@@ -251,7 +283,7 @@
             this.dgvArtikli.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvArtikli.EnableHeadersVisualStyles = false;
             this.dgvArtikli.Location = new System.Drawing.Point(52, 228);
-            this.dgvArtikli.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvArtikli.Margin = new System.Windows.Forms.Padding(4);
             this.dgvArtikli.Name = "dgvArtikli";
             this.dgvArtikli.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -291,7 +323,7 @@
             this.dgvPosebna.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPosebna.EnableHeadersVisualStyles = false;
             this.dgvPosebna.Location = new System.Drawing.Point(52, 47);
-            this.dgvPosebna.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvPosebna.Margin = new System.Windows.Forms.Padding(4);
             this.dgvPosebna.Name = "dgvPosebna";
             this.dgvPosebna.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -339,7 +371,7 @@
             this.btnSortNazivSilazno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortNazivSilazno.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSortNazivSilazno.Location = new System.Drawing.Point(532, 623);
-            this.btnSortNazivSilazno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSortNazivSilazno.Margin = new System.Windows.Forms.Padding(4);
             this.btnSortNazivSilazno.Name = "btnSortNazivSilazno";
             this.btnSortNazivSilazno.Size = new System.Drawing.Size(100, 46);
             this.btnSortNazivSilazno.TabIndex = 7;
@@ -353,7 +385,7 @@
             this.btnSortCijenaSilazno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortCijenaSilazno.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSortCijenaSilazno.Location = new System.Drawing.Point(164, 623);
-            this.btnSortCijenaSilazno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSortCijenaSilazno.Margin = new System.Windows.Forms.Padding(4);
             this.btnSortCijenaSilazno.Name = "btnSortCijenaSilazno";
             this.btnSortCijenaSilazno.Size = new System.Drawing.Size(100, 46);
             this.btnSortCijenaSilazno.TabIndex = 5;
@@ -435,6 +467,19 @@
             this.panel2.Size = new System.Drawing.Size(1559, 79);
             this.panel2.TabIndex = 27;
             // 
+            // btnArtikli
+            // 
+            this.btnArtikli.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnArtikli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArtikli.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnArtikli.Location = new System.Drawing.Point(258, 15);
+            this.btnArtikli.Margin = new System.Windows.Forms.Padding(4);
+            this.btnArtikli.Name = "btnArtikli";
+            this.btnArtikli.Size = new System.Drawing.Size(133, 50);
+            this.btnArtikli.TabIndex = 8;
+            this.btnArtikli.Text = "Upravljaj artiklima";
+            this.btnArtikli.UseVisualStyleBackColor = false;
+            // 
             // btnPrijava
             // 
             this.btnPrijava.BackColor = System.Drawing.Color.PaleTurquoise;
@@ -514,19 +559,6 @@
             this.txbPretraga.TabIndex = 9;
             this.txbPretraga.Text = "Pretraži...";
             // 
-            // btnArtikli
-            // 
-            this.btnArtikli.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.btnArtikli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArtikli.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArtikli.Location = new System.Drawing.Point(258, 15);
-            this.btnArtikli.Margin = new System.Windows.Forms.Padding(4);
-            this.btnArtikli.Name = "btnArtikli";
-            this.btnArtikli.Size = new System.Drawing.Size(133, 50);
-            this.btnArtikli.TabIndex = 8;
-            this.btnArtikli.Text = "Upravljaj artiklima";
-            this.btnArtikli.UseVisualStyleBackColor = false;
-            // 
             // FrmKatalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -544,7 +576,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmKatalog";
             this.Text = "Katalog proizvoda";
             this.Load += new System.EventHandler(this.FrmKatalog_Load);
@@ -592,6 +624,8 @@
         private System.Windows.Forms.Button btnKosarica;
         private System.Windows.Forms.Button btnKontakt;
         private System.Windows.Forms.TextBox txbPretraga;
+        private System.Windows.Forms.RadioButton rbtnPopust;
+        private System.Windows.Forms.RadioButton rbtnNoviProizodi;
     }
 }
 

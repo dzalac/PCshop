@@ -10,22 +10,30 @@ namespace PCShop.Klase
     public class Artikl
     {
         public string Naziv { get; set; }
-        public double Cijena { get; set; }
+        public float Cijena { get; set; }
         public string Proizvodac { get; set; }
         public string Opis { get; set; }
-        public bool PosebnaPonuda { get; set; }
         public string Slika { get; set; }
         public VrstaArtikla VrstaArtikla { get; set; }
-        
-        public Artikl(string naziv, double cijena, string proizvodac, string opis, bool posebnaPonuda, string slika, VrstaArtikla vrstaArtikla)
+        public int Kolicina { get; set; }
+        public float Popust { get; set; }
+
+        public float SnizenaCijena { get; set; }
+
+        public DateTime DatumDodavanja { get; set; }
+
+        public Artikl(string naziv, float cijena, string proizvodac, string opis, string slika, VrstaArtikla vrstaArtikla, int kolicina, float popust)
         {
             this.Naziv = naziv;
             this.Cijena = cijena;
             this.Proizvodac = proizvodac;
-            this.Opis = opis;
-            this.PosebnaPonuda = posebnaPonuda;
+            this.Opis = opis;    
             this.Slika = slika;
             this.VrstaArtikla = vrstaArtikla;
+            this.Kolicina = kolicina;
+            this.Popust = popust;
+            this.DatumDodavanja = DateTime.Now;
+            this.SnizenaCijena = cijena - cijena * popust / 100;
         }
     }
 }

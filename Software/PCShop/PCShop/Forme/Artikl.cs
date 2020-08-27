@@ -26,6 +26,13 @@ namespace PCShop.Forme
         {
             lblNaziv.Text = artikl.Naziv;
             lblCijena.Text = artikl.Cijena.ToString();
+            if (artikl.Popust>0)
+            {
+                lblCijena.ForeColor = System.Drawing.Color.Red;
+                lblSnizenaCijena.Text = artikl.SnizenaCijena.ToString();
+                lblSnizenaCijena.Visible = true;
+            }
+            
             rtbxOpis.Text = artikl.Opis;
             pbSlika.Image = Image.FromFile(artikl.Slika);
             
@@ -62,6 +69,11 @@ namespace PCShop.Forme
         private void btnOdustani_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void FrmArtikli_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

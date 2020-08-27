@@ -17,7 +17,7 @@ namespace PCShop
     {
 
         public static BindingList<Artikl> popis = new BindingList<Artikl>();
-        public static BindingList<Artikl> posebnaPonuda;
+        public static BindingList<Artikl> snizeniProizvodi;
         public static BindingList<Artikl> pretraga;
         public static BindingList<Artikl> sortiranaLista;
         public static BindingList<Artikl> trenutniPopis;
@@ -28,32 +28,25 @@ namespace PCShop
         }
         private void FrmKatalog_Load(object sender, EventArgs e)
         {
-            popis.Add(new Artikl("GTX 1050", 1000, "NVIDIA", "Radni takt GPU [MHz] 1290, 2 GB", false, System.IO.Path.GetFullPath(@"..\..\Slike\GTX1050.png"), VrstaArtikla.graficka));
-            popis.Add(new Artikl("Ryzen 3700", 500, "AMD", "The AMD Ryzen 7 3700X is a desktop processor with 8 cores, launched in July 2019. It is part of the Ryzen 7 lineup, using the Zen 2 (Matisse) architecture with Socket AM4.", true, System.IO.Path.GetFullPath(@"..\..\Slike\Ryzen3700.png"), VrstaArtikla.procesor));
-            popis.Add(new Artikl("PC-21300", 400, "KINGSTON", "Kapacitet [GB] 4GB, Utor DDR4, Radni takt [MHz]2666 ", true, System.IO.Path.GetFullPath(@"..\..\Slike\PC-21300.png"), VrstaArtikla.ram));
-            popis.Add(new Artikl("WD8004FRYZ", 800, "WESTERN DIGITAL", "Sučelje: SATA3, Kapacitet diska [GB]: 8000, Brzina rotacije [okr./min.]: 7200, Cache [MB]: 256", true, System.IO.Path.GetFullPath(@"..\..\Slike\WD8004FRYZ.png"), VrstaArtikla.hdd));
-            popis.Add(new Artikl("X570", 1400, "ASROCK", "DDR4, ATX, s. AM4", false, System.IO.Path.GetFullPath(@"..\..\Slike\X570.png"), VrstaArtikla.maticna));
+            rbtnPopust.Checked = true;
+            popis.Add(new Artikl("GTX 1050", 1000, "NVIDIA", "Radni takt GPU [MHz] 1290, 2 GB", System.IO.Path.GetFullPath(@"..\..\Slike\GTX1050.png"), VrstaArtikla.graficka,25,0));
+            popis.Add(new Artikl("Ryzen 3700", 500, "AMD", "The AMD Ryzen 7 3700X is a desktop processor with 8 cores, launched in July 2019. It is part of the Ryzen 7 lineup, using the Zen 2 (Matisse) architecture with Socket AM4.", System.IO.Path.GetFullPath(@"..\..\Slike\Ryzen3700.png"), VrstaArtikla.procesor, 25, 15));
+            popis.Add(new Artikl("PC-21300", 400, "KINGSTON", "Kapacitet [GB] 4GB, Utor DDR4, Radni takt [MHz]2666 ", System.IO.Path.GetFullPath(@"..\..\Slike\PC-21300.png"), VrstaArtikla.ram, 50,10));
+            popis.Add(new Artikl("WD8004FRYZ", 800, "WESTERN DIGITAL", "Sučelje: SATA3, Kapacitet diska [GB]: 8000, Brzina rotacije [okr./min.]: 7200, Cache [MB]: 256", System.IO.Path.GetFullPath(@"..\..\Slike\WD8004FRYZ.png"), VrstaArtikla.hdd,100, 0));
+            popis.Add(new Artikl("X570", 1400, "ASROCK", "DDR4, ATX, s. AM4",  System.IO.Path.GetFullPath(@"..\..\Slike\X570.png"), VrstaArtikla.maticna,15,0));
             trenutniPopis = popis;
             Osvjezi(popis);
-            
+            UcitajSnizeneProizvode();
         }
+
         private void Osvjezi(BindingList<Artikl> lista)
         {
             dgvArtikli.DataSource = null;
             dgvArtikli.DataSource = lista;
-
-
-            posebnaPonuda = new BindingList<Artikl>();
-            foreach (Artikl artikl in lista)
-            {
-                if (artikl.PosebnaPonuda == true && posebnaPonuda.Contains(artikl) == false)
-                {
-                    posebnaPonuda.Add(artikl);
-                }
-            }
-            dgvPosebna.DataSource = null;
-            dgvPosebna.DataSource = posebnaPonuda;
         }
+
+
+
         public void TrazenaKategorija(VrstaArtikla vrsta)
         {
             trazeniPopis = new BindingList<Artikl>();
@@ -195,5 +188,50 @@ namespace PCShop
                 }
             }
         }
+
+        private void Panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void rbtnPopust_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnPopust.Checked)
+            {
+                UcitajSnizeneProizvode();
+            }
+            else
+            {
+                UcitajNoveProizvode();
+            }
+        }
+
+        private void UcitajSnizeneProizvode()
+        {
+            snizeniProizvodi = new BindingList<Artikl>();
+            foreach (Artikl artikl in popis)
+            {
+                if (artikl.Popust > 0 && snizeniProizvodi.Contains(artikl) == false)
+                {
+                    snizeniProizvodi.Add(artikl);
+                }
+            }
+            dgvPosebna.DataSource = null;
+            dgvPosebna.DataSource = snizeniProizvodi;
+        }
+        private void UcitajNoveProizvode()
+        {
+            snizeniProizvodi = new BindingList<Artikl>();
+            foreach (Artikl artikl in popis)
+            {
+                if (artikl.DatumDodavanja < artikl.DatumDodavanja.AddDays(21) && snizeniProizvodi.Contains(artikl) == false)
+                {
+                    snizeniProizvodi.Add(artikl);
+                }
+            }
+            dgvPosebna.DataSource = null;
+            dgvPosebna.DataSource = snizeniProizvodi;
+        }
     }
+
 }
