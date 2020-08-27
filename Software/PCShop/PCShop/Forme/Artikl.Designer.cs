@@ -44,38 +44,45 @@
             // lblNaziv
             // 
             this.lblNaziv.AutoSize = true;
-            this.lblNaziv.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNaziv.Location = new System.Drawing.Point(29, 28);
+            this.lblNaziv.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNaziv.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblNaziv.Location = new System.Drawing.Point(39, 34);
+            this.lblNaziv.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNaziv.Name = "lblNaziv";
-            this.lblNaziv.Size = new System.Drawing.Size(163, 31);
+            this.lblNaziv.Size = new System.Drawing.Size(218, 40);
             this.lblNaziv.TabIndex = 0;
             this.lblNaziv.Text = "Naziv artikla";
             // 
             // pbSlika
             // 
-            this.pbSlika.Location = new System.Drawing.Point(35, 89);
+            this.pbSlika.Location = new System.Drawing.Point(47, 110);
+            this.pbSlika.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbSlika.Name = "pbSlika";
-            this.pbSlika.Size = new System.Drawing.Size(290, 230);
+            this.pbSlika.Size = new System.Drawing.Size(387, 283);
             this.pbSlika.TabIndex = 1;
             this.pbSlika.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(31, 354);
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(41, 436);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 24);
+            this.label1.Size = new System.Drawing.Size(133, 32);
             this.label1.TabIndex = 2;
             this.label1.Text = "Cijena(kn): ";
             // 
             // lblCijena
             // 
             this.lblCijena.AutoSize = true;
-            this.lblCijena.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCijena.Location = new System.Drawing.Point(142, 354);
+            this.lblCijena.Font = new System.Drawing.Font("Nirmala UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCijena.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblCijena.Location = new System.Drawing.Point(189, 436);
+            this.lblCijena.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCijena.Name = "lblCijena";
-            this.lblCijena.Size = new System.Drawing.Size(40, 24);
+            this.lblCijena.Size = new System.Drawing.Size(48, 32);
             this.lblCijena.TabIndex = 3;
             this.lblCijena.Text = "???";
             this.lblCijena.Click += new System.EventHandler(this.LblCijena_Click);
@@ -83,64 +90,80 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(408, 35);
+            this.label2.Font = new System.Drawing.Font("Nirmala UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(544, 43);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 24);
+            this.label2.Size = new System.Drawing.Size(140, 32);
             this.label2.TabIndex = 4;
             this.label2.Text = "Opis artikla:";
             // 
             // rtbxOpis
             // 
-            this.rtbxOpis.Location = new System.Drawing.Point(414, 89);
+            this.rtbxOpis.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbxOpis.Location = new System.Drawing.Point(552, 110);
+            this.rtbxOpis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rtbxOpis.Name = "rtbxOpis";
-            this.rtbxOpis.Size = new System.Drawing.Size(346, 233);
+            this.rtbxOpis.Size = new System.Drawing.Size(460, 286);
             this.rtbxOpis.TabIndex = 5;
             this.rtbxOpis.Text = "";
             // 
             // btnOdustani
             // 
-            this.btnOdustani.Location = new System.Drawing.Point(683, 344);
+            this.btnOdustani.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnOdustani.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOdustani.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOdustani.Location = new System.Drawing.Point(911, 423);
+            this.btnOdustani.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOdustani.Name = "btnOdustani";
-            this.btnOdustani.Size = new System.Drawing.Size(77, 46);
+            this.btnOdustani.Size = new System.Drawing.Size(103, 57);
             this.btnOdustani.TabIndex = 6;
             this.btnOdustani.Text = "Odustani";
-            this.btnOdustani.UseVisualStyleBackColor = true;
+            this.btnOdustani.UseVisualStyleBackColor = false;
             this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(600, 344);
+            this.btnDodaj.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnDodaj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDodaj.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDodaj.Location = new System.Drawing.Point(800, 423);
+            this.btnDodaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(77, 46);
+            this.btnDodaj.Size = new System.Drawing.Size(103, 57);
             this.btnDodaj.TabIndex = 7;
             this.btnDodaj.Text = "Dodaj u košaricu";
-            this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.UseVisualStyleBackColor = false;
             this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
             // tbxKolicina
             // 
-            this.tbxKolicina.Location = new System.Drawing.Point(494, 358);
+            this.tbxKolicina.Location = new System.Drawing.Point(659, 441);
+            this.tbxKolicina.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbxKolicina.Name = "tbxKolicina";
-            this.tbxKolicina.Size = new System.Drawing.Size(100, 20);
+            this.tbxKolicina.Size = new System.Drawing.Size(132, 22);
             this.tbxKolicina.TabIndex = 8;
             this.tbxKolicina.Text = "1";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(442, 361);
+            this.label3.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(586, 441);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.Size = new System.Drawing.Size(65, 20);
             this.label3.TabIndex = 9;
             this.label3.Text = "Kolicina:";
             // 
             // FrmArtikli
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(800, 402);
+            this.BackColor = System.Drawing.Color.Teal;
+            this.ClientSize = new System.Drawing.Size(1067, 495);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbxKolicina);
             this.Controls.Add(this.btnDodaj);
@@ -152,6 +175,7 @@
             this.Controls.Add(this.pbSlika);
             this.Controls.Add(this.lblNaziv);
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmArtikli";
             this.Text = "Artikl";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmArtikl_KeyDown);
