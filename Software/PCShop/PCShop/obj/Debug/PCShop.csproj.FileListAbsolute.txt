@@ -12,3 +12,17 @@ C:\Users\Shtef\source\repos\PCShop\PCShop\obj\Debug\PCShop.frmKatalog.resources
 C:\Users\Shtef\source\repos\PCShop\PCShop\obj\Debug\PCShop.frmRegistracija.resources
 C:\Users\Shtef\source\repos\PCShop\PCShop\obj\Debug\PCShop.Forme.frmArtikli.resources
 C:\Users\Shtef\source\repos\PCShop\PCShop\obj\Debug\PCShop.frmBlagajna.resources
+C:\Users\Patrik\Documents\GitHub\r20--psikac-dsteficar-dzalac\Software\PCShop\PCShop\bin\Debug\PCShop.exe.config
+C:\Users\Patrik\Documents\GitHub\r20--psikac-dsteficar-dzalac\Software\PCShop\PCShop\bin\Debug\PCShop.exe
+C:\Users\Patrik\Documents\GitHub\r20--psikac-dsteficar-dzalac\Software\PCShop\PCShop\bin\Debug\PCShop.pdb
+C:\Users\Patrik\Documents\GitHub\r20--psikac-dsteficar-dzalac\Software\PCShop\PCShop\obj\Debug\PCShop.csprojAssemblyReference.cache
+C:\Users\Patrik\Documents\GitHub\r20--psikac-dsteficar-dzalac\Software\PCShop\PCShop\obj\Debug\PCShop.Forme.FrmArtikli.resources
+C:\Users\Patrik\Documents\GitHub\r20--psikac-dsteficar-dzalac\Software\PCShop\PCShop\obj\Debug\PCShop.FrmBlagajna.resources
+C:\Users\Patrik\Documents\GitHub\r20--psikac-dsteficar-dzalac\Software\PCShop\PCShop\obj\Debug\PCShop.FrmKosarica.resources
+C:\Users\Patrik\Documents\GitHub\r20--psikac-dsteficar-dzalac\Software\PCShop\PCShop\obj\Debug\PCShop.FrmPrijava.resources
+C:\Users\Patrik\Documents\GitHub\r20--psikac-dsteficar-dzalac\Software\PCShop\PCShop\obj\Debug\PCShop.FrmKatalog.resources
+C:\Users\Patrik\Documents\GitHub\r20--psikac-dsteficar-dzalac\Software\PCShop\PCShop\obj\Debug\PCShop.Properties.Resources.resources
+C:\Users\Patrik\Documents\GitHub\r20--psikac-dsteficar-dzalac\Software\PCShop\PCShop\obj\Debug\PCShop.FrmRegistracija.resources
+C:\Users\Patrik\Documents\GitHub\r20--psikac-dsteficar-dzalac\Software\PCShop\PCShop\obj\Debug\PCShop.csproj.GenerateResource.cache
+C:\Users\Patrik\Documents\GitHub\r20--psikac-dsteficar-dzalac\Software\PCShop\PCShop\obj\Debug\PCShop.exe
+C:\Users\Patrik\Documents\GitHub\r20--psikac-dsteficar-dzalac\Software\PCShop\PCShop\obj\Debug\PCShop.pdb
