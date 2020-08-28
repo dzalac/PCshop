@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PI20_011_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Artikl">
+    <Key>
+      <PropertyRef Name="Artikl_Id" />
+    </Key>
+    <Property Name="Artikl_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Cijena" Type="Double" />
+    <Property Name="Proizvodac" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Kolicina" Type="Int32" />
+    <Property Name="VrstaArtikla" Type="Int32" />
+    <Property Name="Popust" Type="Double" />
+    <Property Name="DatumDodavanja" Type="DateTime" Precision="0" />
+    <Property Name="Slika" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Vrsta_artikla" Relationship="Self.FK_Artikl_Vrsta_artikla" FromRole="Artikl" ToRole="Vrsta_artikla" />
+    <NavigationProperty Name="Stavka_kosarice" Relationship="Self.FK_Stavka_kosarice_Artikl" FromRole="Artikl" ToRole="Stavka_kosarice" />
+    <NavigationProperty Name="Stavka_narudzbe" Relationship="Self.FK_Stavka_narudzbe_Artikl" FromRole="Artikl" ToRole="Stavka_narudzbe" />
+  </EntityType>
+  <EntityType Name="Korisnik">
+    <Key>
+      <PropertyRef Name="Korisnik_Id" />
+    </Key>
+    <Property Name="Korisnik_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ime" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Prezime" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="KorisnickoIme" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Grad" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Adresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PostanskiBroj" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Kosarica" Type="Int32" />
+    <Property Name="TipKorisnika" Type="Int32" />
+    <NavigationProperty Name="Kosarica1" Relationship="Self.FK_Korisnik_Kosarica" FromRole="Korisnik" ToRole="Kosarica" />
+    <NavigationProperty Name="Tip_korisnika" Relationship="Self.FK_Korisnik_Tip_korisnika" FromRole="Korisnik" ToRole="Tip_korisnika" />
+    <NavigationProperty Name="Narudzbas" Relationship="Self.FK_Narudzba_Korisnik" FromRole="Korisnik" ToRole="Narudzba" />
+  </EntityType>
+  <EntityType Name="Kosarica">
+    <Key>
+      <PropertyRef Name="Kosarica_Id" />
+    </Key>
+    <Property Name="Kosarica_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DatumKreiranja" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Korisniks" Relationship="Self.FK_Korisnik_Kosarica" FromRole="Kosarica" ToRole="Korisnik" />
+    <NavigationProperty Name="Stavka_kosarice" Relationship="Self.FK_Stavka_kosarice_Kosarica" FromRole="Kosarica" ToRole="Stavka_kosarice" />
+  </EntityType>
+  <EntityType Name="Nacin_placanja">
+    <Key>
+      <PropertyRef Name="NacinPlacanja_Id" />
+    </Key>
+    <Property Name="NacinPlacanja_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Podaci_o_placanju" Relationship="Self.FK_Podaci_o_placanju_Nacin_placanja" FromRole="Nacin_placanja" ToRole="Podaci_o_placanju" />
+  </EntityType>
+  <EntityType Name="Narudzba">
+    <Key>
+      <PropertyRef Name="Narudzba_Id" />
+    </Key>
+    <Property Name="Narudzba_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GradDostave" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AdresaDostave" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DatumNarudzbe" Type="DateTime" Precision="0" />
+    <Property Name="StanjeNarudzbe" Type="Int32" />
+    <Property Name="KorisnikId" Type="Int32" />
+    <NavigationProperty Name="Korisnik" Relationship="Self.FK_Narudzba_Korisnik" FromRole="Narudzba" ToRole="Korisnik" />
+    <NavigationProperty Name="Stanje_narudzbe" Relationship="Self.FK_Narudzba_Stanje_narudzbe" FromRole="Narudzba" ToRole="Stanje_narudzbe" />
+    <NavigationProperty Name="Podaci_o_placanju" Relationship="Self.FK_Podaci_o_placanju_Narudzba" FromRole="Narudzba" ToRole="Podaci_o_placanju" />
+    <NavigationProperty Name="Stavka_narudzbe" Relationship="Self.FK_Stavka_narudzbe_Narudzba" FromRole="Narudzba" ToRole="Stavka_narudzbe" />
+  </EntityType>
+  <EntityType Name="Podaci_o_placanju">
+    <Key>
+      <PropertyRef Name="Placanje_Id" />
+    </Key>
+    <Property Name="Placanje_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrojRacuna" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="KontrolniBroj" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="VrijediDo" Type="DateTime" Precision="0" />
+    <Property Name="BrojNarudzbe" Type="Int32" />
+    <Property Name="NacinPlacanja" Type="Int32" />
+    <NavigationProperty Name="Nacin_placanja" Relationship="Self.FK_Podaci_o_placanju_Nacin_placanja" FromRole="Podaci_o_placanju" ToRole="Nacin_placanja" />
+    <NavigationProperty Name="Narudzba" Relationship="Self.FK_Podaci_o_placanju_Narudzba" FromRole="Podaci_o_placanju" ToRole="Narudzba" />
+  </EntityType>
+  <EntityType Name="Stanje_narudzbe">
+    <Key>
+      <PropertyRef Name="StanjeNarudzbe_Id" />
+    </Key>
+    <Property Name="StanjeNarudzbe_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Narudzbas" Relationship="Self.FK_Narudzba_Stanje_narudzbe" FromRole="Stanje_narudzbe" ToRole="Narudzba" />
+  </EntityType>
+  <EntityType Name="Stavka_kosarice">
+    <Key>
+      <PropertyRef Name="Kosarica_Id" />
+      <PropertyRef Name="Artikl_Id" />
+    </Key>
+    <Property Name="Kosarica_Id" Type="Int32" Nullable="false" />
+    <Property Name="Artikl_Id" Type="Int32" Nullable="false" />
+    <Property Name="Kolicina" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Artikl" Relationship="Self.FK_Stavka_kosarice_Artikl" FromRole="Stavka_kosarice" ToRole="Artikl" />
+    <NavigationProperty Name="Kosarica" Relationship="Self.FK_Stavka_kosarice_Kosarica" FromRole="Stavka_kosarice" ToRole="Kosarica" />
+  </EntityType>
+  <EntityType Name="Stavka_narudzbe">
+    <Key>
+      <PropertyRef Name="Artikl_Id" />
+      <PropertyRef Name="Narudzba_Id" />
+    </Key>
+    <Property Name="Artikl_Id" Type="Int32" Nullable="false" />
+    <Property Name="Narudzba_Id" Type="Int32" Nullable="false" />
+    <Property Name="Kolicina" Type="Int32" />
+    <Property Name="Cijena" Type="Double" />
+    <NavigationProperty Name="Artikl" Relationship="Self.FK_Stavka_narudzbe_Artikl" FromRole="Stavka_narudzbe" ToRole="Artikl" />
+    <NavigationProperty Name="Narudzba" Relationship="Self.FK_Stavka_narudzbe_Narudzba" FromRole="Stavka_narudzbe" ToRole="Narudzba" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tip_korisnika">
+    <Key>
+      <PropertyRef Name="TipKorisnika_Id" />
+    </Key>
+    <Property Name="TipKorisnika_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Korisniks" Relationship="Self.FK_Korisnik_Tip_korisnika" FromRole="Tip_korisnika" ToRole="Korisnik" />
+  </EntityType>
+  <EntityType Name="Vrsta_artikla">
+    <Key>
+      <PropertyRef Name="VrstaArtikla_Id" />
+    </Key>
+    <Property Name="VrstaArtikla_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Artikls" Relationship="Self.FK_Artikl_Vrsta_artikla" FromRole="Vrsta_artikla" ToRole="Artikl" />
+  </EntityType>
+  <Association Name="FK_Artikl_Vrsta_artikla">
+    <End Role="Vrsta_artikla" Type="Self.Vrsta_artikla" Multiplicity="0..1" />
+    <End Role="Artikl" Type="Self.Artikl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vrsta_artikla">
+        <PropertyRef Name="VrstaArtikla_Id" />
+      </Principal>
+      <Dependent Role="Artikl">
+        <PropertyRef Name="VrstaArtikla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stavka_kosarice_Artikl">
+    <End Role="Artikl" Type="Self.Artikl" Multiplicity="1" />
+    <End Role="Stavka_kosarice" Type="Self.Stavka_kosarice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artikl">
+        <PropertyRef Name="Artikl_Id" />
+      </Principal>
+      <Dependent Role="Stavka_kosarice">
+        <PropertyRef Name="Artikl_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stavka_narudzbe_Artikl">
+    <End Role="Artikl" Type="Self.Artikl" Multiplicity="1" />
+    <End Role="Stavka_narudzbe" Type="Self.Stavka_narudzbe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artikl">
+        <PropertyRef Name="Artikl_Id" />
+      </Principal>
+      <Dependent Role="Stavka_narudzbe">
+        <PropertyRef Name="Artikl_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Korisnik_Kosarica">
+    <End Role="Kosarica" Type="Self.Kosarica" Multiplicity="0..1" />
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kosarica">
+        <PropertyRef Name="Kosarica_Id" />
+      </Principal>
+      <Dependent Role="Korisnik">
+        <PropertyRef Name="Kosarica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Korisnik_Tip_korisnika">
+    <End Role="Tip_korisnika" Type="Self.Tip_korisnika" Multiplicity="0..1" />
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tip_korisnika">
+        <PropertyRef Name="TipKorisnika_Id" />
+      </Principal>
+      <Dependent Role="Korisnik">
+        <PropertyRef Name="TipKorisnika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Narudzba_Korisnik">
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="0..1" />
+    <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Korisnik">
+        <PropertyRef Name="Korisnik_Id" />
+      </Principal>
+      <Dependent Role="Narudzba">
+        <PropertyRef Name="KorisnikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stavka_kosarice_Kosarica">
+    <End Role="Kosarica" Type="Self.Kosarica" Multiplicity="1" />
+    <End Role="Stavka_kosarice" Type="Self.Stavka_kosarice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kosarica">
+        <PropertyRef Name="Kosarica_Id" />
+      </Principal>
+      <Dependent Role="Stavka_kosarice">
+        <PropertyRef Name="Kosarica_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Podaci_o_placanju_Nacin_placanja">
+    <End Role="Nacin_placanja" Type="Self.Nacin_placanja" Multiplicity="0..1" />
+    <End Role="Podaci_o_placanju" Type="Self.Podaci_o_placanju" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nacin_placanja">
+        <PropertyRef Name="NacinPlacanja_Id" />
+      </Principal>
+      <Dependent Role="Podaci_o_placanju">
+        <PropertyRef Name="NacinPlacanja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Narudzba_Stanje_narudzbe">
+    <End Role="Stanje_narudzbe" Type="Self.Stanje_narudzbe" Multiplicity="0..1" />
+    <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stanje_narudzbe">
+        <PropertyRef Name="StanjeNarudzbe_Id" />
+      </Principal>
+      <Dependent Role="Narudzba">
+        <PropertyRef Name="StanjeNarudzbe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Podaci_o_placanju_Narudzba">
+    <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="0..1" />
+    <End Role="Podaci_o_placanju" Type="Self.Podaci_o_placanju" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Narudzba">
+        <PropertyRef Name="Narudzba_Id" />
+      </Principal>
+      <Dependent Role="Podaci_o_placanju">
+        <PropertyRef Name="BrojNarudzbe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stavka_narudzbe_Narudzba">
+    <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
+    <End Role="Stavka_narudzbe" Type="Self.Stavka_narudzbe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Narudzba">
+        <PropertyRef Name="Narudzba_Id" />
+      </Principal>
+      <Dependent Role="Stavka_narudzbe">
+        <PropertyRef Name="Narudzba_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Artikls" EntityType="Self.Artikl" />
+    <EntitySet Name="Korisniks" EntityType="Self.Korisnik" />
+    <EntitySet Name="Kosaricas" EntityType="Self.Kosarica" />
+    <EntitySet Name="Nacin_placanja" EntityType="Self.Nacin_placanja" />
+    <EntitySet Name="Narudzbas" EntityType="Self.Narudzba" />
+    <EntitySet Name="Podaci_o_placanju" EntityType="Self.Podaci_o_placanju" />
+    <EntitySet Name="Stanje_narudzbe" EntityType="Self.Stanje_narudzbe" />
+    <EntitySet Name="Stavka_kosarice" EntityType="Self.Stavka_kosarice" />
+    <EntitySet Name="Stavka_narudzbe" EntityType="Self.Stavka_narudzbe" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Tip_korisnika" EntityType="Self.Tip_korisnika" />
+    <EntitySet Name="Vrsta_artikla" EntityType="Self.Vrsta_artikla" />
+    <AssociationSet Name="FK_Artikl_Vrsta_artikla" Association="Self.FK_Artikl_Vrsta_artikla">
+      <End Role="Vrsta_artikla" EntitySet="Vrsta_artikla" />
+      <End Role="Artikl" EntitySet="Artikls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stavka_kosarice_Artikl" Association="Self.FK_Stavka_kosarice_Artikl">
+      <End Role="Artikl" EntitySet="Artikls" />
+      <End Role="Stavka_kosarice" EntitySet="Stavka_kosarice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stavka_narudzbe_Artikl" Association="Self.FK_Stavka_narudzbe_Artikl">
+      <End Role="Artikl" EntitySet="Artikls" />
+      <End Role="Stavka_narudzbe" EntitySet="Stavka_narudzbe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Korisnik_Kosarica" Association="Self.FK_Korisnik_Kosarica">
+      <End Role="Kosarica" EntitySet="Kosaricas" />
+      <End Role="Korisnik" EntitySet="Korisniks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Korisnik_Tip_korisnika" Association="Self.FK_Korisnik_Tip_korisnika">
+      <End Role="Tip_korisnika" EntitySet="Tip_korisnika" />
+      <End Role="Korisnik" EntitySet="Korisniks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Narudzba_Korisnik" Association="Self.FK_Narudzba_Korisnik">
+      <End Role="Korisnik" EntitySet="Korisniks" />
+      <End Role="Narudzba" EntitySet="Narudzbas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stavka_kosarice_Kosarica" Association="Self.FK_Stavka_kosarice_Kosarica">
+      <End Role="Kosarica" EntitySet="Kosaricas" />
+      <End Role="Stavka_kosarice" EntitySet="Stavka_kosarice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Podaci_o_placanju_Nacin_placanja" Association="Self.FK_Podaci_o_placanju_Nacin_placanja">
+      <End Role="Nacin_placanja" EntitySet="Nacin_placanja" />
+      <End Role="Podaci_o_placanju" EntitySet="Podaci_o_placanju" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Narudzba_Stanje_narudzbe" Association="Self.FK_Narudzba_Stanje_narudzbe">
+      <End Role="Stanje_narudzbe" EntitySet="Stanje_narudzbe" />
+      <End Role="Narudzba" EntitySet="Narudzbas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Podaci_o_placanju_Narudzba" Association="Self.FK_Podaci_o_placanju_Narudzba">
+      <End Role="Narudzba" EntitySet="Narudzbas" />
+      <End Role="Podaci_o_placanju" EntitySet="Podaci_o_placanju" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stavka_narudzbe_Narudzba" Association="Self.FK_Stavka_narudzbe_Narudzba">
+      <End Role="Narudzba" EntitySet="Narudzbas" />
+      <End Role="Stavka_narudzbe" EntitySet="Stavka_narudzbe" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
