@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1bc29f2ac47048fb927dcf0a378234b4" Name="Diagram1">
+        <EntityTypeShape EntityType="PI20_011_DBModel.Artikl" Width="1.5" PointX="11.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI20_011_DBModel.Korisnik" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI20_011_DBModel.Kosarica" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI20_011_DBModel.Nacin_placanja" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI20_011_DBModel.Narudzba" Width="1.5" PointX="8.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI20_011_DBModel.Podaci_o_placanju" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI20_011_DBModel.Stanje_narudzbe" Width="1.5" PointX="6" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI20_011_DBModel.Stavka_kosarice" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI20_011_DBModel.Stavka_narudzbe" Width="1.5" PointX="13.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI20_011_DBModel.sysdiagram" Width="1.5" PointX="2.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI20_011_DBModel.Tip_korisnika" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI20_011_DBModel.Vrsta_artikla" Width="1.5" PointX="9" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="PI20_011_DBModel.FK_Artikl_Vrsta_artikla" ManuallyRouted="false" />
+        <AssociationConnector Association="PI20_011_DBModel.FK_Stavka_kosarice_Artikl" ManuallyRouted="false" />
+        <AssociationConnector Association="PI20_011_DBModel.FK_Stavka_narudzbe_Artikl" ManuallyRouted="false" />
+        <AssociationConnector Association="PI20_011_DBModel.FK_Korisnik_Kosarica" ManuallyRouted="false" />
+        <AssociationConnector Association="PI20_011_DBModel.FK_Korisnik_Tip_korisnika" ManuallyRouted="false" />
+        <AssociationConnector Association="PI20_011_DBModel.FK_Narudzba_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="PI20_011_DBModel.FK_Stavka_kosarice_Kosarica" ManuallyRouted="false" />
+        <AssociationConnector Association="PI20_011_DBModel.FK_Podaci_o_placanju_Nacin_placanja" ManuallyRouted="false" />
+        <AssociationConnector Association="PI20_011_DBModel.FK_Narudzba_Stanje_narudzbe" ManuallyRouted="false" />
+        <AssociationConnector Association="PI20_011_DBModel.FK_Podaci_o_placanju_Narudzba" ManuallyRouted="false" />
+        <AssociationConnector Association="PI20_011_DBModel.FK_Stavka_narudzbe_Narudzba" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
