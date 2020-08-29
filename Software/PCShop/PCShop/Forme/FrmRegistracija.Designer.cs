@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.tbxIme = new System.Windows.Forms.TextBox();
+            this.txtIme = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbxPrezime = new System.Windows.Forms.TextBox();
+            this.txtPrezime = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.tbxKorisnickoIme = new System.Windows.Forms.TextBox();
+            this.txtKorisnickoIme = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.tbxMail = new System.Windows.Forms.TextBox();
+            this.txtMail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.tbxPostanskiBroj = new System.Windows.Forms.TextBox();
+            this.txtPostanskiBroj = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.tbxAdresa = new System.Windows.Forms.TextBox();
+            this.txtAdresa = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.tbxGrad = new System.Windows.Forms.TextBox();
+            this.txtGrad = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.tbxPotvrdaLozinka = new System.Windows.Forms.TextBox();
+            this.txtPotvrdaLozinka = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.tbxLozinka = new System.Windows.Forms.TextBox();
+            this.txtLozinka = new System.Windows.Forms.TextBox();
             this.btnRegistriraj = new System.Windows.Forms.Button();
             this.btnOdustani = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -59,18 +59,18 @@
             this.label1.Location = new System.Drawing.Point(367, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 40);
+            this.label1.Size = new System.Drawing.Size(205, 39);
             this.label1.TabIndex = 0;
             this.label1.Text = "Registracija";
             // 
-            // tbxIme
+            // txtIme
             // 
-            this.tbxIme.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxIme.Location = new System.Drawing.Point(13, 113);
-            this.tbxIme.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tbxIme.Name = "tbxIme";
-            this.tbxIme.Size = new System.Drawing.Size(272, 25);
-            this.tbxIme.TabIndex = 1;
+            this.txtIme.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIme.Location = new System.Drawing.Point(13, 113);
+            this.txtIme.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIme.Name = "txtIme";
+            this.txtIme.Size = new System.Drawing.Size(272, 25);
+            this.txtIme.TabIndex = 1;
             // 
             // label2
             // 
@@ -96,14 +96,14 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Prezime:";
             // 
-            // tbxPrezime
+            // txtPrezime
             // 
-            this.tbxPrezime.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxPrezime.Location = new System.Drawing.Point(13, 178);
-            this.tbxPrezime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tbxPrezime.Name = "tbxPrezime";
-            this.tbxPrezime.Size = new System.Drawing.Size(272, 25);
-            this.tbxPrezime.TabIndex = 3;
+            this.txtPrezime.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrezime.Location = new System.Drawing.Point(13, 178);
+            this.txtPrezime.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPrezime.Name = "txtPrezime";
+            this.txtPrezime.Size = new System.Drawing.Size(272, 25);
+            this.txtPrezime.TabIndex = 3;
             // 
             // label4
             // 
@@ -117,14 +117,14 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Korisničko ime:";
             // 
-            // tbxKorisnickoIme
+            // txtKorisnickoIme
             // 
-            this.tbxKorisnickoIme.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxKorisnickoIme.Location = new System.Drawing.Point(13, 241);
-            this.tbxKorisnickoIme.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tbxKorisnickoIme.Name = "tbxKorisnickoIme";
-            this.tbxKorisnickoIme.Size = new System.Drawing.Size(272, 25);
-            this.tbxKorisnickoIme.TabIndex = 5;
+            this.txtKorisnickoIme.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKorisnickoIme.Location = new System.Drawing.Point(13, 241);
+            this.txtKorisnickoIme.Margin = new System.Windows.Forms.Padding(4);
+            this.txtKorisnickoIme.Name = "txtKorisnickoIme";
+            this.txtKorisnickoIme.Size = new System.Drawing.Size(272, 25);
+            this.txtKorisnickoIme.TabIndex = 5;
             // 
             // label5
             // 
@@ -138,14 +138,14 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "E-mail:";
             // 
-            // tbxMail
+            // txtMail
             // 
-            this.tbxMail.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxMail.Location = new System.Drawing.Point(15, 303);
-            this.tbxMail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tbxMail.Name = "tbxMail";
-            this.tbxMail.Size = new System.Drawing.Size(272, 25);
-            this.tbxMail.TabIndex = 7;
+            this.txtMail.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMail.Location = new System.Drawing.Point(15, 303);
+            this.txtMail.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMail.Name = "txtMail";
+            this.txtMail.Size = new System.Drawing.Size(272, 25);
+            this.txtMail.TabIndex = 7;
             // 
             // label6
             // 
@@ -159,14 +159,14 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Poštanski broj:";
             // 
-            // tbxPostanskiBroj
+            // txtPostanskiBroj
             // 
-            this.tbxPostanskiBroj.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxPostanskiBroj.Location = new System.Drawing.Point(327, 241);
-            this.tbxPostanskiBroj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tbxPostanskiBroj.Name = "tbxPostanskiBroj";
-            this.tbxPostanskiBroj.Size = new System.Drawing.Size(272, 25);
-            this.tbxPostanskiBroj.TabIndex = 13;
+            this.txtPostanskiBroj.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPostanskiBroj.Location = new System.Drawing.Point(327, 241);
+            this.txtPostanskiBroj.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPostanskiBroj.Name = "txtPostanskiBroj";
+            this.txtPostanskiBroj.Size = new System.Drawing.Size(272, 25);
+            this.txtPostanskiBroj.TabIndex = 13;
             // 
             // label7
             // 
@@ -180,14 +180,14 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Adresa:";
             // 
-            // tbxAdresa
+            // txtAdresa
             // 
-            this.tbxAdresa.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxAdresa.Location = new System.Drawing.Point(327, 178);
-            this.tbxAdresa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tbxAdresa.Name = "tbxAdresa";
-            this.tbxAdresa.Size = new System.Drawing.Size(272, 25);
-            this.tbxAdresa.TabIndex = 11;
+            this.txtAdresa.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdresa.Location = new System.Drawing.Point(327, 178);
+            this.txtAdresa.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAdresa.Name = "txtAdresa";
+            this.txtAdresa.Size = new System.Drawing.Size(272, 25);
+            this.txtAdresa.TabIndex = 11;
             // 
             // label8
             // 
@@ -201,14 +201,14 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "Grad:";
             // 
-            // tbxGrad
+            // txtGrad
             // 
-            this.tbxGrad.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxGrad.Location = new System.Drawing.Point(327, 113);
-            this.tbxGrad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tbxGrad.Name = "tbxGrad";
-            this.tbxGrad.Size = new System.Drawing.Size(272, 25);
-            this.tbxGrad.TabIndex = 9;
+            this.txtGrad.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGrad.Location = new System.Drawing.Point(327, 113);
+            this.txtGrad.Margin = new System.Windows.Forms.Padding(4);
+            this.txtGrad.Name = "txtGrad";
+            this.txtGrad.Size = new System.Drawing.Size(272, 25);
+            this.txtGrad.TabIndex = 9;
             // 
             // label9
             // 
@@ -222,14 +222,14 @@
             this.label9.TabIndex = 18;
             this.label9.Text = "Potvrda lozinke:";
             // 
-            // tbxPotvrdaLozinka
+            // txtPotvrdaLozinka
             // 
-            this.tbxPotvrdaLozinka.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxPotvrdaLozinka.Location = new System.Drawing.Point(640, 178);
-            this.tbxPotvrdaLozinka.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tbxPotvrdaLozinka.Name = "tbxPotvrdaLozinka";
-            this.tbxPotvrdaLozinka.Size = new System.Drawing.Size(272, 25);
-            this.tbxPotvrdaLozinka.TabIndex = 17;
+            this.txtPotvrdaLozinka.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPotvrdaLozinka.Location = new System.Drawing.Point(640, 178);
+            this.txtPotvrdaLozinka.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPotvrdaLozinka.Name = "txtPotvrdaLozinka";
+            this.txtPotvrdaLozinka.Size = new System.Drawing.Size(272, 25);
+            this.txtPotvrdaLozinka.TabIndex = 17;
             // 
             // label10
             // 
@@ -243,14 +243,14 @@
             this.label10.TabIndex = 16;
             this.label10.Text = "Lozinka:";
             // 
-            // tbxLozinka
+            // txtLozinka
             // 
-            this.tbxLozinka.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxLozinka.Location = new System.Drawing.Point(640, 113);
-            this.tbxLozinka.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tbxLozinka.Name = "tbxLozinka";
-            this.tbxLozinka.Size = new System.Drawing.Size(272, 25);
-            this.tbxLozinka.TabIndex = 15;
+            this.txtLozinka.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLozinka.Location = new System.Drawing.Point(640, 113);
+            this.txtLozinka.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLozinka.Name = "txtLozinka";
+            this.txtLozinka.Size = new System.Drawing.Size(272, 25);
+            this.txtLozinka.TabIndex = 15;
             // 
             // btnRegistriraj
             // 
@@ -258,7 +258,7 @@
             this.btnRegistriraj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistriraj.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistriraj.Location = new System.Drawing.Point(268, 384);
-            this.btnRegistriraj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegistriraj.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegistriraj.Name = "btnRegistriraj";
             this.btnRegistriraj.Size = new System.Drawing.Size(204, 54);
             this.btnRegistriraj.TabIndex = 19;
@@ -272,7 +272,7 @@
             this.btnOdustani.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOdustani.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOdustani.Location = new System.Drawing.Point(496, 384);
-            this.btnOdustani.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOdustani.Margin = new System.Windows.Forms.Padding(4);
             this.btnOdustani.Name = "btnOdustani";
             this.btnOdustani.Size = new System.Drawing.Size(204, 54);
             this.btnOdustani.TabIndex = 20;
@@ -289,26 +289,26 @@
             this.Controls.Add(this.btnOdustani);
             this.Controls.Add(this.btnRegistriraj);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.tbxPotvrdaLozinka);
+            this.Controls.Add(this.txtPotvrdaLozinka);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.tbxLozinka);
+            this.Controls.Add(this.txtLozinka);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.tbxPostanskiBroj);
+            this.Controls.Add(this.txtPostanskiBroj);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.tbxAdresa);
+            this.Controls.Add(this.txtAdresa);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.tbxGrad);
+            this.Controls.Add(this.txtGrad);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.tbxMail);
+            this.Controls.Add(this.txtMail);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.tbxKorisnickoIme);
+            this.Controls.Add(this.txtKorisnickoIme);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.tbxPrezime);
+            this.Controls.Add(this.txtPrezime);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.tbxIme);
+            this.Controls.Add(this.txtIme);
             this.Controls.Add(this.label1);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmRegistracija";
             this.Text = "Registracija";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmRegistracija_KeyDown);
@@ -320,24 +320,24 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbxIme;
+        private System.Windows.Forms.TextBox txtIme;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbxPrezime;
+        private System.Windows.Forms.TextBox txtPrezime;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox tbxKorisnickoIme;
+        private System.Windows.Forms.TextBox txtKorisnickoIme;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tbxMail;
+        private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tbxPostanskiBroj;
+        private System.Windows.Forms.TextBox txtPostanskiBroj;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tbxAdresa;
+        private System.Windows.Forms.TextBox txtAdresa;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox tbxGrad;
+        private System.Windows.Forms.TextBox txtGrad;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox tbxPotvrdaLozinka;
+        private System.Windows.Forms.TextBox txtPotvrdaLozinka;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox tbxLozinka;
+        private System.Windows.Forms.TextBox txtLozinka;
         private System.Windows.Forms.Button btnRegistriraj;
         private System.Windows.Forms.Button btnOdustani;
     }

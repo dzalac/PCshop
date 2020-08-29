@@ -39,7 +39,7 @@ namespace PCShop
         private void btnNaruci_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Kupnja je obavljena!");
-            Kosarica.opcaKosarica.StavkeKosarice.Clear();
+            KosaricaOld.opcaKosarica.StavkeKosarice.Clear();
             Close();
         }
     }

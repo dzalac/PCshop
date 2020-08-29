@@ -9,24 +9,34 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 using PCShop.Klase;
+using System.Data.SqlClient;
+using System.IO;
+using System.Drawing;
 using PCShop.Forme;
 using PCShop.Data;
-using System.Data.Entity;
-using System.Data.Entity.SqlServer;
-using System.Collections.ObjectModel;
 
 namespace PCShop
 {
     public partial class FrmKatalog : Form
     {
-        Entities entities = new Entities();
-        /*
-        public static BindingList<Artikl> popis = new BindingList<Artikl>();
-        public static BindingList<Artikl> snizeniProizvodi;
-        public static BindingList<Artikl> pretraga;
-        public static BindingList<Artikl> sortiranaLista;
-        public static BindingList<Artikl> trenutniPopis;
-        public static BindingList<Artikl> trazeniPopis;*/
+        SqlConnection conn = new SqlConnection(@"Data Source=31.147.204.119\PISERVER,1433; Initial Catalog=PI20_011_DB; User ID=PI20_011_User; Password=g{+EKZ99");
+        SqlCommand naredba;
+        SqlDataReader dr;
+        Korisnik trenutniKorisnik;
+
+        private bool dostupno = true;
+        private string upitVrstaArtikla = "";
+       // private string opciUpit = "SELECT slika, naziv, cijena, artikl_id FROM Artikl";
+        private string upitArtikl = "";
+        private string upitPosebna = "";
+
+        private PictureBox slika;
+        private PictureBox slikaPosebnaPonuda;
+        private Label cijena;
+        private Label naziv;
+        private Label cijenaPosebnaPonuda;
+        private Label nazivPosebnaPonuda;
+
         public FrmKatalog()
         {
             InitializeComponent();
@@ -34,150 +44,344 @@ namespace PCShop
         private void FrmKatalog_Load(object sender, EventArgs e)
         {
             rbtnPopust.Checked = true;
-            PrikaziArtikle();
-            UcitajSnizeneProizvode();
+
+            Osvjezi();
+
+            //UcitajSnizeneProizvode();
         }
-        private void PrikaziArtikle()
+        private void PopisPosebnihPonuda(string upit)
         {
-            List<Artikl> artikli;
-            artikli = entities.Artikls.ToList();
-            dgvArtikli.DataSource = null;
-            dgvArtikli.DataSource = artikli;
-            dgvArtikli.Columns["Stavka_kosarice"].Visible = false;
-            dgvArtikli.Columns["Stavka_narudzbe"].Visible = false;
-            dgvArtikli.Columns["Vrsta_artikla"].Visible = false;
+            
+            flpPosebna.Controls.Clear();
+            conn.Open();
+            naredba = new SqlCommand(upit, conn);
+            dr = naredba.ExecuteReader();
+            while (dr.Read())
+            {
+                if(!dr.IsDBNull(0)){  
+                long len = dr.GetBytes(0, 0, null, 0, 0);
+                byte[] array = new byte[System.Convert.ToInt32(len) + 1];
+                dr.GetBytes(0, 0, array, 0, System.Convert.ToInt32(len));
+                slikaPosebnaPonuda = new PictureBox();
+                slikaPosebnaPonuda.Width = 150;
+                slikaPosebnaPonuda.Height = 150;
+                slikaPosebnaPonuda.BackgroundImageLayout = ImageLayout.Stretch;
+                slikaPosebnaPonuda.Tag = dr["artikl_id"].ToString();
+                slikaPosebnaPonuda.Cursor = System.Windows.Forms.Cursors.Hand;
+
+                cijenaPosebnaPonuda = new Label();
+                cijenaPosebnaPonuda.Text = dr["cijena"].ToString() + " Kuna";
+                cijenaPosebnaPonuda.Width = 75;
+                cijenaPosebnaPonuda.BackColor = Color.FromArgb(46, 134, 222);
+                cijenaPosebnaPonuda.TextAlign = ContentAlignment.MiddleCenter;
+                cijenaPosebnaPonuda.BorderStyle = BorderStyle.FixedSingle;
+
+
+                nazivPosebnaPonuda = new Label();
+                nazivPosebnaPonuda.Text = dr["naziv"].ToString();
+                nazivPosebnaPonuda.BackColor = Color.FromArgb(0, 150, 136);
+                nazivPosebnaPonuda.Dock = DockStyle.Bottom;
+                nazivPosebnaPonuda.TextAlign = ContentAlignment.MiddleCenter;
+
+                MemoryStream ms = new MemoryStream(array);
+                Bitmap bitmap = new Bitmap(ms);
+
+                slikaPosebnaPonuda.BackgroundImage = bitmap;
+                slikaPosebnaPonuda.Controls.Add(cijenaPosebnaPonuda);
+                slikaPosebnaPonuda.Controls.Add(nazivPosebnaPonuda);
+
+                  
+                flpPosebna.Controls.Add(slikaPosebnaPonuda);
+              
+                slikaPosebnaPonuda.Click += new EventHandler(OnClick);
+                }
+                else
+                {
+                    MessageBox.Show("Fali slika! ID: " + dr["artikl_id"].ToString());
+                }
+                
+            }
+            dr.Close();
+            conn.Close();
         }
 
-        /*public void TrazenaKategorija(VrstaArtikla vrsta)
+        private void PopisArtikla(string upitPopisa)
         {
-            trazeniPopis = new BindingList<Artikl>();
-            foreach (Artikl artikl in popis)
+
+            flpArtikli.Controls.Clear();
+            conn.Open();
+            naredba = new SqlCommand(upitPopisa, conn);
+            dr = naredba.ExecuteReader();
+            while (dr.Read())
             {
-                if (artikl.VrstaArtikla == vrsta)
-                    trazeniPopis.Add(artikl);
+                if (!dr.IsDBNull(0))
+                {
+                    long len = dr.GetBytes(0, 0, null, 0, 0);
+                    byte[] array = new byte[System.Convert.ToInt32(len) + 1];
+                    dr.GetBytes(0, 0, array, 0, System.Convert.ToInt32(len));
+                    slika = new PictureBox();
+                    slika.Width = 150;
+                    slika.Height = 150;
+                    slika.BackgroundImageLayout = ImageLayout.Stretch;
+                    slika.Tag = dr["artikl_id"].ToString();
+                    slika.Cursor = System.Windows.Forms.Cursors.Hand;
+
+                    cijena = new Label();
+                    cijena.Text = dr["cijena"].ToString() + " Kuna";
+                    cijena.Width = 75;
+                    cijena.BackColor = Color.FromArgb(46, 134, 222);
+                    cijena.TextAlign = ContentAlignment.MiddleCenter;
+                    cijena.BorderStyle = BorderStyle.FixedSingle;
+
+
+                    naziv = new Label();
+                    naziv.Text = dr["naziv"].ToString();
+                    naziv.BackColor = Color.FromArgb(0, 150, 136);
+                    naziv.Dock = DockStyle.Bottom;
+                    naziv.TextAlign = ContentAlignment.MiddleCenter;
+
+                    MemoryStream ms = new MemoryStream(array);
+                    Bitmap bitmap = new Bitmap(ms);
+                    slika.BackgroundImage = bitmap;
+
+
+                    slika.Controls.Add(cijena);
+                    slika.Controls.Add(naziv);
+
+                    flpArtikli.Controls.Add(slika);
+
+                    slika.Click += new EventHandler(OnClick);
+                }
+                else
+                {
+                    MessageBox.Show("Fali slika! ID: " + dr["artikl_id"].ToString());
+                }
+
             }
-            trenutniPopis = trazeniPopis;
-            Osvjezi(trenutniPopis);
-        }*/
-        public void PromjenaLabele(string labela)
-        {
-            lblKorisnikoIme.Text = labela;
+            dr.Close();
+            conn.Close();
         }
-        private void Sortiranje(BindingList<Artikl> lista, string opcija)
+        public void OnClick(object sender, EventArgs e)
         {
-            /*if (opcija == "Naziv/Uzlazno")
+            String oznaka = ((PictureBox)sender).Tag.ToString();
+            conn.Open();
+            naredba = new SqlCommand("SELECT artikl_id, kolicina FROM Artikl WHERE artikl_id = @oznaka", conn);
+            naredba.Parameters.AddWithValue("@oznaka", oznaka);
+            dr = naredba.ExecuteReader();
+            while (dr.Read())
             {
-                sortiranaLista = new BindingList<Artikl>(lista.OrderBy(artikl => artikl.Naziv).ToList());
-                Osvjezi(sortiranaLista);
+                if (int.Parse(dr["kolicina"].ToString()) <= 0)
+                    dostupno = false;
+            }
+
+            if (dostupno == true) { 
+                FrmArtikl forma = new FrmArtikl(oznaka);
+                forma.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Artikl trenutno nije dostupan na zalihama.");
+                dostupno = true;
+            }
+            dr.Close();
+            conn.Close();
+        }
+    
+        private void Osvjezi()
+        {
+            upitArtikl = "SELECT slika, naziv, cijena, artikl_id FROM Artikl";
+            upitPosebna = "SELECT slika,cijena,naziv,popust,artikl_id FROM Artikl WHERE popust > 0";
+            PopisArtikla(upitArtikl);
+            PopisPosebnihPonuda(upitPosebna);
+            ProvjeraPrijave();
+        }
+
+        public void ProvjeraPrijave()
+        {
+            if(trenutniKorisnik!=null)
+            {
+                lblKorisnikoIme.Text = trenutniKorisnik.KorisnickoIme;
+            }
+        }
+        public void Sortiranje(string opcija,string vrsta)
+        {
+            
+            if (opcija == "Naziv/Uzlazno")
+            {
+                upitArtikl = "SELECT slika, naziv, cijena, artikl_id, VrstaArtikla FROM Artikl " + vrsta + " ORDER BY naziv ASC";
+                upitPosebna = "SELECT slika, naziv, cijena, artikl_id, popust, VrstaArtikla FROM Artikl " + vrsta + "AND popust > 0 ORDER BY naziv ASC";
             }
 
             if (opcija == "Naziv/Silazno")
             {
-                sortiranaLista = new BindingList<Artikl>(lista.OrderByDescending(artikl => artikl.Naziv).ToList());
-                Osvjezi(sortiranaLista);
+                upitArtikl = "SELECT slika, naziv, cijena, artikl_id, VrstaArtikla FROM Artikl " + vrsta + " ORDER BY naziv DESC";
+                upitPosebna = "SELECT slika, naziv, cijena, artikl_id, popust, VrstaArtikla FROM Artikl " + vrsta + " AND (popust > 0) ORDER BY naziv ASC";
             }
 
             if (opcija == "Cijena/Uzlazno")
             {
-                sortiranaLista = new BindingList<Artikl>(lista.OrderBy(artikl => artikl.Cijena).ToList());
-                Osvjezi(sortiranaLista);
+                upitArtikl = "SELECT slika, naziv, cijena, artikl_id, VrstaArtikla FROM Artikl " + vrsta + " ORDER BY cijena ASC";
+                upitPosebna = "SELECT slika, naziv, cijena, artikl_id, popust, VrstaArtikla FROM Artikl " + vrsta + " AND popust > 0 ORDER BY naziv ASC";
             }
 
             if (opcija == "Cijena/Silazno")
             {
-                sortiranaLista = new BindingList<Artikl>(lista.OrderByDescending(artikl => artikl.Cijena).ToList());
-                Osvjezi(sortiranaLista);
-            }*/
+                
+                    upitArtikl = "SELECT slika, naziv, cijena, artikl_id, VrstaArtikla FROM Artikl " + vrsta + " ORDER BY cijena DESC";
+                if(vrsta == "")
+                {
+                upitPosebna = "SELECT slika, naziv, cijena, artikl_id, popust, VrstaArtikla FROM Artikl WHERE popust > 0 ORDER BY naziv ASC";
+                }
+                else
+                {
+                upitPosebna = "SELECT slika, naziv, cijena, artikl_id, popust, VrstaArtikla FROM Artikl " + vrsta + " AND popust > 0 ORDER BY naziv ASC";
+                }
+            }
+               
+            if(opcija == "Vrsta")
+            {
+                upitArtikl = "SELECT slika, naziv, cijena, artikl_id, VrstaArtikla FROM Artikl " + vrsta;
+                if(vrsta == "")
+
+                upitPosebna = "SELECT slika, naziv, cijena, artikl_id, popust, VrstaArtikla FROM Artikl " + vrsta + "popust > 0 ORDER BY naziv ASC";
+                upitPosebna = "SELECT slika, naziv, cijena, artikl_id, popust, VrstaArtikla FROM Artikl " + vrsta + " AND popust > 0 ORDER BY naziv ASC";
+            }
+            PopisArtikla(upitArtikl);
+            PopisPosebnihPonuda(upitPosebna);
+
         }
         private void BtnKosarica_Click(object sender, EventArgs e)
         {
+            /*
             FrmKosarica frmKosarica = new FrmKosarica();
             frmKosarica.ShowDialog();
+            */
         }
         private void BtnRegistracija_Click(object sender, EventArgs e)
         {
             FrmRegistracija frmRegistracija = new FrmRegistracija();
             frmRegistracija.ShowDialog();
+
         }
         private void BtnPrijava_Click(object sender, EventArgs e)
         {
-            FrmPrijava frmPrijava = new FrmPrijava();
-            frmPrijava.ShowDialog();
+            using (var frmPrijava = new FrmPrijava())
+            {
+                var result = frmPrijava.ShowDialog();
+                if(result == DialogResult.OK)
+                {
+                    trenutniKorisnik = frmPrijava.Korisnik;
+                    ProvjeraPrijave();
+                }
+                
+            }
+            
+            
+
         }
         private void BtnOtvoriArtikl_Click(object sender, EventArgs e)
         {
-            Artikl odabraniArtikl = dgvArtikli.CurrentRow.DataBoundItem as Artikl;
-            //FrmArtikli frmArtikli = new FrmArtikli(odabraniArtikl);
+            /*
+            //Artikl odabraniArtikl = dgvArtikli.CurrentRow.DataBoundItem as Artikl;
+           // FrmArtikli frmArtikli = new FrmArtikli(odabraniArtikl);
            // frmArtikli.ShowDialog();
+            */
         }
         private void BtnKontakt_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Ovo je kontakt firme:");
+
+            MessageBox.Show("Ovo je kontakt firme");
+            
         }
         private void BtnTrazi_Click(object sender, EventArgs e)
         {
-            /*pretraga = new BindingList<Artikl>();
+            /*
+            pretraga = new BindingList<Artikl>();
             foreach (Artikl artikl in popis)
             {
+            
                 if (artikl.Naziv == txbPretraga.Text && pretraga.Contains(artikl) == false)
                 {
                     pretraga.Add(artikl);
                 }
             }
             trenutniPopis = pretraga;
-            Osvjezi(pretraga);*/
+            Osvjezi(pretraga);
+            */
         }
         private void BtnOsvjeziPopis_Click(object sender, EventArgs e)
         {
-
-            //Osvjezi(popis);
+           
+            Osvjezi();
+            
         }
         private void BtnSortCijenaUzlazno_Click(object sender, EventArgs e)
         {
             string sortiranje = "Cijena/Uzlazno";
-           // Sortiranje(trenutniPopis, sortiranje);
+            Sortiranje(sortiranje, upitVrstaArtikla);
         }
         private void BtnSortCijenaSilazno_Click(object sender, EventArgs e)
         {
+            
             string sortiranje = "Cijena/Silazno";
-            //Sortiranje(trenutniPopis, sortiranje);
+            Sortiranje(sortiranje, upitVrstaArtikla);
+            
         }
         private void BtnSortNazivUzlazno_Click(object sender, EventArgs e)
         {
+            
             string sortiranje = "Naziv/Uzlazno";
-            //Sortiranje(trenutniPopis, sortiranje);
+            Sortiranje(sortiranje, upitVrstaArtikla);
+            
         }
         private void BtnSortNazivSilazno_Click(object sender, EventArgs e)
         {
+            
             string sortiranje = "Naziv/Silazno";
-            //Sortiranje(trenutniPopis, sortiranje);
-        }
-        private void LblProcesori_Click(object sender, EventArgs e)
-        {
-            //TrazenaKategorija(VrstaArtikla.procesor);
-        }
-        private void LblRadnaMemorija_Click(object sender, EventArgs e)
-        {
-            //TrazenaKategorija(VrstaArtikla.ram);
-        }
-        private void LblTvrdiDiskovi_Click(object sender, EventArgs e)
-        {
-            //TrazenaKategorija(VrstaArtikla.hdd);
-        }
-        private void LblMaticnePloce_Click(object sender, EventArgs e)
-        {
-           // TrazenaKategorija(VrstaArtikla.maticna);
-        }
-        private void LblPC_Click(object sender, EventArgs e)
-        {
-           // TrazenaKategorija(VrstaArtikla.prebuilt);
+            Sortiranje(sortiranje, upitVrstaArtikla);
+            
         }
         private void LblGrafickeKartice_Click(object sender, EventArgs e)
         {
-           // TrazenaKategorija(VrstaArtikla.graficka);
+            string sortiranje = "Vrsta";
+            upitVrstaArtikla = "WHERE VrstaArtikla = 1";
+            Sortiranje(sortiranje,upitVrstaArtikla);
         }
+        private void LblProcesori_Click(object sender, EventArgs e)
+        {
+            string sortiranje = "Vrsta";
+            upitVrstaArtikla = "WHERE VrstaArtikla = 2";
+            Sortiranje(sortiranje, upitVrstaArtikla);
+        }
+        private void LblMaticnePloce_Click(object sender, EventArgs e)
+        {
+            string sortiranje = "Vrsta";
+            upitVrstaArtikla = "WHERE VrstaArtikla = 3";
+            Sortiranje(sortiranje, upitVrstaArtikla);
+        }
+        private void LblRadnaMemorija_Click(object sender, EventArgs e)
+        {
+            string sortiranje = "Vrsta";
+            upitVrstaArtikla = "WHERE VrstaArtikla = 4";
+            Sortiranje(sortiranje, upitVrstaArtikla);
+        }
+        private void LblTvrdiDiskovi_Click(object sender, EventArgs e)
+        {
+            string sortiranje = "Vrsta";
+            upitVrstaArtikla = "WHERE VrstaArtikla = 5";
+            Sortiranje(sortiranje, upitVrstaArtikla);
+        }
+
+        private void LblPC_Click(object sender, EventArgs e)
+        {
+            /*
+            TrazenaKategorija(VrstaArtikla.prebuilt);
+            */
+        }
+
         private void FrmKatalog_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
+            /*
             
             if(e.KeyValue == 112)
             {
@@ -188,6 +392,7 @@ namespace PCShop
                     Help.ShowHelp(this, helpFile);
                 }
             }
+            */
         }
 
         private void Panel_Paint(object sender, PaintEventArgs e)
@@ -197,6 +402,7 @@ namespace PCShop
 
         private void rbtnPopust_CheckedChanged(object sender, EventArgs e)
         {
+            /*
             if (rbtnPopust.Checked)
             {
                 UcitajSnizeneProizvode();
@@ -205,44 +411,51 @@ namespace PCShop
             {
                 UcitajNoveProizvode();
             }
+            */
         }
 
         private void UcitajSnizeneProizvode()
         {
-            var group = from artikl in entities.Artikls.Local where artikl.Popust>0 select artikl;
-            ObservableCollection<Artikl> result = new ObservableCollection<Artikl>();
-            foreach (var item in group)
+            /*
+            snizeniProizvodi = new BindingList<Artikl>();
+            foreach (Artikl artikl in popis)
             {
-                result.Add(item);
+                if (artikl.Popust > 0 && snizeniProizvodi.Contains(artikl) == false)
+                {
+                    snizeniProizvodi.Add(artikl);
+                }
             }
-           
-            dgvPosebna.DataSource = result;
-            dgvPosebna.Columns["Stavka_kosarice"].Visible = false;
-            dgvPosebna.Columns["Stavka_narudzbe"].Visible = false;
-            dgvPosebna.Columns["Vrsta_artikla"].Visible = false;
+            dgvPosebna.DataSource = null;
+            dgvPosebna.DataSource = snizeniProizvodi;
+            */
         }
         private void UcitajNoveProizvode()
         {
-            double brojDana = 21;
-            var granicniDatum = DateTime.Now.AddDays(-brojDana);
-            var group = from artikl in entities.Artikls.Local where artikl.DatumDodavanja > granicniDatum select artikl;
-            ObservableCollection<Artikl> result = new ObservableCollection<Artikl>();
-            foreach (var item in group)
+            /*
+            snizeniProizvodi = new BindingList<Artikl>();
+            foreach (Artikl artikl in popis)
             {
-               result.Add(item);
+                if (artikl.DatumDodavanja < artikl.DatumDodavanja.AddDays(21) && snizeniProizvodi.Contains(artikl) == false)
+                {
+                    snizeniProizvodi.Add(artikl);
+                }
             }
-            dgvPosebna.DataSource = result;
-            dgvPosebna.Columns["Stavka_kosarice"].Visible = false;
-            dgvPosebna.Columns["Stavka_narudzbe"].Visible = false;
-            dgvPosebna.Columns["Vrsta_artikla"].Visible = false;
+            dgvPosebna.DataSource = null;
+            dgvPosebna.DataSource = snizeniProizvodi;
+            */
         }
 
         private void btnArtikli_Click(object sender, EventArgs e)
         {
-            FrmUpravljanjeArtiklima frmUpravljanjeArtiklima = new FrmUpravljanjeArtiklima(entities);
-            frmUpravljanjeArtiklima.ShowDialog();
-            PrikaziArtikle();
+            FrmUpravljanjeArtiklima forma = new FrmUpravljanjeArtiklima();
+            forma.ShowDialog();
+            Osvjezi();
+        }
+
+        private void lblKorisnikoIme_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
-}
+    }

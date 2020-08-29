@@ -24,14 +24,14 @@ namespace PCShop
         public void Osvjezi()
         {
             dgvKosarica.DataSource = null;
-            dgvKosarica.DataSource = Kosarica.opcaKosarica.StavkeKosarice.ToList() ;
+            dgvKosarica.DataSource = KosaricaOld.opcaKosarica.StavkeKosarice.ToList() ;
         }
         public void ObrisiArtikl()
         {
             StavkaNarudzbe korisnikovaKosarica = dgvKosarica.CurrentRow.DataBoundItem as StavkaNarudzbe;
-            if (Kosarica.opcaKosarica.StavkeKosarice.Contains(korisnikovaKosarica))
+            if (KosaricaOld.opcaKosarica.StavkeKosarice.Contains(korisnikovaKosarica))
             {
-                Kosarica.opcaKosarica.StavkeKosarice.Remove(korisnikovaKosarica);
+                KosaricaOld.opcaKosarica.StavkeKosarice.Remove(korisnikovaKosarica);
             }
         }
         private void FrmKosarica_KeyDown(object sender, KeyEventArgs e)
@@ -52,7 +52,7 @@ namespace PCShop
         }
         private void btnOcistiKosaricu_Click(object sender, EventArgs e)
         {
-            Kosarica.opcaKosarica.StavkeKosarice.Clear();
+            KosaricaOld.opcaKosarica.StavkeKosarice.Clear();
             Osvjezi();
         }
         private void btnObrisi_Click(object sender, EventArgs e)

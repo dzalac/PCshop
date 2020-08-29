@@ -3,80 +3,53 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PCShop.Data;
+using System.Data.SqlClient;
+using System.IO;
+using System.Drawing;
 using PCShop.Forme;
-using PCShop.Klase;
-
-namespace PCShop.Forme
+namespace PCShop
 {
-    public partial class FrmArtikli : Form
+    public partial class FrmArtikl : Form
     {
-        public Artikl artikl;
-        public FrmArtikli(Artikl unosArtikl)
+        SqlConnection conn = new SqlConnection(@"Data Source=31.147.204.119\PISERVER,1433; Initial Catalog=PI20_011_DB; User ID=PI20_011_User; Password=g{+EKZ99");
+        SqlCommand naredba;
+        SqlDataReader dr;
+
+        private PictureBox slika;
+        private string oznaka;
+        public FrmArtikl(string tag)
         {
             InitializeComponent();
-            artikl = unosArtikl;
-            Osvjezi(artikl);
+            oznaka = tag;
         }
 
-        public void Osvjezi(Artikl artikl)
+        private void FrmArtikl_Load(object sender, EventArgs e)
         {
-            lblNaziv.Text = artikl.Naziv;
-            lblCijena.Text = artikl.Cijena.ToString();
-            if (artikl.Popust>0)
+            conn.Open();
+            naredba = new SqlCommand("SELECT slika,artikl_id,cijena,naziv,opis FROM Artikl WHERE artikl_id = " + oznaka, conn);
+            dr = naredba.ExecuteReader();
+            while (dr.Read())
             {
-                lblCijena.ForeColor = System.Drawing.Color.Red;
-                lblSnizenaCijena.Text = artikl.SnizenaCijena.ToString();
-                lblSnizenaCijena.Visible = true;
+                long len = dr.GetBytes(0, 0, null, 0, 0);
+                byte[] array = new byte[System.Convert.ToInt32(len) + 1];
+                dr.GetBytes(0, 0, array, 0, System.Convert.ToInt32(len));
+
+                MemoryStream ms = new MemoryStream(array);
+                Bitmap bitmap = new Bitmap(ms);
+                pbSlika.BackgroundImage = bitmap;
+                pbSlika.BackgroundImageLayout = ImageLayout.Stretch;
+
+                rtbxOpis.Text = dr["opis"].ToString();
+                lblCijena.Text = dr["cijena"].ToString();
+                lblNaziv.Text = dr["naziv"].ToString();
+
             }
-            
-            rtbxOpis.Text = artikl.Opis;
-            MemoryStream ms = new MemoryStream((byte[])artikl.Slika);
-            pbSlika.Image = Image.FromStream(ms);
-            
-        }
-
-        private void LblCijena_Click(object sender, EventArgs e)
-        {
-                       
-        }
-
-        private void FrmArtikl_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyValue == 112)
-            {
-                string helpFile = System.IO.Path.GetFullPath(@"..\..\Korisnicka_dokumentacija.chm");
-
-                if (System.IO.File.Exists(helpFile))
-                {
-                    Help.ShowHelp(this, helpFile);
-                }
-            }
-        }
-
-        private void btnDodaj_Click(object sender, EventArgs e)
-        {
-            int kolicina = int.Parse(tbxKolicina.Text);
-            if (tbxKolicina.Text != "")
-            {
-                // Kosarica.opcaKosarica.StavkeKosarice.Add(new StavkaNarudzbe(kolicina, artikl));
-            }
-            MessageBox.Show("Artikl je dodan u košaricu");
-        }
-
-        private void btnOdustani_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void FrmArtikli_Load(object sender, EventArgs e)
-        {
-
+            dr.Close();
+            conn.Close();
         }
     }
 }

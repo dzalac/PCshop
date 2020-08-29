@@ -13,11 +13,10 @@ namespace PCShop.Forme
 {
     public partial class FrmUpravljanjeArtiklima : Form
     {
-        Entities entities;
-        public FrmUpravljanjeArtiklima(Entities entitiesMain)
+     
+        public FrmUpravljanjeArtiklima()
         {
             InitializeComponent();
-            entities = entitiesMain;
         }
 
         private void FrmUpravljanjeArtiklima_Load(object sender, EventArgs e)
@@ -27,17 +26,23 @@ namespace PCShop.Forme
 
         private void PrikaziArtikle()
         {
-            List<Artikl> artikli;
-            artikli = entities.Artikls.ToList();
-            dgvArtikli.DataSource = null;
-            dgvArtikli.DataSource = artikli;
-            dgvArtikli.Columns["Stavka_kosarice"].Visible = false;
-            dgvArtikli.Columns["Stavka_narudzbe"].Visible = false;
+            using(var entities = new Entities())
+            {
+                List<Artikl> artikli;
+                artikli = entities.Artikls.ToList();
+                dgvArtikli.DataSource = null;
+                dgvArtikli.DataSource = artikli;
+                dgvArtikli.Columns["Stavka_kosarice"].Visible = false;
+                dgvArtikli.Columns["Stavka_narudzbe"].Visible = false;
+                dgvArtikli.Columns["Vrsta_artikla"].Visible = false;
+            }
+
+           
         }
 
         private void lblDodajArtikl_Click(object sender, EventArgs e)
         {
-            FrmNoviArtikl frmNoviArtikl = new FrmNoviArtikl(entities);
+            FrmNoviArtikl frmNoviArtikl = new FrmNoviArtikl();
             frmNoviArtikl.ShowDialog();
             PrikaziArtikle();
         }
@@ -54,7 +59,7 @@ namespace PCShop.Forme
                 Artikl selektiraniArtikl = dgvArtikli.CurrentRow.DataBoundItem as Artikl;
                 if (selektiraniArtikl != null)
                 {
-                    FrmNoviArtikl noviArtikl = new FrmNoviArtikl(selektiraniArtikl,entities);
+                    FrmNoviArtikl noviArtikl = new FrmNoviArtikl(selektiraniArtikl);
                     noviArtikl.ShowDialog();
                     PrikaziArtikle();
                 }

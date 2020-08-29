@@ -59,7 +59,6 @@
     <Compile Include="Data\Artikl.cs">
       <DependentUpon>PCShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\ArtiklExtended.cs" />
     <Compile Include="Data\Korisnik.cs">
       <DependentUpon>PCShopModel.tt</DependentUpon>
     </Compile>
@@ -108,6 +107,8 @@
     <Compile Include="Data\Vrsta_artikla.cs">
       <DependentUpon>PCShopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Klase\ArtiklException.cs" />
+    <Compile Include="Klase\ArtiklExtended.cs" />
     <Compile Include="Forme\FrmArtikl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,22 +139,24 @@
     <Compile Include="Forme\FrmPrijava.Designer.cs">
       <DependentUpon>FrmPrijava.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forme\FrmKatalog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FrmKatalog.Designer.cs">
-      <DependentUpon>FrmKatalog.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forme\FrmUpravljanjeArtiklima.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forme\FrmUpravljanjeArtiklima.Designer.cs">
       <DependentUpon>FrmUpravljanjeArtiklima.cs</DependentUpon>
     </Compile>
-    <Compile Include="Klase\Korisnik.cs" />
-    <Compile Include="Klase\Kosarica.cs" />
+    <Compile Include="Forme\FrmKatalog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\FrmKatalog.Designer.cs">
+      <DependentUpon>FrmKatalog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Klase\KosaricaOld.cs" />
     <Compile Include="Klase\Narudzba.cs" />
+    <Compile Include="Klase\PCShopExcepiton.cs" />
+    <Compile Include="Klase\KorisnikException.cs" />
     <Compile Include="Klase\StavkaNarudzbe.cs" />
+    <Compile Include="Klase\VrstaArtiklaExt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forme\FrmRegistracija.cs">
@@ -177,11 +180,11 @@
     <EmbeddedResource Include="Forme\FrmPrijava.resx">
       <DependentUpon>FrmPrijava.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FrmKatalog.resx">
-      <DependentUpon>FrmKatalog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forme\FrmUpravljanjeArtiklima.resx">
       <DependentUpon>FrmUpravljanjeArtiklima.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\FrmKatalog.resx">
+      <DependentUpon>FrmKatalog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -206,6 +209,16 @@
     </None>
     <None Include="Korisnicka_dokumentacija.chm" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\PCShop.Data.Artikl.datasource" />
+    <None Include="Properties\DataSources\PCShop.Data.Korisnik.datasource" />
+    <None Include="Properties\DataSources\PCShop.Data.Kosarica.datasource" />
+    <None Include="Properties\DataSources\PCShop.Data.Nacin_placanja.datasource" />
+    <None Include="Properties\DataSources\PCShop.Data.Narudzba.datasource" />
+    <None Include="Properties\DataSources\PCShop.Data.Podaci_o_placanju.datasource" />
+    <None Include="Properties\DataSources\PCShop.Data.Stanje_narudzbe.datasource" />
+    <None Include="Properties\DataSources\PCShop.Data.Stavka_kosarice.datasource" />
+    <None Include="Properties\DataSources\PCShop.Data.Stavka_narudzbe.datasource" />
+    <None Include="Properties\DataSources\PCShop.Data.Tip_korisnika.datasource" />
     <None Include="Properties\DataSources\PCShop.Data.Vrsta_artikla.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

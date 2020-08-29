@@ -28,12 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblKategorije = new System.Windows.Forms.Label();
             this.lblGrafickeKartice = new System.Windows.Forms.Label();
             this.lblProcesori = new System.Windows.Forms.Label();
@@ -41,14 +35,14 @@
             this.lblTvrdiDiskovi = new System.Windows.Forms.Label();
             this.lblMaticnePloce = new System.Windows.Forms.Label();
             this.Panel = new System.Windows.Forms.Panel();
+            this.flpPosebna = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpArtikli = new System.Windows.Forms.FlowLayoutPanel();
             this.rbtnPopust = new System.Windows.Forms.RadioButton();
             this.rbtnNoviProizodi = new System.Windows.Forms.RadioButton();
             this.btnOtvoriArtikl = new System.Windows.Forms.Button();
             this.btnSortNazivUzlazno = new System.Windows.Forms.Button();
             this.btnSortCijenaUzlazno = new System.Windows.Forms.Button();
             this.btnOsvjeziPopis = new System.Windows.Forms.Button();
-            this.dgvArtikli = new System.Windows.Forms.DataGridView();
-            this.dgvPosebna = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSortNazivSilazno = new System.Windows.Forms.Button();
@@ -67,8 +61,6 @@
             this.btnKontakt = new System.Windows.Forms.Button();
             this.txbPretraga = new System.Windows.Forms.TextBox();
             this.Panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvArtikli)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPosebna)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -154,14 +146,14 @@
             // Panel
             // 
             this.Panel.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.Panel.Controls.Add(this.flpPosebna);
+            this.Panel.Controls.Add(this.flpArtikli);
             this.Panel.Controls.Add(this.rbtnPopust);
             this.Panel.Controls.Add(this.rbtnNoviProizodi);
             this.Panel.Controls.Add(this.btnOtvoriArtikl);
             this.Panel.Controls.Add(this.btnSortNazivUzlazno);
             this.Panel.Controls.Add(this.btnSortCijenaUzlazno);
             this.Panel.Controls.Add(this.btnOsvjeziPopis);
-            this.Panel.Controls.Add(this.dgvArtikli);
-            this.Panel.Controls.Add(this.dgvPosebna);
             this.Panel.Controls.Add(this.label4);
             this.Panel.Controls.Add(this.label3);
             this.Panel.Controls.Add(this.btnSortNazivSilazno);
@@ -176,12 +168,28 @@
             this.Panel.TabIndex = 17;
             this.Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
+            // flpPosebna
+            // 
+            this.flpPosebna.AutoScroll = true;
+            this.flpPosebna.Location = new System.Drawing.Point(52, 49);
+            this.flpPosebna.Name = "flpPosebna";
+            this.flpPosebna.Size = new System.Drawing.Size(1208, 205);
+            this.flpPosebna.TabIndex = 28;
+            // 
+            // flpArtikli
+            // 
+            this.flpArtikli.AutoScroll = true;
+            this.flpArtikli.Location = new System.Drawing.Point(51, 300);
+            this.flpArtikli.Name = "flpArtikli";
+            this.flpArtikli.Size = new System.Drawing.Size(1209, 349);
+            this.flpArtikli.TabIndex = 27;
+            // 
             // rbtnPopust
             // 
             this.rbtnPopust.AutoSize = true;
             this.rbtnPopust.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnPopust.ForeColor = System.Drawing.SystemColors.Control;
-            this.rbtnPopust.Location = new System.Drawing.Point(324, 19);
+            this.rbtnPopust.Location = new System.Drawing.Point(324, 15);
             this.rbtnPopust.Name = "rbtnPopust";
             this.rbtnPopust.Size = new System.Drawing.Size(144, 24);
             this.rbtnPopust.TabIndex = 26;
@@ -195,7 +203,7 @@
             this.rbtnNoviProizodi.AutoSize = true;
             this.rbtnNoviProizodi.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnNoviProizodi.ForeColor = System.Drawing.SystemColors.Control;
-            this.rbtnNoviProizodi.Location = new System.Drawing.Point(474, 19);
+            this.rbtnNoviProizodi.Location = new System.Drawing.Point(474, 15);
             this.rbtnNoviProizodi.Name = "rbtnNoviProizodi";
             this.rbtnNoviProizodi.Size = new System.Drawing.Size(128, 24);
             this.rbtnNoviProizodi.TabIndex = 26;
@@ -208,7 +216,7 @@
             this.btnOtvoriArtikl.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnOtvoriArtikl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOtvoriArtikl.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOtvoriArtikl.Location = new System.Drawing.Point(1019, 623);
+            this.btnOtvoriArtikl.Location = new System.Drawing.Point(1019, 656);
             this.btnOtvoriArtikl.Margin = new System.Windows.Forms.Padding(4);
             this.btnOtvoriArtikl.Name = "btnOtvoriArtikl";
             this.btnOtvoriArtikl.Size = new System.Drawing.Size(134, 46);
@@ -222,7 +230,7 @@
             this.btnSortNazivUzlazno.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnSortNazivUzlazno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortNazivUzlazno.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortNazivUzlazno.Location = new System.Drawing.Point(640, 623);
+            this.btnSortNazivUzlazno.Location = new System.Drawing.Point(640, 656);
             this.btnSortNazivUzlazno.Margin = new System.Windows.Forms.Padding(4);
             this.btnSortNazivUzlazno.Name = "btnSortNazivUzlazno";
             this.btnSortNazivUzlazno.Size = new System.Drawing.Size(100, 46);
@@ -236,7 +244,7 @@
             this.btnSortCijenaUzlazno.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnSortCijenaUzlazno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortCijenaUzlazno.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortCijenaUzlazno.Location = new System.Drawing.Point(272, 623);
+            this.btnSortCijenaUzlazno.Location = new System.Drawing.Point(272, 656);
             this.btnSortCijenaUzlazno.Margin = new System.Windows.Forms.Padding(4);
             this.btnSortCijenaUzlazno.Name = "btnSortCijenaUzlazno";
             this.btnSortCijenaUzlazno.Size = new System.Drawing.Size(100, 46);
@@ -250,7 +258,7 @@
             this.btnOsvjeziPopis.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnOsvjeziPopis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOsvjeziPopis.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOsvjeziPopis.Location = new System.Drawing.Point(1161, 623);
+            this.btnOsvjeziPopis.Location = new System.Drawing.Point(1161, 656);
             this.btnOsvjeziPopis.Margin = new System.Windows.Forms.Padding(4);
             this.btnOsvjeziPopis.Name = "btnOsvjeziPopis";
             this.btnOsvjeziPopis.Size = new System.Drawing.Size(127, 46);
@@ -259,94 +267,12 @@
             this.btnOsvjeziPopis.UseVisualStyleBackColor = false;
             this.btnOsvjeziPopis.Click += new System.EventHandler(this.BtnOsvjeziPopis_Click);
             // 
-            // dgvArtikli
-            // 
-            this.dgvArtikli.AllowUserToAddRows = false;
-            this.dgvArtikli.AllowUserToDeleteRows = false;
-            this.dgvArtikli.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArtikli.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvArtikli.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvArtikli.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvArtikli.EnableHeadersVisualStyles = false;
-            this.dgvArtikli.Location = new System.Drawing.Point(52, 228);
-            this.dgvArtikli.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvArtikli.Name = "dgvArtikli";
-            this.dgvArtikli.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArtikli.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvArtikli.RowHeadersWidth = 51;
-            this.dgvArtikli.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArtikli.Size = new System.Drawing.Size(1209, 353);
-            this.dgvArtikli.TabIndex = 21;
-            // 
-            // dgvPosebna
-            // 
-            this.dgvPosebna.AllowUserToAddRows = false;
-            this.dgvPosebna.AllowUserToDeleteRows = false;
-            this.dgvPosebna.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPosebna.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvPosebna.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPosebna.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvPosebna.EnableHeadersVisualStyles = false;
-            this.dgvPosebna.Location = new System.Drawing.Point(52, 47);
-            this.dgvPosebna.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvPosebna.Name = "dgvPosebna";
-            this.dgvPosebna.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPosebna.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvPosebna.RowHeadersWidth = 51;
-            this.dgvPosebna.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
-            this.dgvPosebna.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvPosebna.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPosebna.Size = new System.Drawing.Size(1209, 137);
-            this.dgvPosebna.TabIndex = 20;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(399, 636);
+            this.label4.Location = new System.Drawing.Point(399, 669);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(125, 20);
@@ -358,7 +284,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(47, 636);
+            this.label3.Location = new System.Drawing.Point(38, 669);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(118, 20);
@@ -370,7 +296,7 @@
             this.btnSortNazivSilazno.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnSortNazivSilazno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortNazivSilazno.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortNazivSilazno.Location = new System.Drawing.Point(532, 623);
+            this.btnSortNazivSilazno.Location = new System.Drawing.Point(532, 656);
             this.btnSortNazivSilazno.Margin = new System.Windows.Forms.Padding(4);
             this.btnSortNazivSilazno.Name = "btnSortNazivSilazno";
             this.btnSortNazivSilazno.Size = new System.Drawing.Size(100, 46);
@@ -384,7 +310,7 @@
             this.btnSortCijenaSilazno.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnSortCijenaSilazno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortCijenaSilazno.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortCijenaSilazno.Location = new System.Drawing.Point(164, 623);
+            this.btnSortCijenaSilazno.Location = new System.Drawing.Point(164, 656);
             this.btnSortCijenaSilazno.Margin = new System.Windows.Forms.Padding(4);
             this.btnSortCijenaSilazno.Name = "btnSortCijenaSilazno";
             this.btnSortCijenaSilazno.Size = new System.Drawing.Size(100, 46);
@@ -398,7 +324,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(47, 195);
+            this.label2.Location = new System.Drawing.Point(47, 257);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 28);
@@ -440,6 +366,7 @@
             this.lblKorisnikoIme.Size = new System.Drawing.Size(157, 25);
             this.lblKorisnikoIme.TabIndex = 19;
             this.lblKorisnikoIme.Text = "Ne ulogirani gost";
+            this.lblKorisnikoIme.Click += new System.EventHandler(this.lblKorisnikoIme_Click);
             // 
             // panel1
             // 
@@ -584,8 +511,6 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmKatalog_KeyDown);
             this.Panel.ResumeLayout(false);
             this.Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvArtikli)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPosebna)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -608,8 +533,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dgvArtikli;
-        private System.Windows.Forms.DataGridView dgvPosebna;
         private System.Windows.Forms.Label lblPC;
         private System.Windows.Forms.Button btnOsvjeziPopis;
         private System.Windows.Forms.Button btnSortNazivUzlazno;
@@ -627,6 +550,8 @@
         private System.Windows.Forms.TextBox txbPretraga;
         private System.Windows.Forms.RadioButton rbtnPopust;
         private System.Windows.Forms.RadioButton rbtnNoviProizodi;
+        private System.Windows.Forms.FlowLayoutPanel flpArtikli;
+        private System.Windows.Forms.FlowLayoutPanel flpPosebna;
     }
 }
 

@@ -31,8 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbxKorisnickoIme = new System.Windows.Forms.TextBox();
-            this.tbxLozinka = new System.Windows.Forms.TextBox();
+            this.txtKorisnickoIme = new System.Windows.Forms.TextBox();
+            this.txtLozinka = new System.Windows.Forms.TextBox();
             this.btnPrijava = new System.Windows.Forms.Button();
             this.btnOdustani = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -45,7 +45,7 @@
             this.label1.Location = new System.Drawing.Point(249, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 40);
+            this.label1.Size = new System.Drawing.Size(125, 39);
             this.label1.TabIndex = 0;
             this.label1.Text = "Prijava";
             // 
@@ -73,21 +73,21 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Lozinka:";
             // 
-            // tbxKorisnickoIme
+            // txtKorisnickoIme
             // 
-            this.tbxKorisnickoIme.Location = new System.Drawing.Point(135, 107);
-            this.tbxKorisnickoIme.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tbxKorisnickoIme.Name = "tbxKorisnickoIme";
-            this.tbxKorisnickoIme.Size = new System.Drawing.Size(345, 22);
-            this.tbxKorisnickoIme.TabIndex = 3;
+            this.txtKorisnickoIme.Location = new System.Drawing.Point(135, 107);
+            this.txtKorisnickoIme.Margin = new System.Windows.Forms.Padding(4);
+            this.txtKorisnickoIme.Name = "txtKorisnickoIme";
+            this.txtKorisnickoIme.Size = new System.Drawing.Size(345, 22);
+            this.txtKorisnickoIme.TabIndex = 3;
             // 
-            // tbxLozinka
+            // txtLozinka
             // 
-            this.tbxLozinka.Location = new System.Drawing.Point(135, 175);
-            this.tbxLozinka.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tbxLozinka.Name = "tbxLozinka";
-            this.tbxLozinka.Size = new System.Drawing.Size(345, 22);
-            this.tbxLozinka.TabIndex = 4;
+            this.txtLozinka.Location = new System.Drawing.Point(135, 175);
+            this.txtLozinka.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLozinka.Name = "txtLozinka";
+            this.txtLozinka.Size = new System.Drawing.Size(345, 22);
+            this.txtLozinka.TabIndex = 4;
             // 
             // btnPrijava
             // 
@@ -95,7 +95,7 @@
             this.btnPrijava.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrijava.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrijava.Location = new System.Drawing.Point(141, 272);
-            this.btnPrijava.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPrijava.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrijava.Name = "btnPrijava";
             this.btnPrijava.Size = new System.Drawing.Size(141, 46);
             this.btnPrijava.TabIndex = 5;
@@ -109,7 +109,7 @@
             this.btnOdustani.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOdustani.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOdustani.Location = new System.Drawing.Point(316, 272);
-            this.btnOdustani.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOdustani.Margin = new System.Windows.Forms.Padding(4);
             this.btnOdustani.Name = "btnOdustani";
             this.btnOdustani.Size = new System.Drawing.Size(141, 46);
             this.btnOdustani.TabIndex = 6;
@@ -125,13 +125,13 @@
             this.ClientSize = new System.Drawing.Size(639, 354);
             this.Controls.Add(this.btnOdustani);
             this.Controls.Add(this.btnPrijava);
-            this.Controls.Add(this.tbxLozinka);
-            this.Controls.Add(this.tbxKorisnickoIme);
+            this.Controls.Add(this.txtLozinka);
+            this.Controls.Add(this.txtKorisnickoIme);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPrijava";
             this.Text = "Prijava";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmPrijava_KeyDown);
@@ -145,8 +145,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbxKorisnickoIme;
-        private System.Windows.Forms.TextBox tbxLozinka;
+        private System.Windows.Forms.TextBox txtKorisnickoIme;
+        private System.Windows.Forms.TextBox txtLozinka;
         private System.Windows.Forms.Button btnPrijava;
         private System.Windows.Forms.Button btnOdustani;
     }

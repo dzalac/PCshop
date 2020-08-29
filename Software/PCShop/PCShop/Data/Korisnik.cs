@@ -17,6 +17,7 @@ namespace PCShop.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Korisnik()
         {
+            this.Kosaricas = new HashSet<Kosarica>();
             this.Narudzbas = new HashSet<Narudzba>();
         }
     
@@ -29,11 +30,11 @@ namespace PCShop.Data
         public string Grad { get; set; }
         public string Adresa { get; set; }
         public string PostanskiBroj { get; set; }
-        public Nullable<int> Kosarica { get; set; }
         public Nullable<int> TipKorisnika { get; set; }
     
-        public virtual Kosarica Kosarica1 { get; set; }
         public virtual Tip_korisnika Tip_korisnika { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Kosarica> Kosaricas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Narudzba> Narudzbas { get; set; }
     }

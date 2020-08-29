@@ -28,7 +28,6 @@
     <Property Name="Grad" Type="varchar" MaxLength="150" />
     <Property Name="Adresa" Type="varchar" MaxLength="200" />
     <Property Name="PostanskiBroj" Type="varchar" MaxLength="15" />
-    <Property Name="Kosarica" Type="int" />
     <Property Name="TipKorisnika" Type="int" />
   </EntityType>
   <EntityType Name="Kosarica">
@@ -36,7 +35,8 @@
       <PropertyRef Name="Kosarica_Id" />
     </Key>
     <Property Name="Kosarica_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DatumKreiranja" Type="date" />
+    <Property Name="DatumKreiranja" Type="date" Nullable="false" />
+    <Property Name="Korisnik" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Nacin_placanja">
     <Key>
@@ -129,18 +129,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Korisnik_Kosarica">
-    <End Role="Kosarica" Type="Self.Kosarica" Multiplicity="0..1" />
-    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Kosarica">
-        <PropertyRef Name="Kosarica_Id" />
-      </Principal>
-      <Dependent Role="Korisnik">
-        <PropertyRef Name="Kosarica" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Korisnik_Tip_korisnika">
     <End Role="Tip_korisnika" Type="Self.Tip_korisnika" Multiplicity="0..1" />
     <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="*" />
@@ -150,6 +138,18 @@
       </Principal>
       <Dependent Role="Korisnik">
         <PropertyRef Name="TipKorisnika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kosarica_Korisnik">
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+    <End Role="Kosarica" Type="Self.Kosarica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Korisnik">
+        <PropertyRef Name="Korisnik_Id" />
+      </Principal>
+      <Dependent Role="Kosarica">
+        <PropertyRef Name="Korisnik" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -266,13 +266,13 @@
       <End Role="Vrsta_artikla" EntitySet="Vrsta_artikla" />
       <End Role="Artikl" EntitySet="Artikl" />
     </AssociationSet>
-    <AssociationSet Name="FK_Korisnik_Kosarica" Association="Self.FK_Korisnik_Kosarica">
-      <End Role="Kosarica" EntitySet="Kosarica" />
-      <End Role="Korisnik" EntitySet="Korisnik" />
-    </AssociationSet>
     <AssociationSet Name="FK_Korisnik_Tip_korisnika" Association="Self.FK_Korisnik_Tip_korisnika">
       <End Role="Tip_korisnika" EntitySet="Tip_korisnika" />
       <End Role="Korisnik" EntitySet="Korisnik" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kosarica_Korisnik" Association="Self.FK_Kosarica_Korisnik">
+      <End Role="Korisnik" EntitySet="Korisnik" />
+      <End Role="Kosarica" EntitySet="Kosarica" />
     </AssociationSet>
     <AssociationSet Name="FK_Narudzba_Korisnik" Association="Self.FK_Narudzba_Korisnik">
       <End Role="Korisnik" EntitySet="Korisnik" />

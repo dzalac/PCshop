@@ -29,7 +29,6 @@
           <ScalarProperty Name="Grad" ColumnName="Grad" />
           <ScalarProperty Name="Adresa" ColumnName="Adresa" />
           <ScalarProperty Name="PostanskiBroj" ColumnName="PostanskiBroj" />
-          <ScalarProperty Name="Kosarica" ColumnName="Kosarica" />
           <ScalarProperty Name="TipKorisnika" ColumnName="TipKorisnika" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -39,6 +38,7 @@
         <MappingFragment StoreEntitySet="Kosarica">
           <ScalarProperty Name="Kosarica_Id" ColumnName="Kosarica_Id" />
           <ScalarProperty Name="DatumKreiranja" ColumnName="DatumKreiranja" />
+          <ScalarProperty Name="Korisnik" ColumnName="Korisnik" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

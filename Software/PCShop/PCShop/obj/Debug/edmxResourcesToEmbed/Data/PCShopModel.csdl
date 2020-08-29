@@ -31,10 +31,9 @@
     <Property Name="Grad" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="Adresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="PostanskiBroj" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="Kosarica" Type="Int32" />
     <Property Name="TipKorisnika" Type="Int32" />
-    <NavigationProperty Name="Kosarica1" Relationship="Self.FK_Korisnik_Kosarica" FromRole="Korisnik" ToRole="Kosarica" />
     <NavigationProperty Name="Tip_korisnika" Relationship="Self.FK_Korisnik_Tip_korisnika" FromRole="Korisnik" ToRole="Tip_korisnika" />
+    <NavigationProperty Name="Kosaricas" Relationship="Self.FK_Kosarica_Korisnik" FromRole="Korisnik" ToRole="Kosarica" />
     <NavigationProperty Name="Narudzbas" Relationship="Self.FK_Narudzba_Korisnik" FromRole="Korisnik" ToRole="Narudzba" />
   </EntityType>
   <EntityType Name="Kosarica">
@@ -42,8 +41,9 @@
       <PropertyRef Name="Kosarica_Id" />
     </Key>
     <Property Name="Kosarica_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DatumKreiranja" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="Korisniks" Relationship="Self.FK_Korisnik_Kosarica" FromRole="Kosarica" ToRole="Korisnik" />
+    <Property Name="DatumKreiranja" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Korisnik" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Korisnik1" Relationship="Self.FK_Kosarica_Korisnik" FromRole="Kosarica" ToRole="Korisnik" />
     <NavigationProperty Name="Stavka_kosarice" Relationship="Self.FK_Stavka_kosarice_Kosarica" FromRole="Kosarica" ToRole="Stavka_kosarice" />
   </EntityType>
   <EntityType Name="Nacin_placanja">
@@ -175,18 +175,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Korisnik_Kosarica">
-    <End Role="Kosarica" Type="Self.Kosarica" Multiplicity="0..1" />
-    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Kosarica">
-        <PropertyRef Name="Kosarica_Id" />
-      </Principal>
-      <Dependent Role="Korisnik">
-        <PropertyRef Name="Kosarica" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Korisnik_Tip_korisnika">
     <End Role="Tip_korisnika" Type="Self.Tip_korisnika" Multiplicity="0..1" />
     <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="*" />
@@ -196,6 +184,18 @@
       </Principal>
       <Dependent Role="Korisnik">
         <PropertyRef Name="TipKorisnika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kosarica_Korisnik">
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+    <End Role="Kosarica" Type="Self.Kosarica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Korisnik">
+        <PropertyRef Name="Korisnik_Id" />
+      </Principal>
+      <Dependent Role="Kosarica">
+        <PropertyRef Name="Korisnik" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -296,13 +296,13 @@
       <End Role="Artikl" EntitySet="Artikls" />
       <End Role="Stavka_narudzbe" EntitySet="Stavka_narudzbe" />
     </AssociationSet>
-    <AssociationSet Name="FK_Korisnik_Kosarica" Association="Self.FK_Korisnik_Kosarica">
-      <End Role="Kosarica" EntitySet="Kosaricas" />
-      <End Role="Korisnik" EntitySet="Korisniks" />
-    </AssociationSet>
     <AssociationSet Name="FK_Korisnik_Tip_korisnika" Association="Self.FK_Korisnik_Tip_korisnika">
       <End Role="Tip_korisnika" EntitySet="Tip_korisnika" />
       <End Role="Korisnik" EntitySet="Korisniks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kosarica_Korisnik" Association="Self.FK_Kosarica_Korisnik">
+      <End Role="Korisnik" EntitySet="Korisniks" />
+      <End Role="Kosarica" EntitySet="Kosaricas" />
     </AssociationSet>
     <AssociationSet Name="FK_Narudzba_Korisnik" Association="Self.FK_Narudzba_Korisnik">
       <End Role="Korisnik" EntitySet="Korisniks" />
