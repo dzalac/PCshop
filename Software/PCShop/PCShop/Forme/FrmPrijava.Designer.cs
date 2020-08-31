@@ -88,6 +88,7 @@
             this.txtLozinka.Name = "txtLozinka";
             this.txtLozinka.Size = new System.Drawing.Size(345, 22);
             this.txtLozinka.TabIndex = 4;
+            this.txtLozinka.UseSystemPasswordChar = true;
             // 
             // btnPrijava
             // 
@@ -134,6 +135,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPrijava";
             this.Text = "Prijava";
+            this.Load += new System.EventHandler(this.FrmPrijava_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmPrijava_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();

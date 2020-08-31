@@ -230,6 +230,7 @@
             this.txtPotvrdaLozinka.Name = "txtPotvrdaLozinka";
             this.txtPotvrdaLozinka.Size = new System.Drawing.Size(272, 25);
             this.txtPotvrdaLozinka.TabIndex = 17;
+            this.txtPotvrdaLozinka.UseSystemPasswordChar = true;
             // 
             // label10
             // 
@@ -251,6 +252,7 @@
             this.txtLozinka.Name = "txtLozinka";
             this.txtLozinka.Size = new System.Drawing.Size(272, 25);
             this.txtLozinka.TabIndex = 15;
+            this.txtLozinka.UseSystemPasswordChar = true;
             // 
             // btnRegistriraj
             // 
@@ -311,6 +313,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmRegistracija";
             this.Text = "Registracija";
+            this.Load += new System.EventHandler(this.FrmRegistracija_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmRegistracija_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();

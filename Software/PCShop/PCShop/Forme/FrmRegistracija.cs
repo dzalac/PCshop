@@ -91,16 +91,20 @@ namespace PCShop
         private void VerifikacijaUnosa()
         {
             //Verifikacija imena
+            //Ako je polje prazno, baca se iznimka.
             if (string.IsNullOrEmpty(txtIme.Text))
             {
                 throw new KorisnikException("Ime mora biti navedeno.");
             }
             //Verifikacija prezimena
+            //Ako je polje prazno, baca se iznimka.
             if (string.IsNullOrEmpty(txtPrezime.Text))
             {
                 throw new KorisnikException("Prezime mora biti navedeno.");
             }
             //Verifikacija korisnickog imena
+            //Ako je polje prazno, baca se iznimka.
+            //Provjerava se je li korisničko ime zauzeto. Ako je, baca se iznimka.
             if (string.IsNullOrEmpty(txtKorisnickoIme.Text))
             {
                 throw new KorisnikException("Korisničko ime mora biti navedeno.");
@@ -124,7 +128,7 @@ namespace PCShop
             }
 
 
-            //Verifikacija e-maila pomoću regularnog izraza
+            //Verifikacija e-maila pomoću regularnog izraza. U slučaju da se vrati vrijednost "false", baca se nova iznimka.
            string mailUzorak = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
                                 + "@"
                                 + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
@@ -134,16 +138,20 @@ namespace PCShop
             }
 
             //Verifikacija naziva grada
+            //Ako je polje prazno, baca se iznimka.
             if (string.IsNullOrEmpty(txtGrad.Text))
             {
                 throw new KorisnikException("Naziv grada mora biti definiran.");
             }
             //Verifikacija adrese stanovanja
+            //Ako je polje prazno, baca se iznimka.
             if (string.IsNullOrEmpty(txtAdresa.Text))
             {
                 throw new KorisnikException("Adresa stanovanja mora biti definirana.");
             }
             //Verifikacija poštanskog broja
+            //Ako je polje prazno, baca se iznimka.
+            //U slučaju da polje ne sadrži vrijednost tipa "int", baca se iznimka.
             int pomocnaVarijabla;
             if (string.IsNullOrEmpty(txtPostanskiBroj.Text))
             {
@@ -154,6 +162,8 @@ namespace PCShop
                 throw new KorisnikException("Poštanski broj mora biti napisan u ispravnom formatu.");
             }
             //Verifikacija lozinke
+            //Ako je polje prazno, baca se iznimka.
+            //Ako se lozinka i potvrda lozinke ne poklapaju, baca se iznimka.
             if (string.IsNullOrEmpty(txtLozinka.Text))
             {
                 throw new KorisnikException("Lozinka mora biti definirana.");
@@ -164,6 +174,10 @@ namespace PCShop
             }
 
         }
-        
+
+        private void FrmRegistracija_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

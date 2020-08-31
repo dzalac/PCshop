@@ -90,6 +90,7 @@
             this.btnOdustani.TabIndex = 26;
             this.btnOdustani.Text = "Odustani";
             this.btnOdustani.UseVisualStyleBackColor = false;
+            this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
             // 
             // rtbxOpis
             // 

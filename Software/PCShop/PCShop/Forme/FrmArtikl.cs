@@ -25,11 +25,19 @@ namespace PCShop
 
         private PictureBox slika;
         private string oznaka;
+        private Korisnik trenutniKorisnik;
+
         public FrmArtikl(string tag, Kosarica trenutnaKosarica)
         {
             InitializeComponent();
             oznaka = tag;
             aktivnaKosarica = trenutnaKosarica;
+        }
+
+        public FrmArtikl(string oznaka, Korisnik trenutniKorisnik)
+        {
+            this.oznaka = oznaka;
+            this.trenutniKorisnik = trenutniKorisnik;
         }
 
         private void FrmArtikl_Load(object sender, EventArgs e)
@@ -63,6 +71,11 @@ namespace PCShop
             conn.Close();
         }
 
+        //Provjerava se unos u poljima, ako postoji greška ispisuje se poruka na ekranu, inače se kreira kontekst i dohvaća artikl pomoću proslijeđenog Id-a
+        //Provjerava se postoji li već stavka košarice određenog artikla u košarici.
+        //Ako postoji na postojeću se stavku dodaje količina zadana u tekstualnom polju,
+        //inače se kreira nova stavka košarice u koju se upisuje količina i Id aritkla.
+        //Stavka se dodaje u bazu i spremaju se promjene.
         private void btnDodaj_Click(object sender, EventArgs e)
         {
             try
@@ -72,13 +85,23 @@ namespace PCShop
                 {
                     int idArtikla = int.Parse(oznaka);
                     var artikl = db.Artikls.First(a => a.Artikl_Id == idArtikla);
-                    Stavka_kosarice stavkaKosarice = new Stavka_kosarice
+                    Stavka_kosarice postojecaStavka = db.Stavka_kosarice.FirstOrDefault(stavka => stavka.Artikl_Id == idArtikla 
+                    && stavka.Kosarica_Id == aktivnaKosarica.Kosarica_Id);
+                    if(postojecaStavka != null)
                     {
-                        Kosarica_Id = aktivnaKosarica.Kosarica_Id,
-                        Artikl_Id = artikl.Artikl_Id,
-                        Kolicina = int.Parse(txtKolicina.Text)
-                    };
-                    db.Stavka_kosarice.Add(stavkaKosarice);
+                        db.Stavka_kosarice.Attach(postojecaStavka);
+                        postojecaStavka.Kolicina += int.Parse(txtKolicina.Text);
+                    }
+                    else
+                    {
+                        Stavka_kosarice stavkaKosarice = new Stavka_kosarice
+                        {
+                            Kosarica_Id = aktivnaKosarica.Kosarica_Id,
+                            Artikl_Id = artikl.Artikl_Id,
+                            Kolicina = int.Parse(txtKolicina.Text)
+                        };
+                        db.Stavka_kosarice.Add(stavkaKosarice);
+                    }
                     db.SaveChanges();
                     MessageBox.Show("Artikl uspješno dodan!");
                 }
@@ -107,6 +130,11 @@ namespace PCShop
             {
                 throw new ArtiklException("Količina mora biti pozitivna.");
             }            
+        }
+
+        private void btnOdustani_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

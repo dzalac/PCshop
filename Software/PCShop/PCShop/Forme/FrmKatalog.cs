@@ -200,11 +200,16 @@ namespace PCShop
             IspisKorisnickogImena();
         }
 
+        //Ako postoji korisnik ispisuje se njegovo korisničko ime, inače se ispisuje tekst "Gost".
         public void IspisKorisnickogImena()
         {
             if(trenutniKorisnik!=null)
             {
                 lblKorisnikoIme.Text = trenutniKorisnik.KorisnickoIme;
+            }
+            else
+            {
+                lblKorisnikoIme.Text = "Gost";
             }
         }
         public void Sortiranje(string opcija,string vrsta)
@@ -254,12 +259,14 @@ namespace PCShop
             PopisPosebnihPonuda(upitPosebna);
 
         }
+        //Prvo se provjerava stanje korisnika. Ako funkcija bude uspješna otvara se forma košarice, a prosljeđuje se trenutni korisnik i košarica. 
+        //U suprotnom se ispisuje poruka pogreške.
         private void BtnKosarica_Click(object sender, EventArgs e)
         {
             try
             {
                 ProvjeraKorisnika();
-                FrmKosarica frmKosarica = new FrmKosarica(trenutnaKosarica);
+                FrmKosarica frmKosarica = new FrmKosarica(trenutnaKosarica, trenutniKorisnik);
                 frmKosarica.ShowDialog();
             }
             catch (KorisnikException ex)
@@ -275,6 +282,11 @@ namespace PCShop
             frmRegistracija.ShowDialog();
 
         }
+
+        //Pomocu forme prijave se provjerava je li se korisnik prijavio uspješno. 
+        //Ako je prijava uspješna, iz forme prijave se preuzima javni atribut korisnika te se sprema u varijablu "trenutniKorisnik"
+        //Nakon toga se kreira kontekst i pomoću njega se pronalazi odgovarajuća košarica na način da se iterira po kolekciji košarica i pronalazi prava košarica.
+        //Uspješnom se prijavom u donji lijevi kut ispisuje korisničko ime i prikazuju se gumbi za košaricu i odjavu, a skrivaju gumbi za prijavu i registraciju.
         private void BtnPrijava_Click(object sender, EventArgs e)
         {
             using (var frmPrijava = new FrmPrijava())
@@ -295,9 +307,12 @@ namespace PCShop
                                 trenutnaKosarica = kosarica;
                             }
                         }
-                        IspisKorisnickogImena();
                     }
-                    
+                    IspisKorisnickogImena();
+                    btnPrijava.Visible = false;
+                    btnOdjava.Visible = true;
+                    btnRegistracija.Visible = false;
+                    btnKosarica.Visible = true;
                 }
                 
             }
@@ -305,14 +320,7 @@ namespace PCShop
             
 
         }
-        private void BtnOtvoriArtikl_Click(object sender, EventArgs e)
-        {
-            /*
-            //Artikl odabraniArtikl = dgvArtikli.CurrentRow.DataBoundItem as Artikl;
-           // FrmArtikli frmArtikli = new FrmArtikli(odabraniArtikl);
-           // frmArtikli.ShowDialog();
-            */
-        }
+   
         private void BtnKontakt_Click(object sender, EventArgs e)
         {
 
@@ -336,10 +344,8 @@ namespace PCShop
             */
         }
         private void BtnOsvjeziPopis_Click(object sender, EventArgs e)
-        {
-           
-            Osvjezi();
-            
+        {   
+            Osvjezi();   
         }
         private void BtnSortCijenaUzlazno_Click(object sender, EventArgs e)
         {
@@ -419,10 +425,7 @@ namespace PCShop
             }
         }
 
-        private void Panel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
 
         private void rbtnPopust_CheckedChanged(object sender, EventArgs e)
         {
@@ -438,37 +441,9 @@ namespace PCShop
             */
         }
 
-        private void UcitajSnizeneProizvode()
-        {
-            /*
-            snizeniProizvodi = new BindingList<Artikl>();
-            foreach (Artikl artikl in popis)
-            {
-                if (artikl.Popust > 0 && snizeniProizvodi.Contains(artikl) == false)
-                {
-                    snizeniProizvodi.Add(artikl);
-                }
-            }
-            dgvPosebna.DataSource = null;
-            dgvPosebna.DataSource = snizeniProizvodi;
-            */
-        }
-        private void UcitajNoveProizvode()
-        {
-            /*
-            snizeniProizvodi = new BindingList<Artikl>();
-            foreach (Artikl artikl in popis)
-            {
-                if (artikl.DatumDodavanja < artikl.DatumDodavanja.AddDays(21) && snizeniProizvodi.Contains(artikl) == false)
-                {
-                    snizeniProizvodi.Add(artikl);
-                }
-            }
-            dgvPosebna.DataSource = null;
-            dgvPosebna.DataSource = snizeniProizvodi;
-            */
-        }
-
+        
+       
+        
         private void btnArtikli_Click(object sender, EventArgs e)
         {
             FrmUpravljanjeArtiklima forma = new FrmUpravljanjeArtiklima();
@@ -481,12 +456,32 @@ namespace PCShop
 
         }
         
+        //Ako trenutni korisnik nije definiran, baca se nova iznimka
         private void ProvjeraKorisnika()
         {
            if(trenutniKorisnik == null)
             {
                 throw new KorisnikException("Za pristup košarici korisnik treba biti prijavljen!");
             }
+        }
+
+        //Ako trenutni korisnik postoji, vrijednosti varijabli "trenutniKorisnik" i "trenutnaKosarica" postavljaju se na null, a gumbi za 
+        //odjavu i košaricu se sakrivaju, dok gumbi za registraciju i prijavu postaju vidljivi.
+        //Ispisuje se poruka o odjavi i poziva se funkcija "IspisKorisnickogImena".
+        private void btnOdjava_Click(object sender, EventArgs e)
+        {
+            if(trenutniKorisnik != null)
+            {
+                trenutniKorisnik = null;
+                trenutnaKosarica = null;
+                btnOdjava.Visible = false;
+                btnPrijava.Visible = true;
+                btnRegistracija.Visible = true;
+                btnKosarica.Visible = false;
+                MessageBox.Show("Odjavljeni ste.");
+                IspisKorisnickogImena();
+            }
+           
         }
     }
 

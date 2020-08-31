@@ -38,21 +38,12 @@ namespace PCShop
         {
             Close();
         }
+
+        //Upitom se dohvaća korisnik čija lozinka i korisničko ime odgovara onom unesenom u tekstnim poljima.
+        //Ako korisnik ne postoji, tj. vrijednost je null, ispisuje se poruka greške.
+        //Međutim, ako korisnik postoji ispisuje se poruka uspješne prijave i rezultat forme je OK.
         private void btnPrijava_Click(object sender, EventArgs e)
         {
-           /* FrmKatalog forma = new FrmKatalog();
-            bool pronadenKorisnik = false;
-            foreach(Korisnik korisnik in FrmRegistracija.listaKorisnika) { 
-                if(korisnik.KorisnickoIme == tbxKorisnickoIme.Text && korisnik.Lozinka == tbxLozinka.Text)
-                {
-                    korisnikAplikacije = korisnik;
-                    MessageBox.Show("Uspješna prijava!");
-                    Close();
-                    pronadenKorisnik = true;
-                }
-            }
-            if (pronadenKorisnik == false)
-                MessageBox.Show("Vaš račun nije pronađen");*/
             using (var db = new Entities())
             {
                 var upit = from korisnik in db.Korisniks where korisnik.Lozinka == txtLozinka.Text && korisnik.KorisnickoIme == txtKorisnickoIme.Text select korisnik;
@@ -62,7 +53,6 @@ namespace PCShop
                     {
                         Korisnik = new Korisnik();
                         Korisnik = item;
-                        MessageBox.Show("bravo");
                     }
                 }
                 if(Korisnik==null)
@@ -77,6 +67,11 @@ namespace PCShop
                 }
 
             }
+        }
+
+        private void FrmPrijava_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

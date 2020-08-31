@@ -62,7 +62,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvKosarica.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvKosarica.Location = new System.Drawing.Point(16, 53);
-            this.dgvKosarica.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvKosarica.Margin = new System.Windows.Forms.Padding(4);
             this.dgvKosarica.Name = "dgvKosarica";
             this.dgvKosarica.RowHeadersWidth = 51;
             this.dgvKosarica.Size = new System.Drawing.Size(1035, 421);
@@ -74,7 +74,7 @@
             this.btnObrisi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnObrisi.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnObrisi.Location = new System.Drawing.Point(16, 481);
-            this.btnObrisi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnObrisi.Margin = new System.Windows.Forms.Padding(4);
             this.btnObrisi.Name = "btnObrisi";
             this.btnObrisi.Size = new System.Drawing.Size(112, 58);
             this.btnObrisi.TabIndex = 3;
@@ -88,7 +88,7 @@
             this.btnOcistiKosaricu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOcistiKosaricu.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOcistiKosaricu.Location = new System.Drawing.Point(699, 481);
-            this.btnOcistiKosaricu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOcistiKosaricu.Margin = new System.Windows.Forms.Padding(4);
             this.btnOcistiKosaricu.Name = "btnOcistiKosaricu";
             this.btnOcistiKosaricu.Size = new System.Drawing.Size(112, 58);
             this.btnOcistiKosaricu.TabIndex = 4;
@@ -102,7 +102,7 @@
             this.btnBlagajna.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBlagajna.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBlagajna.Location = new System.Drawing.Point(819, 481);
-            this.btnBlagajna.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBlagajna.Margin = new System.Windows.Forms.Padding(4);
             this.btnBlagajna.Name = "btnBlagajna";
             this.btnBlagajna.Size = new System.Drawing.Size(112, 58);
             this.btnBlagajna.TabIndex = 5;
@@ -116,7 +116,7 @@
             this.btnOdustani.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOdustani.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOdustani.Location = new System.Drawing.Point(939, 481);
-            this.btnOdustani.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOdustani.Margin = new System.Windows.Forms.Padding(4);
             this.btnOdustani.Name = "btnOdustani";
             this.btnOdustani.Size = new System.Drawing.Size(112, 58);
             this.btnOdustani.TabIndex = 6;
@@ -137,9 +137,10 @@
             this.Controls.Add(this.dgvKosarica);
             this.Controls.Add(this.Košarica);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmKosarica";
             this.Text = "Košarica";
+            this.Load += new System.EventHandler(this.FrmKosarica_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmKosarica_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKosarica)).EndInit();
             this.ResumeLayout(false);

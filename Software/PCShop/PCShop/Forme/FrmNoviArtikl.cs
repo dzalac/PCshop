@@ -31,6 +31,7 @@ namespace PCShop.Forme
             InitializeComponent();
         }
 
+        //Funkcija dohvaća popis vrsta artikala
         private ObservableCollection<Vrsta_artikla> DohvatiVrsteArtikala()
         {
             using(var entities = new Entities())
@@ -45,11 +46,11 @@ namespace PCShop.Forme
             }
         }
 
+        //Otvara se novi dijalog kojim se mogu birati samo slike tipa ".png". Ako je rezultat dijaloga OK, slika se učitava; u suprotnom,
+        //ispisuje se poruka da slika mora biti izabrana.
         private void btnOdaberiSliku_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
-            // dlg.Filter = "JPG FILES (*.jpg)|*.jpg|GIF Files (*.gif)|*gif|ALL Files (*.*)|*.*";
-            //dlg.Title = "Odaberite sliku";
             dlg.Filter = "images|*.png";
             var rezultat = dlg.ShowDialog();
             if (rezultat==DialogResult.OK)
@@ -67,24 +68,23 @@ namespace PCShop.Forme
             Close();
         }
 
+        //Provjerava se unos u poljima; ako postoji greška ispisuje se poruka na ekranu.
+        //Kreira se novi tok memorije za rad sa slikama. Slika se sprema u tok memorije.
+        //Ako je forma učitana na način da se izmjenjuje postojeći artikl, artikl se kači na konekst i spremaju se promjene,
+        //inače se kreira novi artikl koji se dodaje u bazu podataka i sprema se novi zapis u bazi.
         private void btnSpremi_Click(object sender, EventArgs e)
         {
-        
-           
             try
             {
                 using (var entities = new Entities())
                 {
-                   
                     VerifikacijaUnosa();
                     MemoryStream ms = new MemoryStream();
                     pbSlika.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-
-
                     if (selektiraniArtikl == null)
                     {
-                        Artikl noviArtikl = new Artikl(txtNaziv.Text, float.Parse(txtCijena.Text), txtProizvodac.Text, rtxtOpisArtikla.Text, int.Parse(txtKolicina.Text), (int)cbVrstaArtikla.SelectedValue, double.Parse(txtPopust.Text), dtpDatumDodavanja.Value, ms.ToArray());
-                        /*{
+                        Artikl noviArtikl = new Artikl//new Artikl(txtNaziv.Text, float.Parse(txtCijena.Text), txtProizvodac.Text, rtxtOpisArtikla.Text, int.Parse(txtKolicina.Text), (int)cbVrstaArtikla.SelectedValue, double.Parse(txtPopust.Text), dtpDatumDodavanja.Value, ms.ToArray());
+                        {
                             Naziv = txtNaziv.Text,
                             Cijena = float.Parse(txtCijena.Text),
                             Proizvodac = txtProizvodac.Text,
@@ -94,10 +94,8 @@ namespace PCShop.Forme
                             Popust = float.Parse(txtPopust.Text),
                             DatumDodavanja = dtpDatumDodavanja.Value,
                             Slika = ms.ToArray()
-                            };*/
-
+                        };
                         entities.Artikls.Add(noviArtikl);
-                        entities.SaveChanges();
                     }
                     else
                     {
@@ -110,8 +108,8 @@ namespace PCShop.Forme
                         selektiraniArtikl.Slika = ms.ToArray();
                         selektiraniArtikl.VrstaArtikla = (int)cbVrstaArtikla.SelectedValue;
                         selektiraniArtikl.DatumDodavanja = dtpDatumDodavanja.Value;
-                        entities.SaveChanges();
                     }
+                    entities.SaveChanges();
                 }
                 Close();
             }
@@ -120,7 +118,8 @@ namespace PCShop.Forme
                 MessageBox.Show(ex.Poruka);
             }
         }
-
+        //Postavljaju se oznake i vrijednosti padajuće liste za izbor vrsta artikala koji se dohvaćaju funkcijom "DohvatiVrsteArtikala".
+        //Ako je forma učitana pomoću preopterećanja funkcije za otvaranje forme koja uzima za argument artikl, polja u formi se popunjavaju.
         private void FrmNoviArtikl_Load(object sender, EventArgs e)
         {
             cbVrstaArtikla.DisplayMember = "Naziv";
@@ -144,16 +143,20 @@ namespace PCShop.Forme
         private void VerifikacijaUnosa()
         {
             //Verifikacija naziva
-            if(string.IsNullOrEmpty(txtNaziv.Text))
+            //Ako je polje prazno, baca se iznimka.
+            if (string.IsNullOrEmpty(txtNaziv.Text))
             {
                 throw new ArtiklException("Naziv proizvoda mora biti definiran.");
             }
             //Verifikacija proizvodaca
+            //Ako je polje prazno, baca se iznimka.
             if (string.IsNullOrEmpty(txtProizvodac.Text))
             {
                 throw new ArtiklException("Naziv proizvođača mora biti definiran.");
             }
             //Verifikacija cijene
+            //U slučaju da polje ne sadrži vrijednost tipa "double", baca se iznimka.
+            //Ako je vrijednost manja od 0, baca se iznimka.
             double pomocnaVarijabla;
             int pomocnaVarijabla2;
             if (!double.TryParse(txtCijena.Text, out pomocnaVarijabla))
@@ -165,6 +168,8 @@ namespace PCShop.Forme
                 throw new ArtiklException("Cijena mora biti pozitivna.");
             }
             //Verifikacije kolicine
+            //U slučaju da polje ne sadrži vrijednost tipa "int", baca se iznimka.
+            //Ako je vrijednost manja od 0, baca se iznimka.
             if (!int.TryParse(txtKolicina.Text, out pomocnaVarijabla2))
             {
                 throw new ArtiklException("Količina mora biti numeričke vrijednosti.");
@@ -174,6 +179,8 @@ namespace PCShop.Forme
                 throw new ArtiklException("Količina mora biti pozitivna.");
             }
             //Verifikacija popusta
+            //U slučaju da polje ne sadrži vrijednost tipa "double", baca se iznimka.
+            //Ako je vrijednost manja od 0, baca se iznimka.
             if (!double.TryParse(txtPopust.Text, out pomocnaVarijabla))
             {
                 throw new ArtiklException("Popust mora biti numeričke vrijednosti.");
@@ -184,6 +191,7 @@ namespace PCShop.Forme
             }
 
             //Verifikacija opisa
+            //Ako je polje prazno, baca se iznimka.
             if (string.IsNullOrEmpty(rtxtOpisArtikla.Text))
             {
                 throw new ArtiklException("Opis proizvoda mora biti definiran.");

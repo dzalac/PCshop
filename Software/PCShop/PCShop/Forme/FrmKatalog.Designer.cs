@@ -39,7 +39,6 @@
             this.flpArtikli = new System.Windows.Forms.FlowLayoutPanel();
             this.rbtnPopust = new System.Windows.Forms.RadioButton();
             this.rbtnNoviProizodi = new System.Windows.Forms.RadioButton();
-            this.btnOtvoriArtikl = new System.Windows.Forms.Button();
             this.btnSortNazivUzlazno = new System.Windows.Forms.Button();
             this.btnSortCijenaUzlazno = new System.Windows.Forms.Button();
             this.btnOsvjeziPopis = new System.Windows.Forms.Button();
@@ -54,6 +53,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnArtikli = new System.Windows.Forms.Button();
+            this.btnOdjava = new System.Windows.Forms.Button();
             this.btnPrijava = new System.Windows.Forms.Button();
             this.btnRegistracija = new System.Windows.Forms.Button();
             this.btnTrazi = new System.Windows.Forms.Button();
@@ -150,7 +150,6 @@
             this.Panel.Controls.Add(this.flpArtikli);
             this.Panel.Controls.Add(this.rbtnPopust);
             this.Panel.Controls.Add(this.rbtnNoviProizodi);
-            this.Panel.Controls.Add(this.btnOtvoriArtikl);
             this.Panel.Controls.Add(this.btnSortNazivUzlazno);
             this.Panel.Controls.Add(this.btnSortCijenaUzlazno);
             this.Panel.Controls.Add(this.btnOsvjeziPopis);
@@ -166,7 +165,6 @@
             this.Panel.Name = "Panel";
             this.Panel.Size = new System.Drawing.Size(1301, 715);
             this.Panel.TabIndex = 17;
-            this.Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // flpPosebna
             // 
@@ -210,20 +208,6 @@
             this.rbtnNoviProizodi.TabStop = true;
             this.rbtnNoviProizodi.Text = "Novi proizvodi";
             this.rbtnNoviProizodi.UseVisualStyleBackColor = true;
-            // 
-            // btnOtvoriArtikl
-            // 
-            this.btnOtvoriArtikl.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.btnOtvoriArtikl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOtvoriArtikl.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOtvoriArtikl.Location = new System.Drawing.Point(1019, 656);
-            this.btnOtvoriArtikl.Margin = new System.Windows.Forms.Padding(4);
-            this.btnOtvoriArtikl.Name = "btnOtvoriArtikl";
-            this.btnOtvoriArtikl.Size = new System.Drawing.Size(134, 46);
-            this.btnOtvoriArtikl.TabIndex = 25;
-            this.btnOtvoriArtikl.Text = "Pregledaj Artikl";
-            this.btnOtvoriArtikl.UseVisualStyleBackColor = false;
-            this.btnOtvoriArtikl.Click += new System.EventHandler(this.BtnOtvoriArtikl_Click);
             // 
             // btnSortNazivUzlazno
             // 
@@ -363,9 +347,9 @@
             this.lblKorisnikoIme.Location = new System.Drawing.Point(16, 751);
             this.lblKorisnikoIme.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKorisnikoIme.Name = "lblKorisnikoIme";
-            this.lblKorisnikoIme.Size = new System.Drawing.Size(157, 25);
+            this.lblKorisnikoIme.Size = new System.Drawing.Size(53, 25);
             this.lblKorisnikoIme.TabIndex = 19;
-            this.lblKorisnikoIme.Text = "Ne ulogirani gost";
+            this.lblKorisnikoIme.Text = "Gost";
             this.lblKorisnikoIme.Click += new System.EventHandler(this.lblKorisnikoIme_Click);
             // 
             // panel1
@@ -388,6 +372,8 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Teal;
             this.panel2.Controls.Add(this.btnArtikli);
+            this.panel2.Controls.Add(this.btnOdjava);
+            this.panel2.Controls.Add(this.btnPrijava);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -407,6 +393,21 @@
             this.btnArtikli.Text = "Upravljaj artiklima";
             this.btnArtikli.UseVisualStyleBackColor = false;
             this.btnArtikli.Click += new System.EventHandler(this.btnArtikli_Click);
+            // 
+            // btnOdjava
+            // 
+            this.btnOdjava.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnOdjava.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOdjava.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOdjava.Location = new System.Drawing.Point(1439, 15);
+            this.btnOdjava.Margin = new System.Windows.Forms.Padding(4);
+            this.btnOdjava.Name = "btnOdjava";
+            this.btnOdjava.Size = new System.Drawing.Size(104, 50);
+            this.btnOdjava.TabIndex = 1;
+            this.btnOdjava.Text = "Odjava";
+            this.btnOdjava.UseVisualStyleBackColor = false;
+            this.btnOdjava.Visible = false;
+            this.btnOdjava.Click += new System.EventHandler(this.btnOdjava_Click);
             // 
             // btnPrijava
             // 
@@ -497,7 +498,6 @@
             this.Controls.Add(this.btnKosarica);
             this.Controls.Add(this.btnTrazi);
             this.Controls.Add(this.btnRegistracija);
-            this.Controls.Add(this.btnPrijava);
             this.Controls.Add(this.lblKorisnikoIme);
             this.Controls.Add(this.Panel);
             this.Controls.Add(this.btnKontakt);
@@ -537,7 +537,6 @@
         private System.Windows.Forms.Button btnOsvjeziPopis;
         private System.Windows.Forms.Button btnSortNazivUzlazno;
         private System.Windows.Forms.Button btnSortCijenaUzlazno;
-        private System.Windows.Forms.Button btnOtvoriArtikl;
         private System.Windows.Forms.Label lblKorisnikoIme;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -552,6 +551,7 @@
         private System.Windows.Forms.RadioButton rbtnNoviProizodi;
         private System.Windows.Forms.FlowLayoutPanel flpArtikli;
         private System.Windows.Forms.FlowLayoutPanel flpPosebna;
+        private System.Windows.Forms.Button btnOdjava;
     }
 }
 

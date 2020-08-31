@@ -17,35 +17,31 @@ namespace PCShop
     public partial class FrmKosarica : Form
     {
         Kosarica kosarica;
+        private Korisnik trenutniKorisnik;
 
-        public FrmKosarica(Data.Kosarica trenutnaKosarica)
+        public FrmKosarica(Data.Kosarica trenutnaKosarica,Korisnik trenutniKorisnik)
         {
             InitializeComponent();
             kosarica = trenutnaKosarica;
-            Osvjezi();
+            this.trenutniKorisnik = trenutniKorisnik;
         }
+
+
+        //Pomocu join funkcije se spajaju tablice "Artikli" i "Stavka_kosarice" gdje odgovaraju Id-u košarice.
+        //Rezultati upita se koriste kao izvor podataka za DataGridView.
         public void Osvjezi()
         {
             using(var db = new Entities())
             {
-                /*List<Stavka_kosarice> stavkeKosarice;
-                stavkeKosarice = db.Stavka_kosarice.ToList();
-                dgvKosarica.DataSource = null;
-                dgvKosarica.DataSource = stavkeKosarice;
-                dgvKosarica.Columns["Artikl"].Visible = false;
-                dgvKosarica.Columns["Kosarica"].Visible = false;*/
                 db.Kosaricas.Attach(kosarica);
-                ICollection<Stavka_kosarice> stavkeKosarice = kosarica.Stavka_kosarice;
-                ObservableCollection<Artikl> artikliUnutarKosarice = new ObservableCollection<Artikl>();
-                foreach (var artikl in stavkeKosarice)
-                {
-                    artikliUnutarKosarice.Add(artikl.Artikl);
-                }
+                var data = from stavka in db.Stavka_kosarice
+                           join artikl in db.Artikls
+                           on stavka.Artikl_Id equals artikl.Artikl_Id
+                           where stavka.Kosarica_Id == kosarica.Kosarica_Id && kosarica.Korisnik == trenutniKorisnik.Korisnik_Id
+                           select new { ArtiklId = stavka.Artikl_Id, Naziv = artikl.Naziv, Kolicina = stavka.Kolicina };
+               
                 dgvKosarica.DataSource = null;
-                dgvKosarica.DataSource = artikliUnutarKosarice;
-                dgvKosarica.Columns["Stavka_kosarice"].Visible = false;
-                dgvKosarica.Columns["Stavka_narudzbe"].Visible = false;
-                dgvKosarica.Columns["Vrsta_artikla"].Visible = false;
+                dgvKosarica.DataSource = data.ToList();
             }
         }
         private void FrmKosarica_KeyDown(object sender, KeyEventArgs e)
@@ -64,30 +60,45 @@ namespace PCShop
         {
             Close();
         }
+        //Unutar konteksta se pomoću upita dohvaćaju sve stavke košarice.
+        //Nakon toga se iterirajući kroz listu stavaka, svaka pojedina stavka kači na kontekst i uklanja iz baze podataka. Nakon završenog brisanja
+        //promjene se spremaju i osvježava se DataGridView.
         private void btnOcistiKosaricu_Click(object sender, EventArgs e)
         {
-            KosaricaOld.opcaKosarica.StavkeKosarice.Clear();
+            using (var db = new Entities())
+            {
+                var stavkeKosarice = from stavka in db.Stavka_kosarice where stavka.Kosarica_Id == kosarica.Kosarica_Id select stavka;
+                foreach (var stavka in stavkeKosarice)
+                {
+                    db.Stavka_kosarice.Attach(stavka);
+                    db.Stavka_kosarice.Remove(stavka);
+                }
+                db.SaveChanges();
+            }
             Osvjezi();
         }
+        
+        //Ako je odabrani redak u DataGridView-u različit od null, iz retka se uzima vrijednost prvog stupca u kojemu se nalazi Id artikla.
+        //Pomoću tog Id-a se dohvaća stavka s odgovarajućim Id-om koja pripada košarici korisnika te se kači na konteskt i briše iz baze podataka, 
+        //a promjene se spremaju.
         private void btnObrisi_Click(object sender, EventArgs e)
         {
             if (dgvKosarica.CurrentRow != null)
             {
-                Artikl selektiraniArtikl = dgvKosarica.CurrentRow.DataBoundItem as Artikl;
+                var selektiraniArtikl = dgvKosarica.CurrentRow;
                 if (selektiraniArtikl != null)
                 {
+                    var idArtikla = (int)selektiraniArtikl.Cells[0].Value;
                     using (var db = new Entities())
                     {
-                        db.Artikls.Attach(selektiraniArtikl);
-                        db.Artikls.Remove(selektiraniArtikl);
+                        Stavka_kosarice stavka = db.Stavka_kosarice.First(s => s.Artikl_Id == idArtikla && s.Kosarica_Id == kosarica.Kosarica_Id);
+                        db.Stavka_kosarice.Attach(stavka);
+                        db.Stavka_kosarice.Remove(stavka);
                         db.SaveChanges();
                     }
-
                 }
-
             }
-        
- 
+            Osvjezi();
         }
         private void btnBlagajna_Click(object sender, EventArgs e)
         {
@@ -95,6 +106,11 @@ namespace PCShop
             Close();
             form.ShowDialog();
            
+        }
+
+        private void FrmKosarica_Load(object sender, EventArgs e)
+        {
+              Osvjezi();
         }
     }
 }

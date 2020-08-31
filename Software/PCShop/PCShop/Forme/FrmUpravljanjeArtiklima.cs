@@ -24,6 +24,7 @@ namespace PCShop.Forme
             PrikaziArtikle();
         }
 
+        //Iz konteksta se povlači lista artikala te se prikazuje na DataGridView-u.
         private void PrikaziArtikle()
         {
             using(var entities = new Entities())
@@ -52,6 +53,9 @@ namespace PCShop.Forme
             Close();
         }
 
+        //Odabrani redak se pretvara u objekt tipa "Artikl"
+        //Artikl se kači na kontekst i zatim se otvara forma za kreiranje novog artikla koja se koristi za izmjenu.
+        //Lista se osvježava.
         private void lblUrediArtikl_Click(object sender, EventArgs e)
         {
             if (dgvArtikli.CurrentRow != null)
@@ -68,6 +72,8 @@ namespace PCShop.Forme
             
         }
 
+        //Odabrani redak se pretvara u objekt tipa "Artikl"
+        //Artikl se kači na kontekst i zatim se briše iz baze podataka te se promjene spremaju.
         private void lblIzbrisiArtikl_Click(object sender, EventArgs e)
         {
             if (dgvArtikli.CurrentRow != null)
@@ -81,9 +87,9 @@ namespace PCShop.Forme
                         db.Artikls.Remove(selektiraniArtikl);
                         db.SaveChanges();
                     }
-                    
+                    PrikaziArtikle();
                 }
-
+               
             }
         }
     }
