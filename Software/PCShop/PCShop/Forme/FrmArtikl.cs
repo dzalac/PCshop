@@ -11,6 +11,9 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Drawing;
 using PCShop.Forme;
+using PCShop.Klase;
+using PCShop.Data;
+
 namespace PCShop
 {
     public partial class FrmArtikl : Form
@@ -18,19 +21,21 @@ namespace PCShop
         SqlConnection conn = new SqlConnection(@"Data Source=31.147.204.119\PISERVER,1433; Initial Catalog=PI20_011_DB; User ID=PI20_011_User; Password=g{+EKZ99");
         SqlCommand naredba;
         SqlDataReader dr;
+        Kosarica aktivnaKosarica;
 
         private PictureBox slika;
         private string oznaka;
-        public FrmArtikl(string tag)
+        public FrmArtikl(string tag, Kosarica trenutnaKosarica)
         {
             InitializeComponent();
             oznaka = tag;
+            aktivnaKosarica = trenutnaKosarica;
         }
 
         private void FrmArtikl_Load(object sender, EventArgs e)
         {
             conn.Open();
-            naredba = new SqlCommand("SELECT slika,artikl_id,cijena,naziv,opis FROM Artikl WHERE artikl_id = " + oznaka, conn);
+            naredba = new SqlCommand("SELECT slika,artikl_id,cijena,naziv,opis,popust FROM Artikl WHERE artikl_id = " + oznaka, conn);
             dr = naredba.ExecuteReader();
             while (dr.Read())
             {
@@ -44,12 +49,64 @@ namespace PCShop
                 pbSlika.BackgroundImageLayout = ImageLayout.Stretch;
 
                 rtbxOpis.Text = dr["opis"].ToString();
-                lblCijena.Text = dr["cijena"].ToString();
+                double praviIznos = ((double)dr["cijena"] - (double)dr["cijena"] * (double)dr["popust"] / 100);
+                lblCijena.Text = String.Format("{0:0.00} Kn", praviIznos);
                 lblNaziv.Text = dr["naziv"].ToString();
-
+                if((double)dr["popust"]>0)
+                {
+                    lblStaraCijena.Visible = true;
+                    lblStaraCijenaIznos.Visible = true;
+                    lblStaraCijenaIznos.Text = String.Format("{0:0.00} Kn", (double)dr["cijena"]);
+                }
             }
             dr.Close();
             conn.Close();
+        }
+
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ValidacijaUnosa();
+                using(var db = new Entities())
+                {
+                    int idArtikla = int.Parse(oznaka);
+                    var artikl = db.Artikls.First(a => a.Artikl_Id == idArtikla);
+                    Stavka_kosarice stavkaKosarice = new Stavka_kosarice
+                    {
+                        Kosarica_Id = aktivnaKosarica.Kosarica_Id,
+                        Artikl_Id = artikl.Artikl_Id,
+                        Kolicina = int.Parse(txtKolicina.Text)
+                    };
+                    db.Stavka_kosarice.Add(stavkaKosarice);
+                    db.SaveChanges();
+                    MessageBox.Show("Artikl uspješno dodan!");
+                }
+                Close();
+            }
+            catch (PCShopExcepiton ex) when (ex is KorisnikException || ex is ArtiklException)
+            {
+                MessageBox.Show(ex.Poruka);
+            }
+        }
+
+        private void ValidacijaUnosa()
+        {
+            //Provjera je li korisnik prijavljen
+            if (aktivnaKosarica == null)
+            {
+                throw new KorisnikException("Za dodavanje artikala u košaricu korisnik mora biti prijavljen.");
+            }
+            //Provjera količine
+            int pomocnaVarijabla;
+            if (!int.TryParse(txtKolicina.Text, out pomocnaVarijabla))
+            {
+                throw new ArtiklException("Količina mora biti numeričke vrijednosti."); 
+            }
+            else if (int.Parse(txtKolicina.Text) < 0)
+            {
+                throw new ArtiklException("Količina mora biti pozitivna.");
+            }            
         }
     }
 }

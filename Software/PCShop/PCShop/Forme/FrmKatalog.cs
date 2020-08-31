@@ -14,6 +14,7 @@ using System.IO;
 using System.Drawing;
 using PCShop.Forme;
 using PCShop.Data;
+using System.Collections.ObjectModel;
 
 namespace PCShop
 {
@@ -23,6 +24,7 @@ namespace PCShop
         SqlCommand naredba;
         SqlDataReader dr;
         Korisnik trenutniKorisnik;
+        Kosarica trenutnaKosarica;
 
         private bool dostupno = true;
         private string upitVrstaArtikla = "";
@@ -70,8 +72,9 @@ namespace PCShop
                 slikaPosebnaPonuda.Cursor = System.Windows.Forms.Cursors.Hand;
 
                 cijenaPosebnaPonuda = new Label();
-                cijenaPosebnaPonuda.Text = dr["cijena"].ToString() + " Kuna";
-                cijenaPosebnaPonuda.Width = 75;
+                double praviIznos = ((double)dr["cijena"] - (double)dr["cijena"] * (double)dr["popust"] / 100);
+                cijenaPosebnaPonuda.Text = String.Format("{0:0.00} Kn", praviIznos);
+                cijenaPosebnaPonuda.Width = 100;
                 cijenaPosebnaPonuda.BackColor = Color.FromArgb(46, 134, 222);
                 cijenaPosebnaPonuda.TextAlign = ContentAlignment.MiddleCenter;
                 cijenaPosebnaPonuda.BorderStyle = BorderStyle.FixedSingle;
@@ -127,8 +130,9 @@ namespace PCShop
                     slika.Cursor = System.Windows.Forms.Cursors.Hand;
 
                     cijena = new Label();
-                    cijena.Text = dr["cijena"].ToString() + " Kuna";
-                    cijena.Width = 75;
+                    double praviIznos = ((double)dr["cijena"] - (double)dr["cijena"] * (double)dr["popust"] / 100);
+                    cijena.Text =String.Format("{0:0.00} Kn",praviIznos);
+                    cijena.Width = 100;
                     cijena.BackColor = Color.FromArgb(46, 134, 222);
                     cijena.TextAlign = ContentAlignment.MiddleCenter;
                     cijena.BorderStyle = BorderStyle.FixedSingle;
@@ -175,7 +179,7 @@ namespace PCShop
             }
 
             if (dostupno == true) { 
-                FrmArtikl forma = new FrmArtikl(oznaka);
+                FrmArtikl forma = new FrmArtikl(oznaka,trenutnaKosarica);
                 forma.ShowDialog();
             }
             else
@@ -189,14 +193,14 @@ namespace PCShop
     
         private void Osvjezi()
         {
-            upitArtikl = "SELECT slika, naziv, cijena, artikl_id FROM Artikl";
+            upitArtikl = "SELECT slika, naziv, cijena, artikl_id,popust FROM Artikl";
             upitPosebna = "SELECT slika,cijena,naziv,popust,artikl_id FROM Artikl WHERE popust > 0";
             PopisArtikla(upitArtikl);
             PopisPosebnihPonuda(upitPosebna);
-            ProvjeraPrijave();
+            IspisKorisnickogImena();
         }
 
-        public void ProvjeraPrijave()
+        public void IspisKorisnickogImena()
         {
             if(trenutniKorisnik!=null)
             {
@@ -252,10 +256,18 @@ namespace PCShop
         }
         private void BtnKosarica_Click(object sender, EventArgs e)
         {
-            /*
-            FrmKosarica frmKosarica = new FrmKosarica();
-            frmKosarica.ShowDialog();
-            */
+            try
+            {
+                ProvjeraKorisnika();
+                FrmKosarica frmKosarica = new FrmKosarica(trenutnaKosarica);
+                frmKosarica.ShowDialog();
+            }
+            catch (KorisnikException ex)
+            {
+                MessageBox.Show(ex.Poruka);
+            }
+           
+            
         }
         private void BtnRegistracija_Click(object sender, EventArgs e)
         {
@@ -271,7 +283,21 @@ namespace PCShop
                 if(result == DialogResult.OK)
                 {
                     trenutniKorisnik = frmPrijava.Korisnik;
-                    ProvjeraPrijave();
+                    using (var db = new Entities())
+                    {
+                        db.Korisniks.Attach(trenutniKorisnik);
+                        ICollection<Kosarica> popisKosarica = trenutniKorisnik.Kosaricas;
+                        foreach (var kosarica in popisKosarica)
+                        {
+                            if (kosarica.Korisnik == trenutniKorisnik.Korisnik_Id)
+                            {
+                                trenutnaKosarica = new Kosarica();
+                                trenutnaKosarica = kosarica;
+                            }
+                        }
+                        IspisKorisnickogImena();
+                    }
+                    
                 }
                 
             }
@@ -381,8 +407,7 @@ namespace PCShop
 
         private void FrmKatalog_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            /*
-            
+
             if(e.KeyValue == 112)
             {
                 string helpFile = System.IO.Path.GetFullPath(@"..\..\Korisnicka_dokumentacija.chm");
@@ -392,7 +417,6 @@ namespace PCShop
                     Help.ShowHelp(this, helpFile);
                 }
             }
-            */
         }
 
         private void Panel_Paint(object sender, PaintEventArgs e)
@@ -455,6 +479,14 @@ namespace PCShop
         private void lblKorisnikoIme_Click(object sender, EventArgs e)
         {
 
+        }
+        
+        private void ProvjeraKorisnika()
+        {
+           if(trenutniKorisnik == null)
+            {
+                throw new KorisnikException("Za pristup košarici korisnik treba biti prijavljen!");
+            }
         }
     }
 
