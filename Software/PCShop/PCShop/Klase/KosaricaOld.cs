@@ -10,7 +10,7 @@ namespace PCShop.Klase
     public class KosaricaOld
     {
         public DateTime DatumKreriranja { get; set; }
-        public BindingList<StavkaNarudzbe> StavkeKosarice { get; set; } = new BindingList<StavkaNarudzbe>();
+        public BindingList<StavkaNarudzbeOld> StavkeKosarice { get; set; } = new BindingList<StavkaNarudzbeOld>();
 
         public KosaricaOld()
         {

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PCShop.Klase
 {
-    class ArtiklException : PCShopException
+    class BlagajnaException : PCShopException
     {
-        public ArtiklException(string poruka)
+        public BlagajnaException(string poruka)
         {
-            Poruka = poruka;
+            this.Poruka = poruka;
         }
     }
 }

@@ -42,6 +42,20 @@ namespace PCShop
                
                 dgvKosarica.DataSource = null;
                 dgvKosarica.DataSource = data.ToList();
+
+                var postojeStavke = db.Stavka_kosarice.FirstOrDefault(stavka => stavka.Kosarica_Id == kosarica.Kosarica_Id);
+                if (postojeStavke != null)
+                {
+                    btnBlagajna.Enabled = true;
+                    btnObrisi.Enabled = true;
+                    btnOcistiKosaricu.Enabled = true;
+                }
+                else
+                {
+                    btnBlagajna.Enabled = false;
+                    btnObrisi.Enabled = false;
+                    btnOcistiKosaricu.Enabled = false;
+                }
             }
         }
         private void FrmKosarica_KeyDown(object sender, KeyEventArgs e)
@@ -102,7 +116,8 @@ namespace PCShop
         }
         private void btnBlagajna_Click(object sender, EventArgs e)
         {
-            FrmBlagajna form = new FrmBlagajna();
+      
+            FrmBlagajna form = new FrmBlagajna(trenutniKorisnik,kosarica);
             Close();
             form.ShowDialog();
            

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Košarica = new System.Windows.Forms.Label();
             this.dgvKosarica = new System.Windows.Forms.DataGridView();
             this.btnObrisi = new System.Windows.Forms.Button();
@@ -53,14 +53,14 @@
             // 
             this.dgvKosarica.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvKosarica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvKosarica.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvKosarica.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvKosarica.Location = new System.Drawing.Point(16, 53);
             this.dgvKosarica.Margin = new System.Windows.Forms.Padding(4);
             this.dgvKosarica.Name = "dgvKosarica";
@@ -71,6 +71,7 @@
             // btnObrisi
             // 
             this.btnObrisi.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnObrisi.Enabled = false;
             this.btnObrisi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnObrisi.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnObrisi.Location = new System.Drawing.Point(16, 481);
@@ -85,6 +86,7 @@
             // btnOcistiKosaricu
             // 
             this.btnOcistiKosaricu.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnOcistiKosaricu.Enabled = false;
             this.btnOcistiKosaricu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOcistiKosaricu.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOcistiKosaricu.Location = new System.Drawing.Point(699, 481);
@@ -99,6 +101,7 @@
             // btnBlagajna
             // 
             this.btnBlagajna.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnBlagajna.Enabled = false;
             this.btnBlagajna.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBlagajna.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBlagajna.Location = new System.Drawing.Point(819, 481);

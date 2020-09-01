@@ -151,11 +151,13 @@
     <Compile Include="Forme\FrmKatalog.Designer.cs">
       <DependentUpon>FrmKatalog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Klase\BlagajnaException.cs" />
     <Compile Include="Klase\KosaricaOld.cs" />
-    <Compile Include="Klase\Narudzba.cs" />
-    <Compile Include="Klase\PCShopExcepiton.cs" />
+    <Compile Include="Klase\NarudzbaOld.cs" />
+    <Compile Include="Klase\PCShopException.cs" />
     <Compile Include="Klase\KorisnikException.cs" />
-    <Compile Include="Klase\StavkaNarudzbe.cs" />
+    <Compile Include="Klase\PodaciOPlacanjuExt.cs" />
+    <Compile Include="Klase\StavkaNarudzbeOld.cs" />
     <Compile Include="Klase\VrstaArtiklaExt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

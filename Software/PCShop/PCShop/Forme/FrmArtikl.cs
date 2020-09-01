@@ -107,7 +107,7 @@ namespace PCShop
                 }
                 Close();
             }
-            catch (PCShopExcepiton ex) when (ex is KorisnikException || ex is ArtiklException)
+            catch (PCShopException ex) when (ex is KorisnikException || ex is ArtiklException)
             {
                 MessageBox.Show(ex.Poruka);
             }

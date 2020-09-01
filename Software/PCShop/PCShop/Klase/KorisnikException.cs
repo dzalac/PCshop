@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PCShop.Klase
 {
-    class KorisnikException : PCShopExcepiton
+    class KorisnikException : PCShopException
     {
         public KorisnikException(string poruka)
         {

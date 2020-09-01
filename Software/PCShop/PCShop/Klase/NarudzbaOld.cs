@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace PCShop.Klase
 {
 
-    public class Narudzba
+    public class NarudzbaOld
     {
         public int BrojNarudzbe { get; set; }
         public DateTime DatumNarudzbe { get; set; }
@@ -19,7 +19,7 @@ namespace PCShop.Klase
         public string BrojRacuna { get; set; }
         public int KontrolniBroj { get; set; }
 
-        public Narudzba(int brojnarudzbe, DateTime datumNarudzbe, string adresadostave, double iznos, List<Artikl> stavkenarudzbe, string nacinplacanja, string brojracuna, int kontrolnibroj)
+        public NarudzbaOld(int brojnarudzbe, DateTime datumNarudzbe, string adresadostave, double iznos, List<Artikl> stavkenarudzbe, string nacinplacanja, string brojracuna, int kontrolnibroj)
         {
             this.BrojNarudzbe = brojnarudzbe;
             this.DatumNarudzbe = datumNarudzbe;

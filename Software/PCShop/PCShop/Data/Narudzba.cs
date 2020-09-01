@@ -27,6 +27,7 @@ namespace PCShop.Data
         public Nullable<System.DateTime> DatumNarudzbe { get; set; }
         public Nullable<int> StanjeNarudzbe { get; set; }
         public Nullable<int> KorisnikId { get; set; }
+        public string PostanskiBroj { get; set; }
     
         public virtual Korisnik Korisnik { get; set; }
         public virtual Stanje_narudzbe Stanje_narudzbe { get; set; }

@@ -60,6 +60,7 @@
           <Property Name="DatumNarudzbe" Type="date" />
           <Property Name="StanjeNarudzbe" Type="int" />
           <Property Name="KorisnikId" Type="int" />
+          <Property Name="PostanskiBroj" Type="char" MaxLength="5" />
         </EntityType>
         <EntityType Name="Podaci_o_placanju">
           <Key>
@@ -381,6 +382,7 @@
           <Property Name="DatumNarudzbe" Type="DateTime" Precision="0" />
           <Property Name="StanjeNarudzbe" Type="Int32" />
           <Property Name="KorisnikId" Type="Int32" />
+          <Property Name="PostanskiBroj" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Korisnik" Relationship="Self.FK_Narudzba_Korisnik" FromRole="Narudzba" ToRole="Korisnik" />
           <NavigationProperty Name="Stanje_narudzbe" Relationship="Self.FK_Narudzba_Stanje_narudzbe" FromRole="Narudzba" ToRole="Stanje_narudzbe" />
           <NavigationProperty Name="Podaci_o_placanju" Relationship="Self.FK_Podaci_o_placanju_Narudzba" FromRole="Narudzba" ToRole="Podaci_o_placanju" />
@@ -710,6 +712,7 @@
                 <ScalarProperty Name="DatumNarudzbe" ColumnName="DatumNarudzbe" />
                 <ScalarProperty Name="StanjeNarudzbe" ColumnName="StanjeNarudzbe" />
                 <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="PostanskiBroj" ColumnName="PostanskiBroj" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

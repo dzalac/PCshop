@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PCShop.Klase
 {
-    public abstract class PCShopExcepiton : ApplicationException
+    public abstract class PCShopException : ApplicationException
     {
         public string Poruka { get; set; }
 
