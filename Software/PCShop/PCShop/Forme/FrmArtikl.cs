@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
-using System.Drawing;
 using PCShop.Forme;
 using PCShop.Klase;
 using PCShop.Data;

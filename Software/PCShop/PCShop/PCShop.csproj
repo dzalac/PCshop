@@ -107,6 +107,12 @@
     <Compile Include="Data\Vrsta_artikla.cs">
       <DependentUpon>PCShopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Forme\FrmKorisnik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\FrmKorisnik.Designer.cs">
+      <DependentUpon>FrmKorisnik.cs</DependentUpon>
+    </Compile>
     <Compile Include="Klase\ArtiklException.cs" />
     <Compile Include="Klase\ArtiklExtended.cs" />
     <Compile Include="Forme\FrmArtikl.cs">
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FrmBlagajna.resx">
       <DependentUpon>FrmBlagajna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\FrmKorisnik.resx">
+      <DependentUpon>FrmKorisnik.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FrmKosarica.resx">
       <DependentUpon>FrmKosarica.cs</DependentUpon>
