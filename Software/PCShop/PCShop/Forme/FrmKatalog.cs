@@ -16,6 +16,9 @@ using PCShop.Data;
 using System.Collections.ObjectModel;
 using System.Net.Mail;
 using System.Net;
+using System.Reflection;
+using iText.StyledXmlParser.Jsoup.Nodes;
+using Entities = PCShop.Data.Entities;
 
 namespace PCShop
 {
@@ -59,13 +62,25 @@ namespace PCShop
             Osvjezi();
             Bitmap img = new Bitmap("../../Slike/UserIcon.png");
             pbKorisnik.Image = img;
-            var client = new SmtpClient("smtp.gmail.com", 587)
+            using (MailMessage mail = new MailMessage())
             {
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("duckduckdove@gmail.com", "applaud.amplify4.kilobyte"),
-                EnableSsl = true
-            };
-            client.Send("duckduckdove@gmail.com", "bsikac@foi.hr", "test", "testbody");
+                mail.From = new MailAddress("duckduckdove@gmail.com");
+                mail.To.Add("psikac@foi.hr");
+                mail.Subject = "Vaša narudžba je zaprimljena";
+                mail.Body = "<h1>Narudžbenica</h1>" +
+                    "<p>Narudžba broj 001 je zaprimljena te će nakon obrade biti poslana. " +
+                    "Obavijest o slanju ćete dobiti istoga trena kada se pošalje pošiljka." +
+                    "U nastavku možete pronaći PDF vaše narudžbenice.</p>";
+                mail.IsBodyHtml = true;
+                using (var client = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = new NetworkCredential("duckduckdove@gmail.com", "applaud.amplify4.kilobyte");
+                    client.EnableSsl = true;
+                    client.Send(mail);
+                }
+            }
+          
         }
         private void PopisPosebnihPonuda(string upit)
         {
@@ -671,6 +686,11 @@ namespace PCShop
         {
             if(trenutniKorisnik != null)
             {
+                if (trenutniKorisnik.TipKorisnika == 1)
+                {
+                    btnUpravljajNarudzbama.Visible = false;
+                    btnArtikli.Visible = false;
+                }
                 trenutniKorisnik = null;
                 trenutnaKosarica = null;
                 btnOdjava.Visible = false;
@@ -678,11 +698,6 @@ namespace PCShop
                 btnRegistracija.Visible = true;
                 btnKosarica.Visible = false;
                 btnPregledajNarudzbe.Visible = false;
-                if(trenutniKorisnik.TipKorisnika == 1)
-                {
-                    btnUpravljajNarudzbama.Visible = false;
-                    btnArtikli.Visible = false;
-                }
                 MessageBox.Show("Odjavljeni ste.");
                 IspisKorisnickogImena();
             }
