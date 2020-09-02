@@ -303,7 +303,6 @@
     </None>
     <None Include="Korisnicka_dokumentacija.chm" />
     <None Include="packages.config" />
-    <None Include="PDF dokumenti\ulaznica.pdf" />
     <None Include="Properties\DataSources\PCShop.Data.Artikl.datasource" />
     <None Include="Properties\DataSources\PCShop.Data.Korisnik.datasource" />
     <None Include="Properties\DataSources\PCShop.Data.Kosarica.datasource" />
@@ -361,6 +360,11 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\EmailRukovanje\EmailRukovanje.csproj">
+      <Project>{67ff5d0c-feb4-441d-9e4e-0d4d4daa7aa4}</Project>
+      <Name>EmailRukovanje</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

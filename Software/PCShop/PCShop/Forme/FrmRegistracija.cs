@@ -76,8 +76,8 @@ namespace PCShop
                     };
                     db.Kosaricas.Add(novaKosarica);
                     db.SaveChanges();
+                    EmailRukovanje.EmailRukovanje.PosaljiObavijestORegistraciji(noviKorisnik.Email, noviKorisnik.KorisnickoIme);
                 }
-
                 MessageBox.Show("Uspješna registracija! Možete se prijaviti.");
                 Close();
             }
@@ -135,6 +135,23 @@ namespace PCShop
             if(!Regex.IsMatch(txtMail.Text,mailUzorak))
             {
                 throw new KorisnikException("Email nije ispravnog formata.");
+            }
+            else
+            {
+                using (var db = new Entities())
+                {
+                    var email = txtMail.Text;
+                    ObservableCollection<Korisnik> result = new ObservableCollection<Data.Korisnik>();
+                    foreach (var item in db.Korisniks)
+                    {
+                        if (item.Email == email)
+                            result.Add(item);
+                    }
+                    if (result.Count > 0)
+                    {
+                        throw new KorisnikException("Email se već koristi.");
+                    }
+                }
             }
 
             //Verifikacija naziva grada

@@ -82,10 +82,11 @@ namespace PCShop
                                 }
                             }
                         }
-                        imeKorisnika += entities.Korisniks.First(X => X.Korisnik_Id == narudzba.KorisnikId).Ime.ToString() + " " + entities.Korisniks.First(X => X.Korisnik_Id == narudzba.KorisnikId).Prezime.ToString();
+                        Korisnik korisnik = entities.Korisniks.First(k => k.Korisnik_Id == narudzba.KorisnikId);
+                        imeKorisnika = korisnik.Ime + " " + korisnik.Prezime;
                     }
 
-                    FrmIzvjestaj forma = new FrmIzvjestaj(narudzba, popis, imeKorisnika, stavke, stanje.Naziv);
+                    FrmIzvjestaj forma = new FrmIzvjestaj(narudzba, popis, imeKorisnika,korisnik.Email, stavke, stanje.Naziv,1);
                     forma.ShowDialog();
                 }
                 else
