@@ -43,6 +43,7 @@
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dgvArtikli = new System.Windows.Forms.DataGridView();
             this.artiklBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnPregled = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNarudzbe)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vrstaArtiklaBindingSource)).BeginInit();
@@ -74,8 +75,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvNarudzbe.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvNarudzbe.EnableHeadersVisualStyles = false;
-            this.dgvNarudzbe.Location = new System.Drawing.Point(276, 40);
-            this.dgvNarudzbe.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvNarudzbe.Location = new System.Drawing.Point(207, 32);
             this.dgvNarudzbe.Name = "dgvNarudzbe";
             this.dgvNarudzbe.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -88,7 +88,7 @@
             this.dgvNarudzbe.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvNarudzbe.RowHeadersWidth = 51;
             this.dgvNarudzbe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNarudzbe.Size = new System.Drawing.Size(484, 422);
+            this.dgvNarudzbe.Size = new System.Drawing.Size(363, 343);
             this.dgvNarudzbe.TabIndex = 24;
             this.dgvNarudzbe.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNarudzbe_CellContentClick);
             this.dgvNarudzbe.SelectionChanged += new System.EventHandler(this.dgvNarudzbe_SelectionChanged);
@@ -96,12 +96,14 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Teal;
+            this.panel1.Controls.Add(this.btnPregled);
             this.panel1.Controls.Add(this.btnOdustani);
             this.panel1.Controls.Add(this.lblOtkaziNarudzbu);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(249, 529);
+            this.panel1.Size = new System.Drawing.Size(187, 390);
             this.panel1.TabIndex = 25;
             // 
             // btnOdustani
@@ -109,9 +111,10 @@
             this.btnOdustani.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnOdustani.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOdustani.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOdustani.Location = new System.Drawing.Point(17, 421);
+            this.btnOdustani.Location = new System.Drawing.Point(13, 342);
+            this.btnOdustani.Margin = new System.Windows.Forms.Padding(2);
             this.btnOdustani.Name = "btnOdustani";
-            this.btnOdustani.Size = new System.Drawing.Size(224, 41);
+            this.btnOdustani.Size = new System.Drawing.Size(168, 33);
             this.btnOdustani.TabIndex = 1;
             this.btnOdustani.Text = "Odustani";
             this.btnOdustani.UseVisualStyleBackColor = false;
@@ -122,20 +125,13 @@
             this.lblOtkaziNarudzbu.AutoSize = true;
             this.lblOtkaziNarudzbu.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOtkaziNarudzbu.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblOtkaziNarudzbu.Location = new System.Drawing.Point(22, 40);
+            this.lblOtkaziNarudzbu.Location = new System.Drawing.Point(16, 32);
+            this.lblOtkaziNarudzbu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOtkaziNarudzbu.Name = "lblOtkaziNarudzbu";
-            this.lblOtkaziNarudzbu.Size = new System.Drawing.Size(156, 28);
+            this.lblOtkaziNarudzbu.Size = new System.Drawing.Size(124, 21);
             this.lblOtkaziNarudzbu.TabIndex = 0;
             this.lblOtkaziNarudzbu.Text = "Otkaži narudžbu";
             this.lblOtkaziNarudzbu.Click += new System.EventHandler(this.lblOtkaziNarudzbu_Click);
-            // 
-            // vrstaArtiklaBindingSource
-            // 
-
-            // 
-            // bindingSource1
-            // 
-
             // 
             // dgvArtikli
             // 
@@ -160,8 +156,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvArtikli.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvArtikli.EnableHeadersVisualStyles = false;
-            this.dgvArtikli.Location = new System.Drawing.Point(801, 40);
-            this.dgvArtikli.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvArtikli.Location = new System.Drawing.Point(601, 32);
             this.dgvArtikli.Name = "dgvArtikli";
             this.dgvArtikli.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -174,23 +169,36 @@
             this.dgvArtikli.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvArtikli.RowHeadersWidth = 51;
             this.dgvArtikli.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArtikli.Size = new System.Drawing.Size(490, 422);
+            this.dgvArtikli.Size = new System.Drawing.Size(368, 343);
             this.dgvArtikli.TabIndex = 24;
-
             // 
             // artiklBindingSource
             // 
             this.artiklBindingSource.DataSource = typeof(PCShop.Data.Artikl);
             // 
+            // btnPregled
+            // 
+            this.btnPregled.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnPregled.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPregled.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPregled.Location = new System.Drawing.Point(13, 303);
+            this.btnPregled.Name = "btnPregled";
+            this.btnPregled.Size = new System.Drawing.Size(168, 34);
+            this.btnPregled.TabIndex = 26;
+            this.btnPregled.Text = "Pregled narudžbe";
+            this.btnPregled.UseVisualStyleBackColor = false;
+            this.btnPregled.Click += new System.EventHandler(this.btnPregled_Click);
+            // 
             // FrmPregledNarudzbi
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ClientSize = new System.Drawing.Size(1326, 529);
+            this.ClientSize = new System.Drawing.Size(994, 390);
             this.Controls.Add(this.dgvArtikli);
             this.Controls.Add(this.dgvNarudzbe);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmPregledNarudzbi";
             this.Text = "FrmPregledNarudzbi";
             this.Load += new System.EventHandler(this.FrmPregledNarudzbi_Load);
@@ -215,5 +223,6 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.BindingSource artiklBindingSource;
         private System.Windows.Forms.DataGridView dgvArtikli;
+        private System.Windows.Forms.Button btnPregled;
     }
 }

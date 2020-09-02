@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PCShop.Data;
 using PCShop.Klase;
+using PCShop.Forme;
 
 namespace PCShop
 {
@@ -54,7 +55,38 @@ namespace PCShop
                     UnosPodatakaOPlacanju(datumNarudzbe, brojNarudzbe);
                     UnosStavakaNarudzbe(brojNarudzbe);
                     MessageBox.Show("Proizvod je uspješno naručen");
-                    Close();
+                    string imeKorisnika = "";
+                    double iznosKn = 0;
+                    int kolicina = 0;
+
+                    Data.Stanje_narudzbe stanje = new Data.Stanje_narudzbe();
+                    Data.Narudzba narudzba = new Data.Narudzba();
+                    Data.Artikl artikl = new Data.Artikl();
+                    List<Data.Stavka_narudzbe> stavke = new List<Stavka_narudzbe>();
+                    List<Data.Stavka_narudzbe> stavka = new List<Data.Stavka_narudzbe>();
+                    List<Artikl> popis = new List<Artikl>();
+                    using (var entities = new Entities())
+                    {
+                        narudzba = entities.Narudzbas.First(X => X.Narudzba_Id == brojNarudzbe);
+                        int usporedba = int.Parse(narudzba.StanjeNarudzbe.ToString());
+                        stavka = entities.Stavka_narudzbe.Where(X => X.Narudzba_Id == brojNarudzbe).ToList();
+                        stanje = entities.Stanje_narudzbe.First(X => X.StanjeNarudzbe_Id == usporedba);
+                        foreach (Artikl ar in entities.Artikls)
+                        {
+                            foreach (Stavka_narudzbe sta in stavka)
+                            {
+                                if (ar.Artikl_Id == sta.Artikl_Id)
+                                {
+                                    popis.Add(ar);
+                                    stavke.Add(sta);
+                                }
+                            }
+                        }
+                        imeKorisnika += entities.Korisniks.First(X => X.Korisnik_Id == narudzba.KorisnikId).Ime.ToString() + " " + entities.Korisniks.First(X => X.Korisnik_Id == narudzba.KorisnikId).Prezime.ToString();
+                    }
+
+                    FrmIzvjestaj forma = new FrmIzvjestaj(narudzba, popis, imeKorisnika, stavke, stanje.Naziv);
+                    forma.ShowDialog();
                 }
                 else
                 {
