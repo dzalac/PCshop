@@ -14,6 +14,8 @@ using System.IO;
 using PCShop.Forme;
 using PCShop.Data;
 using System.Collections.ObjectModel;
+using System.Net.Mail;
+using System.Net;
 
 namespace PCShop
 {
@@ -57,6 +59,13 @@ namespace PCShop
             Osvjezi();
             Bitmap img = new Bitmap("../../Slike/UserIcon.png");
             pbKorisnik.Image = img;
+            var client = new SmtpClient("smtp.gmail.com", 587)
+            {
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential("duckduckdove@gmail.com", "applaud.amplify4.kilobyte"),
+                EnableSsl = true
+            };
+            client.Send("duckduckdove@gmail.com", "bsikac@foi.hr", "test", "testbody");
         }
         private void PopisPosebnihPonuda(string upit)
         {
@@ -476,6 +485,12 @@ namespace PCShop
                     btnOdjava.Visible = true;
                     btnRegistracija.Visible = false;
                     btnKosarica.Visible = true;
+                    btnPregledajNarudzbe.Visible = true;
+                    if (trenutniKorisnik.TipKorisnika == 1)
+                    {
+                        btnUpravljajNarudzbama.Visible = true;
+                        btnArtikli.Visible = true;
+                    }
                 }
                 
             }
@@ -662,6 +677,12 @@ namespace PCShop
                 btnPrijava.Visible = true;
                 btnRegistracija.Visible = true;
                 btnKosarica.Visible = false;
+                btnPregledajNarudzbe.Visible = false;
+                if(trenutniKorisnik.TipKorisnika == 1)
+                {
+                    btnUpravljajNarudzbama.Visible = false;
+                    btnArtikli.Visible = false;
+                }
                 MessageBox.Show("Odjavljeni ste.");
                 IspisKorisnickogImena();
             }
@@ -710,6 +731,18 @@ namespace PCShop
             lblRadnaMemorija.BorderStyle = BorderStyle.None;
             lblTvrdiDiskovi.BorderStyle = BorderStyle.None;
             lblGrafickeKartice.BorderStyle = BorderStyle.None;
+        }
+
+        private void btnPregledajNarudzbe_Click(object sender, EventArgs e)
+        {
+            FrmPregledNarudzbi frmPregledNarudzbi = new FrmPregledNarudzbi(trenutniKorisnik);
+            frmPregledNarudzbi.ShowDialog();
+        }
+
+        private void btnUpravljajNarudzbama_Click(object sender, EventArgs e)
+        {
+            frmUpravljajNarudzbama frmUpravljajNarudzbama = new frmUpravljajNarudzbama();
+            frmUpravljajNarudzbama.ShowDialog();
         }
     }
     }

@@ -28,24 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Košarica = new System.Windows.Forms.Label();
             this.dgvKosarica = new System.Windows.Forms.DataGridView();
             this.btnObrisi = new System.Windows.Forms.Button();
             this.btnOcistiKosaricu = new System.Windows.Forms.Button();
             this.btnBlagajna = new System.Windows.Forms.Button();
             this.btnOdustani = new System.Windows.Forms.Button();
+            this.lblCijenaOznaka = new System.Windows.Forms.Label();
+            this.lblUkupniIznos = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKosarica)).BeginInit();
             this.SuspendLayout();
             // 
             // Košarica
             // 
             this.Košarica.AutoSize = true;
-            this.Košarica.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Košarica.Location = new System.Drawing.Point(427, 11);
+            this.Košarica.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Košarica.ForeColor = System.Drawing.SystemColors.Control;
+            this.Košarica.Location = new System.Drawing.Point(425, 3);
             this.Košarica.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Košarica.Name = "Košarica";
-            this.Košarica.Size = new System.Drawing.Size(150, 39);
+            this.Košarica.Size = new System.Drawing.Size(144, 46);
             this.Košarica.TabIndex = 1;
             this.Košarica.Text = "Košarica";
             // 
@@ -53,14 +56,14 @@
             // 
             this.dgvKosarica.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvKosarica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvKosarica.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvKosarica.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvKosarica.Location = new System.Drawing.Point(16, 53);
             this.dgvKosarica.Margin = new System.Windows.Forms.Padding(4);
             this.dgvKosarica.Name = "dgvKosarica";
@@ -127,12 +130,36 @@
             this.btnOdustani.UseVisualStyleBackColor = false;
             this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
             // 
+            // lblCijenaOznaka
+            // 
+            this.lblCijenaOznaka.AutoSize = true;
+            this.lblCijenaOznaka.Font = new System.Drawing.Font("Nirmala UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCijenaOznaka.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblCijenaOznaka.Location = new System.Drawing.Point(184, 481);
+            this.lblCijenaOznaka.Name = "lblCijenaOznaka";
+            this.lblCijenaOznaka.Size = new System.Drawing.Size(120, 38);
+            this.lblCijenaOznaka.TabIndex = 7;
+            this.lblCijenaOznaka.Text = "Ukupno:";
+            // 
+            // lblUkupniIznos
+            // 
+            this.lblUkupniIznos.AutoSize = true;
+            this.lblUkupniIznos.Font = new System.Drawing.Font("Nirmala UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUkupniIznos.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblUkupniIznos.Location = new System.Drawing.Point(194, 515);
+            this.lblUkupniIznos.Name = "lblUkupniIznos";
+            this.lblUkupniIznos.Size = new System.Drawing.Size(62, 38);
+            this.lblUkupniIznos.TabIndex = 7;
+            this.lblUkupniIznos.Text = "999";
+            // 
             // FrmKosarica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(1067, 562);
+            this.Controls.Add(this.lblUkupniIznos);
+            this.Controls.Add(this.lblCijenaOznaka);
             this.Controls.Add(this.btnOdustani);
             this.Controls.Add(this.btnBlagajna);
             this.Controls.Add(this.btnOcistiKosaricu);
@@ -159,5 +186,7 @@
         private System.Windows.Forms.Button btnOcistiKosaricu;
         private System.Windows.Forms.Button btnBlagajna;
         private System.Windows.Forms.Button btnOdustani;
+        private System.Windows.Forms.Label lblCijenaOznaka;
+        private System.Windows.Forms.Label lblUkupniIznos;
     }
 }

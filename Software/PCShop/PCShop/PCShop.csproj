@@ -113,6 +113,18 @@
     <Compile Include="Forme\FrmKorisnik.Designer.cs">
       <DependentUpon>FrmKorisnik.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\FrmPregledNarudzbi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\FrmPregledNarudzbi.Designer.cs">
+      <DependentUpon>FrmPregledNarudzbi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\frmUpravljajNarudzbama.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\frmUpravljajNarudzbama.Designer.cs">
+      <DependentUpon>frmUpravljajNarudzbama.cs</DependentUpon>
+    </Compile>
     <Compile Include="Klase\ArtiklException.cs" />
     <Compile Include="Klase\ArtiklExtended.cs" />
     <Compile Include="Forme\FrmArtikl.cs">
@@ -188,8 +200,14 @@
     <EmbeddedResource Include="Forme\FrmNoviArtikl.resx">
       <DependentUpon>FrmNoviArtikl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\FrmPregledNarudzbi.resx">
+      <DependentUpon>FrmPregledNarudzbi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\FrmPrijava.resx">
       <DependentUpon>FrmPrijava.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\frmUpravljajNarudzbama.resx">
+      <DependentUpon>frmUpravljajNarudzbama.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FrmUpravljanjeArtiklima.resx">
       <DependentUpon>FrmUpravljanjeArtiklima.cs</DependentUpon>

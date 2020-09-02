@@ -38,11 +38,22 @@ namespace PCShop
                            join artikl in db.Artikls
                            on stavka.Artikl_Id equals artikl.Artikl_Id
                            where stavka.Kosarica_Id == kosarica.Kosarica_Id && kosarica.Korisnik == trenutniKorisnik.Korisnik_Id
-                           select new { ArtiklId = stavka.Artikl_Id, Naziv = artikl.Naziv, Kolicina = stavka.Kolicina };
+                           select new 
+                           { 
+                               ArtiklId = stavka.Artikl_Id, 
+                               Naziv = artikl.Naziv, 
+                               Kolicina = stavka.Kolicina, 
+                               JedinicnaCijena = (artikl.Cijena - artikl.Cijena * artikl.Popust / 100), 
+                               UkupnaCijena = ((artikl.Cijena - artikl.Cijena * artikl.Popust / 100) * stavka.Kolicina)};
                
                 dgvKosarica.DataSource = null;
                 dgvKosarica.DataSource = data.ToList();
-
+                double? ukupnaVrijednost = 0;
+                foreach (var item in data.ToList())
+                {
+                    ukupnaVrijednost += item.UkupnaCijena;
+                }
+                lblUkupniIznos.Text = ukupnaVrijednost + "kn";
                 var postojeStavke = db.Stavka_kosarice.FirstOrDefault(stavka => stavka.Kosarica_Id == kosarica.Kosarica_Id);
                 if (postojeStavke != null)
                 {
@@ -116,11 +127,12 @@ namespace PCShop
         }
         private void btnBlagajna_Click(object sender, EventArgs e)
         {
-      
+
+            this.Hide();
             FrmBlagajna form = new FrmBlagajna(trenutniKorisnik,kosarica);
-            Close();
             form.ShowDialog();
-           
+            Close();
+
         }
 
         private void FrmKosarica_Load(object sender, EventArgs e)

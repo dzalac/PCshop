@@ -72,7 +72,7 @@
             this.dgvArtikli.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvArtikli.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvArtikli.EnableHeadersVisualStyles = false;
-            this.dgvArtikli.Location = new System.Drawing.Point(449, 0);
+            this.dgvArtikli.Location = new System.Drawing.Point(249, 0);
             this.dgvArtikli.Margin = new System.Windows.Forms.Padding(4);
             this.dgvArtikli.Name = "dgvArtikli";
             this.dgvArtikli.ReadOnly = true;
@@ -86,7 +86,7 @@
             this.dgvArtikli.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvArtikli.RowHeadersWidth = 51;
             this.dgvArtikli.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArtikli.Size = new System.Drawing.Size(781, 482);
+            this.dgvArtikli.Size = new System.Drawing.Size(981, 482);
             this.dgvArtikli.TabIndex = 22;
             // 
             // panel1
@@ -98,7 +98,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(449, 482);
+            this.panel1.Size = new System.Drawing.Size(249, 482);
             this.panel1.TabIndex = 23;
             // 
             // btnOdustani

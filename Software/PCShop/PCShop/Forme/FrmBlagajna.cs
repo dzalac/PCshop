@@ -48,14 +48,19 @@ namespace PCShop
                 VerifikacijaUnosa();
                 DateTime datumNarudzbe = DateTime.Now;
                 int brojNarudzbe = 0;
-                UnosNarudzbe(datumNarudzbe);
-                using (var db = new Entities())
+                if(ProvjeraKolicineArtikala())
                 {
-                    brojNarudzbe = db.Narudzbas.First(narudzba => narudzba.KorisnikId == korisnik.Korisnik_Id && narudzba.DatumNarudzbe == datumNarudzbe.Date).Narudzba_Id;
+                    brojNarudzbe = UnosNarudzbe(datumNarudzbe);
+                    UnosPodatakaOPlacanju(datumNarudzbe, brojNarudzbe);
+                    UnosStavakaNarudzbe(brojNarudzbe);
+                    MessageBox.Show("Proizvod je uspješno naručen");
+                    Close();
                 }
-                UnosPodatakaOPlacanju(datumNarudzbe, brojNarudzbe);
-                UnosStavakaNarudzbe(brojNarudzbe);
-                MessageBox.Show("Proizvod je uspješno naručen");
+                else
+                {
+                    MessageBox.Show("U skladištu nedostaje proizvoda!");
+                }
+               
             }
             catch (BlagajnaException ex)
             {
@@ -161,7 +166,7 @@ namespace PCShop
             }
         }
 
-        private void UnosNarudzbe(DateTime datumNarudzbe)
+        private int UnosNarudzbe(DateTime datumNarudzbe)
         {
             using (var db = new Entities())
             {
@@ -176,6 +181,8 @@ namespace PCShop
                 };
                 db.Narudzbas.Add(novaNarudzba);
                 db.SaveChanges();
+
+                return novaNarudzba.Narudzba_Id;
             }
         }
 
@@ -204,6 +211,35 @@ namespace PCShop
             }
         }
 
+        private bool ProvjeraKolicineArtikala()
+        {
+            using (var db = new Entities())
+            {
+                var stavkeKosarice = from stavka in db.Stavka_kosarice
+                                     join artikl in db.Artikls
+                                     on stavka.Artikl_Id equals artikl.Artikl_Id
+                                     where stavka.Kosarica_Id == kosarica.Kosarica_Id
+                                     select new { ArtiklId = stavka.Artikl_Id, Cijena = artikl.Cijena, Popust = artikl.Popust, 
+                                         KolicinaKosarice = stavka.Kolicina, KolicinaArtikla = artikl.Kolicina };
+
+                foreach (var stavka in stavkeKosarice)
+                {
+                    int? kolicina = stavka.KolicinaArtikla - stavka.KolicinaKosarice;
+                   if (kolicina < 0)
+                   {
+                        return false;
+                   }
+                   else
+                   {
+                        Artikl artikl = new Artikl { Artikl_Id = stavka.ArtiklId };
+                        db.Artikls.Attach(artikl);
+                        db.Entry(artikl).Property("Kolicina").CurrentValue = kolicina;
+                   }
+                }
+                db.SaveChanges();
+                return true;
+            }   
+        }
         private void UnosStavakaNarudzbe(int brojNarudzbe)
         {
             using (var db = new Entities())
