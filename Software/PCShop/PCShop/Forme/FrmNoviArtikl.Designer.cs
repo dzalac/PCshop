@@ -55,7 +55,7 @@
             // txtNaziv
             // 
             this.txtNaziv.Location = new System.Drawing.Point(92, 41);
-            this.txtNaziv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNaziv.Margin = new System.Windows.Forms.Padding(2);
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(119, 20);
             this.txtNaziv.TabIndex = 0;
@@ -75,7 +75,7 @@
             // txtProizvodac
             // 
             this.txtProizvodac.Location = new System.Drawing.Point(92, 64);
-            this.txtProizvodac.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtProizvodac.Margin = new System.Windows.Forms.Padding(2);
             this.txtProizvodac.Name = "txtProizvodac";
             this.txtProizvodac.Size = new System.Drawing.Size(119, 20);
             this.txtProizvodac.TabIndex = 0;
@@ -95,7 +95,7 @@
             // txtCijena
             // 
             this.txtCijena.Location = new System.Drawing.Point(92, 87);
-            this.txtCijena.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCijena.Margin = new System.Windows.Forms.Padding(2);
             this.txtCijena.Name = "txtCijena";
             this.txtCijena.Size = new System.Drawing.Size(119, 20);
             this.txtCijena.TabIndex = 0;
@@ -115,7 +115,7 @@
             // txtKolicina
             // 
             this.txtKolicina.Location = new System.Drawing.Point(92, 110);
-            this.txtKolicina.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtKolicina.Margin = new System.Windows.Forms.Padding(2);
             this.txtKolicina.Name = "txtKolicina";
             this.txtKolicina.Size = new System.Drawing.Size(119, 20);
             this.txtKolicina.TabIndex = 0;
@@ -135,7 +135,7 @@
             // txtPopust
             // 
             this.txtPopust.Location = new System.Drawing.Point(92, 132);
-            this.txtPopust.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPopust.Margin = new System.Windows.Forms.Padding(2);
             this.txtPopust.Name = "txtPopust";
             this.txtPopust.Size = new System.Drawing.Size(119, 20);
             this.txtPopust.TabIndex = 0;
@@ -167,7 +167,7 @@
             // rtxtOpisArtikla
             // 
             this.rtxtOpisArtikla.Location = new System.Drawing.Point(14, 235);
-            this.rtxtOpisArtikla.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rtxtOpisArtikla.Margin = new System.Windows.Forms.Padding(2);
             this.rtxtOpisArtikla.Name = "rtxtOpisArtikla";
             this.rtxtOpisArtikla.Size = new System.Drawing.Size(196, 101);
             this.rtxtOpisArtikla.TabIndex = 2;
@@ -176,7 +176,7 @@
             // dtpDatumDodavanja
             // 
             this.dtpDatumDodavanja.Location = new System.Drawing.Point(14, 171);
-            this.dtpDatumDodavanja.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpDatumDodavanja.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDatumDodavanja.Name = "dtpDatumDodavanja";
             this.dtpDatumDodavanja.Size = new System.Drawing.Size(196, 20);
             this.dtpDatumDodavanja.TabIndex = 3;
@@ -200,7 +200,7 @@
             this.btnOdustani.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOdustani.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnOdustani.Location = new System.Drawing.Point(363, 285);
-            this.btnOdustani.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOdustani.Margin = new System.Windows.Forms.Padding(2);
             this.btnOdustani.Name = "btnOdustani";
             this.btnOdustani.Size = new System.Drawing.Size(77, 34);
             this.btnOdustani.TabIndex = 4;
@@ -215,7 +215,7 @@
             this.btnSpremi.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSpremi.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnSpremi.Location = new System.Drawing.Point(261, 285);
-            this.btnSpremi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSpremi.Margin = new System.Windows.Forms.Padding(2);
             this.btnSpremi.Name = "btnSpremi";
             this.btnSpremi.Size = new System.Drawing.Size(77, 34);
             this.btnSpremi.TabIndex = 4;
@@ -226,7 +226,7 @@
             // pbSlika
             // 
             this.pbSlika.Location = new System.Drawing.Point(261, 41);
-            this.pbSlika.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbSlika.Margin = new System.Windows.Forms.Padding(2);
             this.pbSlika.Name = "pbSlika";
             this.pbSlika.Size = new System.Drawing.Size(179, 167);
             this.pbSlika.TabIndex = 5;
@@ -239,7 +239,7 @@
             this.btnOdaberiSliku.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOdaberiSliku.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnOdaberiSliku.Location = new System.Drawing.Point(261, 235);
-            this.btnOdaberiSliku.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOdaberiSliku.Margin = new System.Windows.Forms.Padding(2);
             this.btnOdaberiSliku.Name = "btnOdaberiSliku";
             this.btnOdaberiSliku.Size = new System.Drawing.Size(179, 34);
             this.btnOdaberiSliku.TabIndex = 4;
@@ -257,7 +257,7 @@
             this.cbVrstaArtikla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbVrstaArtikla.FormattingEnabled = true;
             this.cbVrstaArtikla.Location = new System.Drawing.Point(92, 200);
-            this.cbVrstaArtikla.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbVrstaArtikla.Margin = new System.Windows.Forms.Padding(2);
             this.cbVrstaArtikla.Name = "cbVrstaArtikla";
             this.cbVrstaArtikla.Size = new System.Drawing.Size(119, 21);
             this.cbVrstaArtikla.TabIndex = 6;
@@ -300,10 +300,11 @@
             this.Controls.Add(this.txtCijena);
             this.Controls.Add(this.txtProizvodac);
             this.Controls.Add(this.txtNaziv);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmNoviArtikl";
             this.Text = "Novi Artikl";
             this.Load += new System.EventHandler(this.FrmNoviArtikl_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmNoviArtikl_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -158,5 +158,18 @@ namespace PCShop.Forme
             FrmIzvjestaj forma = new FrmIzvjestaj(narudzba, popis, imeKorisnika,korisnik.Email, stavke, stanje.Naziv,0);
             forma.ShowDialog();
         }
+
+        private void FrmPregledNarudzbi_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 112)
+            {
+                string helpFile = System.IO.Path.GetFullPath(@"..\..\Korisnicka_dokumentacija.chm");
+
+                if (System.IO.File.Exists(helpFile))
+                {
+                    Help.ShowHelp(this, helpFile);
+                }
+            }
+        }
     }
 }

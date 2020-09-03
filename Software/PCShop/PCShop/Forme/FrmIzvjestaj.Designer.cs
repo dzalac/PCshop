@@ -49,6 +49,7 @@
             this.Name = "FrmIzvjestaj";
             this.Text = "Izvjestaj";
             this.Load += new System.EventHandler(this.FrmIzvjestaj_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmIzvjestaj_KeyDown);
             this.ResumeLayout(false);
 
         }

@@ -149,5 +149,18 @@ namespace PCShop
         {
             Close();
         }
+
+        private void FrmArtikl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 112)
+            {
+                string helpFile = System.IO.Path.GetFullPath(@"..\..\Korisnicka_dokumentacija.chm");
+
+                if (System.IO.File.Exists(helpFile))
+                {
+                    Help.ShowHelp(this, helpFile);
+                }
+            }
+        }
     }
 }

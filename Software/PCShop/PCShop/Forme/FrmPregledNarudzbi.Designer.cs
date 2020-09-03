@@ -202,6 +202,7 @@
             this.Name = "FrmPregledNarudzbi";
             this.Text = "Pregled Narudzbi";
             this.Load += new System.EventHandler(this.FrmPregledNarudzbi_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmPregledNarudzbi_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNarudzbe)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -202,5 +202,18 @@ namespace PCShop.Forme
                 throw new ArtiklException("Slika mora biti izabrana.");
             }
         }
+
+        private void FrmNoviArtikl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 112)
+            {
+                string helpFile = System.IO.Path.GetFullPath(@"..\..\Korisnicka_dokumentacija.chm");
+
+                if (System.IO.File.Exists(helpFile))
+                {
+                    Help.ShowHelp(this, helpFile);
+                }
+            }
+        }
     }
 }

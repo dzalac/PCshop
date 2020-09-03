@@ -219,6 +219,7 @@
             this.Name = "FrmArtikl";
             this.Text = "Artikl";
             this.Load += new System.EventHandler(this.FrmArtikl_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmArtikl_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

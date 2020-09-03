@@ -323,6 +323,7 @@
             this.Name = "FrmKorisnik";
             this.Text = "Informacije o korisniku";
             this.Load += new System.EventHandler(this.FrmKorisnik_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmKorisnik_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

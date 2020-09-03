@@ -74,6 +74,7 @@
             this.Name = "FrmKontakt";
             this.Text = "Kontakt";
             this.Load += new System.EventHandler(this.FrmKontakt_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmKontakt_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pbPCShop)).EndInit();
             this.ResumeLayout(false);
 

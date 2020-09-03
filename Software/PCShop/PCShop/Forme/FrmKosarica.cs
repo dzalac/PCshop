@@ -73,7 +73,7 @@ namespace PCShop
         {
             if (e.KeyValue == 112)
             {
-                string helpFile = System.IO.Path.GetFullPath(@"..\..\helper.chm");
+                string helpFile = System.IO.Path.GetFullPath(@"..\..\Korisnicka_dokumentacija.chm");
 
                 if (System.IO.File.Exists(helpFile))
                 {
