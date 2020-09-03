@@ -102,7 +102,7 @@
             this.btnPrijava.TabIndex = 5;
             this.btnPrijava.Text = "Prijava";
             this.btnPrijava.UseVisualStyleBackColor = false;
-            this.btnPrijava.Click += new System.EventHandler(this.btnPrijava_Click);
+            this.btnPrijava.Click += new System.EventHandler(this.BtnPrijava_Click);
             // 
             // btnOdustani
             // 
@@ -116,7 +116,7 @@
             this.btnOdustani.TabIndex = 6;
             this.btnOdustani.Text = "Odustani";
             this.btnOdustani.UseVisualStyleBackColor = false;
-            this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
+            this.btnOdustani.Click += new System.EventHandler(this.BtnOdustani_Click);
             // 
             // FrmPrijava
             // 

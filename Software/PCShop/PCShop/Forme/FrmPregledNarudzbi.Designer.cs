@@ -37,13 +37,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvNarudzbe = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPregled = new System.Windows.Forms.Button();
             this.btnOdustani = new System.Windows.Forms.Button();
             this.lblOtkaziNarudzbu = new System.Windows.Forms.Label();
             this.vrstaArtiklaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dgvArtikli = new System.Windows.Forms.DataGridView();
             this.artiklBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnPregled = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNarudzbe)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vrstaArtiklaBindingSource)).BeginInit();
@@ -105,6 +105,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(187, 390);
             this.panel1.TabIndex = 25;
+            // 
+            // btnPregled
+            // 
+            this.btnPregled.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnPregled.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPregled.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPregled.Location = new System.Drawing.Point(13, 303);
+            this.btnPregled.Name = "btnPregled";
+            this.btnPregled.Size = new System.Drawing.Size(168, 34);
+            this.btnPregled.TabIndex = 26;
+            this.btnPregled.Text = "Pregled narudžbe";
+            this.btnPregled.UseVisualStyleBackColor = false;
+            this.btnPregled.Click += new System.EventHandler(this.BtnPregled_Click);
             // 
             // btnOdustani
             // 
@@ -176,19 +189,6 @@
             // 
             this.artiklBindingSource.DataSource = typeof(PCShop.Data.Artikl);
             // 
-            // btnPregled
-            // 
-            this.btnPregled.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.btnPregled.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPregled.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPregled.Location = new System.Drawing.Point(13, 303);
-            this.btnPregled.Name = "btnPregled";
-            this.btnPregled.Size = new System.Drawing.Size(168, 34);
-            this.btnPregled.TabIndex = 26;
-            this.btnPregled.Text = "Pregled narudžbe";
-            this.btnPregled.UseVisualStyleBackColor = false;
-            this.btnPregled.Click += new System.EventHandler(this.BtnPregled_Click);
-            // 
             // FrmPregledNarudzbi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -200,7 +200,7 @@
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmPregledNarudzbi";
-            this.Text = "FrmPregledNarudzbi";
+            this.Text = "Pregled Narudzbi";
             this.Load += new System.EventHandler(this.FrmPregledNarudzbi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNarudzbe)).EndInit();
             this.panel1.ResumeLayout(false);

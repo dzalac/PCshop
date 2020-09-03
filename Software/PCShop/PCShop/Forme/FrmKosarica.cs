@@ -16,8 +16,8 @@ namespace PCShop
 {
     public partial class FrmKosarica : Form
     {
-        Kosarica kosarica;
-        private Korisnik trenutniKorisnik;
+        readonly Kosarica kosarica;
+        private readonly Korisnik trenutniKorisnik;
 
         public FrmKosarica(Data.Kosarica trenutnaKosarica,Korisnik trenutniKorisnik)
         {
@@ -40,9 +40,9 @@ namespace PCShop
                            where stavka.Kosarica_Id == kosarica.Kosarica_Id && kosarica.Korisnik == trenutniKorisnik.Korisnik_Id
                            select new 
                            { 
-                               ArtiklId = stavka.Artikl_Id, 
-                               Naziv = artikl.Naziv, 
-                               Kolicina = stavka.Kolicina, 
+                               ArtiklId = stavka.Artikl_Id,
+                               artikl.Naziv,
+                               stavka.Kolicina, 
                                JedinicnaCijena = (artikl.Cijena - artikl.Cijena * artikl.Popust / 100), 
                                UkupnaCijena = ((artikl.Cijena - artikl.Cijena * artikl.Popust / 100) * stavka.Kolicina)};
                
@@ -81,14 +81,14 @@ namespace PCShop
                 }
             }
         }
-        private void btnOdustani_Click(object sender, EventArgs e)
+        private void BtnOdustani_Click(object sender, EventArgs e)
         {
             Close();
         }
         //Unutar konteksta se pomoću upita dohvaćaju sve stavke košarice.
         //Nakon toga se iterirajući kroz listu stavaka, svaka pojedina stavka kači na kontekst i uklanja iz baze podataka. Nakon završenog brisanja
         //promjene se spremaju i osvježava se DataGridView.
-        private void btnOcistiKosaricu_Click(object sender, EventArgs e)
+        private void BtnOcistiKosaricu_Click(object sender, EventArgs e)
         {
             using (var db = new Entities())
             {
@@ -106,7 +106,7 @@ namespace PCShop
         //Ako je odabrani redak u DataGridView-u različit od null, iz retka se uzima vrijednost prvog stupca u kojemu se nalazi Id artikla.
         //Pomoću tog Id-a se dohvaća stavka s odgovarajućim Id-om koja pripada košarici korisnika te se kači na konteskt i briše iz baze podataka, 
         //a promjene se spremaju.
-        private void btnObrisi_Click(object sender, EventArgs e)
+        private void BtnObrisi_Click(object sender, EventArgs e)
         {
             if (dgvKosarica.CurrentRow != null)
             {
@@ -125,7 +125,7 @@ namespace PCShop
             }
             Osvjezi();
         }
-        private void btnBlagajna_Click(object sender, EventArgs e)
+        private void BtnBlagajna_Click(object sender, EventArgs e)
         {
 
             this.Hide();

@@ -34,7 +34,7 @@ namespace PCShop
                 }
             }
         }
-        private void btnOdustani_Click(object sender, EventArgs e)
+        private void BtnOdustani_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -42,7 +42,7 @@ namespace PCShop
         //Upitom se dohvaća korisnik čija lozinka i korisničko ime odgovara onom unesenom u tekstnim poljima.
         //Ako korisnik ne postoji, tj. vrijednost je null, ispisuje se poruka greške.
         //Međutim, ako korisnik postoji ispisuje se poruka uspješne prijave i rezultat forme je OK.
-        private void btnPrijava_Click(object sender, EventArgs e)
+        private void BtnPrijava_Click(object sender, EventArgs e)
         {
             using (var db = new Entities())
             {

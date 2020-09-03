@@ -266,7 +266,7 @@
             this.btnRegistriraj.TabIndex = 19;
             this.btnRegistriraj.Text = "Registriraj se";
             this.btnRegistriraj.UseVisualStyleBackColor = false;
-            this.btnRegistriraj.Click += new System.EventHandler(this.btnRegistriraj_Click);
+            this.btnRegistriraj.Click += new System.EventHandler(this.BtnRegistriraj_Click);
             // 
             // btnOdustani
             // 
@@ -280,7 +280,7 @@
             this.btnOdustani.TabIndex = 20;
             this.btnOdustani.Text = "Odustani";
             this.btnOdustani.UseVisualStyleBackColor = false;
-            this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
+            this.btnOdustani.Click += new System.EventHandler(this.BtnOdustani_Click);
             // 
             // FrmRegistracija
             // 

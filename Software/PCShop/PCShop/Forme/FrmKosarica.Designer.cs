@@ -84,7 +84,7 @@
             this.btnObrisi.TabIndex = 3;
             this.btnObrisi.Text = "Obrisi artikl";
             this.btnObrisi.UseVisualStyleBackColor = false;
-            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
+            this.btnObrisi.Click += new System.EventHandler(this.BtnObrisi_Click);
             // 
             // btnOcistiKosaricu
             // 
@@ -99,7 +99,7 @@
             this.btnOcistiKosaricu.TabIndex = 4;
             this.btnOcistiKosaricu.Text = "Očisti košaricu";
             this.btnOcistiKosaricu.UseVisualStyleBackColor = false;
-            this.btnOcistiKosaricu.Click += new System.EventHandler(this.btnOcistiKosaricu_Click);
+            this.btnOcistiKosaricu.Click += new System.EventHandler(this.BtnOcistiKosaricu_Click);
             // 
             // btnBlagajna
             // 
@@ -114,7 +114,7 @@
             this.btnBlagajna.TabIndex = 5;
             this.btnBlagajna.Text = "U blagajnu";
             this.btnBlagajna.UseVisualStyleBackColor = false;
-            this.btnBlagajna.Click += new System.EventHandler(this.btnBlagajna_Click);
+            this.btnBlagajna.Click += new System.EventHandler(this.BtnBlagajna_Click);
             // 
             // btnOdustani
             // 
@@ -128,7 +128,7 @@
             this.btnOdustani.TabIndex = 6;
             this.btnOdustani.Text = "Odustani";
             this.btnOdustani.UseVisualStyleBackColor = false;
-            this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
+            this.btnOdustani.Click += new System.EventHandler(this.BtnOdustani_Click);
             // 
             // lblCijenaOznaka
             // 

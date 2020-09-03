@@ -72,7 +72,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbPCShop);
             this.Name = "FrmKontakt";
-            this.Text = "FrmKontakt";
+            this.Text = "Kontakt";
             this.Load += new System.EventHandler(this.FrmKontakt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbPCShop)).EndInit();
             this.ResumeLayout(false);

@@ -18,7 +18,7 @@ namespace PCShop.Forme
             InitializeComponent();
         }
 
-        private void frmUpravljajNarudzbama_Load(object sender, EventArgs e)
+        private void FrmUpravljajNarudzbama_Load(object sender, EventArgs e)
         {
             PrikazNarudzbi();
         }
@@ -33,10 +33,10 @@ namespace PCShop.Forme
                                     select new
                                     {
                                         NarudzbaId = narudzba.Narudzba_Id,
-                                        DatumNarudzbe = narudzba.DatumNarudzbe,
+                                        narudzba.DatumNarudzbe,
                                         Grad = narudzba.GradDostave,
                                         Adresa = narudzba.AdresaDostave,
-                                        PostanskiBroj = narudzba.PostanskiBroj,
+                                        narudzba.PostanskiBroj,
                                         StanjeNarudzbe = stanje.Naziv
                                     };
                 dgvNarudzbe.DataSource = null;
@@ -44,14 +44,14 @@ namespace PCShop.Forme
             }
         }
 
-        private void btnOdustani_Click(object sender, EventArgs e)
+        private void BtnOdustani_Click(object sender, EventArgs e)
         {
             Close();
         }
         //Pomoću Id-a odabrane narudžbe u DataGridView-u dohvaća se narudžba i provjerava joj se stanje.
         //Ako je moguće, narudžba se deklarira poslanom tako da se odabrana narudžba kvači na kontekst i mijenja joj se stanje u "U dostavi".
         //Sprema se promjena i ispisuje se poruka.
-        private void btnPoslano_Click(object sender, EventArgs e)
+        private void BtnPoslano_Click(object sender, EventArgs e)
         {
             using (var db = new Entities())
             {
@@ -84,7 +84,7 @@ namespace PCShop.Forme
         //Pomoću Id-a odabrane narudžbe u DataGridView-u dohvaća se narudžba i provjerava joj se stanje.
         //Ako je moguće, narudžba se deklarira dostavljenom tako da se odabrana narudžba kvači na kontekst i mijenja joj se stanje u "Dostavljeno".
         //Sprema se promjena i ispisuje se poruka.
-        private void btnDostavljeno_Click(object sender, EventArgs e)
+        private void BtnDostavljeno_Click(object sender, EventArgs e)
         {
             using (var db = new Entities())
             {

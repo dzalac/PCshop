@@ -35,7 +35,7 @@ namespace PCShop
                 }
             }
         }
-        private void btnOdustani_Click(object sender, EventArgs e)
+        private void BtnOdustani_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -44,7 +44,7 @@ namespace PCShop
        //Kako je svaki korisnik koji se registrira tipa "Korisnik", atribut "TipKorisnika" postavlja se na vrijednost 2 (adminstratoru odgovara vrijednost 1).
        //Novome se korisniku kreira košarica koja je povezana s korisničkim računom pomoću njegovog Id-a.
        //Uspješnom registracijom ispisuje se poruka i šalje se e-mail obavijest.
-        private void btnRegistriraj_Click(object sender, EventArgs e)
+        private void BtnRegistriraj_Click(object sender, EventArgs e)
         {
             int vrstaKorisnika = 2;
             try
@@ -167,12 +167,11 @@ namespace PCShop
             //Verifikacija poštanskog broja
             //Ako je polje prazno, baca se iznimka.
             //U slučaju da polje ne sadrži vrijednost tipa "int", baca se iznimka.
-            int pomocnaVarijabla;
             if (string.IsNullOrEmpty(txtPostanskiBroj.Text))
             {
                 throw new KorisnikException("Poštanski broj mora biti definiran.");
             }
-            else if(!int.TryParse(txtPostanskiBroj.Text,out pomocnaVarijabla) || txtPostanskiBroj.Text.Length<5)
+            else if(!int.TryParse(txtPostanskiBroj.Text,out _) || txtPostanskiBroj.Text.Length<5)
             {
                 throw new KorisnikException("Poštanski broj mora biti napisan u ispravnom formatu.");
             }

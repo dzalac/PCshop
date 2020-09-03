@@ -69,8 +69,8 @@ namespace PCShop.Forme
             if (saljiPdf == 1)
             {
                 byte[] bytes = rvIzvjestaj.LocalReport.Render(
-                   "PDF", null, out _, out _, out _,
-                    out _, out _);
+                       "PDF", null, out _, out _, out _,
+                        out _, warnings: out _);
 
 
                 string filename = Path.Combine(Environment.CurrentDirectory, "..\\..\\Izvjestaj\\Izvjestaj.rdlc");

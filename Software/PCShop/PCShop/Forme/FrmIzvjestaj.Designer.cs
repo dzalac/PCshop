@@ -47,7 +47,7 @@
             this.ClientSize = new System.Drawing.Size(882, 640);
             this.Controls.Add(this.rvIzvjestaj);
             this.Name = "FrmIzvjestaj";
-            this.Text = "FrmIzvjestaj";
+            this.Text = "Izvjestaj";
             this.Load += new System.EventHandler(this.FrmIzvjestaj_Load);
             this.ResumeLayout(false);
 
