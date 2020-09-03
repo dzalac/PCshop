@@ -51,7 +51,7 @@ namespace PCShop.Forme
         {
             OpenFileDialog dlg = new OpenFileDialog
             {
-                Filter = "images|*.png"
+                Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png"
             };
             var rezultat = dlg.ShowDialog();
             if (rezultat==DialogResult.OK)
@@ -84,15 +84,15 @@ namespace PCShop.Forme
                     pbSlika.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                     if (selektiraniArtikl == null)
                     {
-                        Artikl noviArtikl = new Artikl//new Artikl(txtNaziv.Text, float.Parse(txtCijena.Text), txtProizvodac.Text, rtxtOpisArtikla.Text, int.Parse(txtKolicina.Text), (int)cbVrstaArtikla.SelectedValue, double.Parse(txtPopust.Text), dtpDatumDodavanja.Value, ms.ToArray());
+                        Artikl noviArtikl = new Artikl
                         {
                             Naziv = txtNaziv.Text,
-                            Cijena = float.Parse(txtCijena.Text),
+                            Cijena = double.Parse(txtCijena.Text),
                             Proizvodac = txtProizvodac.Text,
                             Opis = rtxtOpisArtikla.Text,
                             Kolicina = int.Parse(txtKolicina.Text),
                             VrstaArtikla = (int)cbVrstaArtikla.SelectedValue,
-                            Popust = float.Parse(txtPopust.Text),
+                            Popust = double.Parse(txtPopust.Text),
                             DatumDodavanja = dtpDatumDodavanja.Value,
                             Slika = ms.ToArray()
                         };
@@ -109,6 +109,7 @@ namespace PCShop.Forme
                         selektiraniArtikl.Slika = ms.ToArray();
                         selektiraniArtikl.VrstaArtikla = (int)cbVrstaArtikla.SelectedValue;
                         selektiraniArtikl.DatumDodavanja = dtpDatumDodavanja.Value;
+                        selektiraniArtikl.Cijena = double.Parse(txtCijena.Text);
                     }
                     entities.SaveChanges();
                 }

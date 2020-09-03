@@ -43,9 +43,9 @@ namespace PCShop
                                ArtiklId = stavka.Artikl_Id,
                                artikl.Naziv,
                                stavka.Kolicina, 
-                               JedinicnaCijena = (artikl.Cijena - artikl.Cijena * artikl.Popust / 100), 
-                               UkupnaCijena = ((artikl.Cijena - artikl.Cijena * artikl.Popust / 100) * stavka.Kolicina)};
-               
+                               JedinicnaCijena = Math.Round((artikl.Cijena.Value - artikl.Cijena.Value * artikl.Popust.Value / 100),2), 
+                               UkupnaCijena = Math.Round(((artikl.Cijena.Value - artikl.Cijena.Value * artikl.Popust.Value / 100) * stavka.Kolicina),2)};
+             
                 dgvKosarica.DataSource = null;
                 dgvKosarica.DataSource = data.ToList();
                 double? ukupnaVrijednost = 0;

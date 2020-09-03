@@ -50,7 +50,7 @@ namespace PCShop
         private void FrmArtikl_Load(object sender, EventArgs e)
         {
             conn.Open();
-            naredba = new SqlCommand("SELECT slika,artikl_id,cijena,naziv,opis,popust FROM Artikl WHERE artikl_id = " + oznaka, conn);
+            naredba = new SqlCommand("SELECT slika,artikl_id,cijena,naziv,opis,popust,kolicina FROM Artikl WHERE artikl_id = " + oznaka, conn);
             dr = naredba.ExecuteReader();
             while (dr.Read())
             {
@@ -67,6 +67,7 @@ namespace PCShop
                 double praviIznos = ((double)dr["cijena"] - (double)dr["cijena"] * (double)dr["popust"] / 100);
                 lblCijena.Text = String.Format("{0:0.00} Kn", praviIznos);
                 lblNaziv.Text = dr["naziv"].ToString();
+                tbxDostupnaKolicina.Text = dr["kolicina"].ToString();
                 if((double)dr["popust"]>0)
                 {
                     lblStaraCijena.Visible = true;
@@ -127,6 +128,9 @@ namespace PCShop
             if (aktivnaKosarica == null)
             {
                 throw new KorisnikException("Za dodavanje artikala u košaricu korisnik mora biti prijavljen.");
+            }
+            if (int.Parse(tbxDostupnaKolicina.Text) <= int.Parse(txtKolicina.Text)) {
+                throw new KorisnikException("Odabrana količina proizvoda je trenutno nedostupna!");
             }
             //Provjera količine
             //Ako je polje prazno, baca se iznimka.

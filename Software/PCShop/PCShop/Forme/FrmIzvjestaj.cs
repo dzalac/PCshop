@@ -73,7 +73,13 @@ namespace PCShop.Forme
                         out _, warnings: out _);
 
 
-                string filename = Path.Combine(Environment.CurrentDirectory, "..\\..\\Izvjestaj\\Izvjestaj.rdlc");
+                string sourceFile = Path.Combine(Environment.CurrentDirectory, "..\\..\\Izvjestaj\\Izvjestaj.rdlc");
+                string destinationFile = Path.Combine(Environment.CurrentDirectory, "..\\..\\Izvjestaj\\Izvjestaj2.rdlc");
+
+                // To move a file or folder to a new location:
+                System.IO.File.Copy(sourceFile, destinationFile);
+
+                string filename = Path.Combine(Environment.CurrentDirectory, "..\\..\\Izvjestaj\\Izvjestaj2.rdlc");
 
                 using (var fs = new FileStream(filename, FileMode.Create))
                 {
@@ -83,6 +89,7 @@ namespace PCShop.Forme
 
                 MemoryStream ms = new MemoryStream(bytes);
                 EmailRukovanje.EmailRukovanje.PosaljiNarudzbenicu(ms, email);
+                System.IO.File.Delete(Path.Combine(Environment.CurrentDirectory, "..\\..\\Izvjestaj\\Izvjestaj2.rdlc"));
             }
            
         }

@@ -40,6 +40,8 @@
             this.lblNaziv = new System.Windows.Forms.Label();
             this.lblStaraCijena = new System.Windows.Forms.Label();
             this.lblStaraCijenaIznos = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbxDostupnaKolicina = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             this.SuspendLayout();
             // 
@@ -174,12 +176,33 @@
             this.lblStaraCijenaIznos.Text = "???";
             this.lblStaraCijenaIznos.Visible = false;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
+            this.label4.Location = new System.Drawing.Point(428, 308);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 15);
+            this.label4.TabIndex = 30;
+            this.label4.Text = "Dostupna količina:";
+            // 
+            // tbxDostupnaKolicina
+            // 
+            this.tbxDostupnaKolicina.Location = new System.Drawing.Point(549, 308);
+            this.tbxDostupnaKolicina.Name = "tbxDostupnaKolicina";
+            this.tbxDostupnaKolicina.ReadOnly = true;
+            this.tbxDostupnaKolicina.Size = new System.Drawing.Size(34, 20);
+            this.tbxDostupnaKolicina.TabIndex = 31;
+            // 
             // FrmArtikl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(772, 383);
+            this.Controls.Add(this.tbxDostupnaKolicina);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtKolicina);
             this.Controls.Add(this.btnDodaj);
@@ -192,7 +215,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbSlika);
             this.Controls.Add(this.lblNaziv);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmArtikl";
             this.Text = "Artikl";
             this.Load += new System.EventHandler(this.FrmArtikl_Load);
@@ -216,5 +239,7 @@
         private System.Windows.Forms.Label lblNaziv;
         private System.Windows.Forms.Label lblStaraCijena;
         private System.Windows.Forms.Label lblStaraCijenaIznos;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbxDostupnaKolicina;
     }
 }

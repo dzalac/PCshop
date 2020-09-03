@@ -160,25 +160,25 @@
             this.Panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel.Location = new System.Drawing.Point(192, 64);
             this.Panel.Name = "Panel";
-            this.Panel.Size = new System.Drawing.Size(950, 602);
+            this.Panel.Size = new System.Drawing.Size(865, 602);
             this.Panel.TabIndex = 17;
             // 
             // flpPosebna
             // 
             this.flpPosebna.AutoScroll = true;
             this.flpPosebna.Location = new System.Drawing.Point(39, 34);
-            this.flpPosebna.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flpPosebna.Margin = new System.Windows.Forms.Padding(2);
             this.flpPosebna.Name = "flpPosebna";
-            this.flpPosebna.Size = new System.Drawing.Size(892, 154);
+            this.flpPosebna.Size = new System.Drawing.Size(816, 154);
             this.flpPosebna.TabIndex = 28;
             // 
             // flpArtikli
             // 
             this.flpArtikli.AutoScroll = true;
             this.flpArtikli.Location = new System.Drawing.Point(38, 228);
-            this.flpArtikli.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flpArtikli.Margin = new System.Windows.Forms.Padding(2);
             this.flpArtikli.Name = "flpArtikli";
-            this.flpArtikli.Size = new System.Drawing.Size(893, 315);
+            this.flpArtikli.Size = new System.Drawing.Size(817, 315);
             this.flpArtikli.TabIndex = 27;
             // 
             // rbtnPopust
@@ -187,7 +187,7 @@
             this.rbtnPopust.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnPopust.ForeColor = System.Drawing.SystemColors.Control;
             this.rbtnPopust.Location = new System.Drawing.Point(243, 12);
-            this.rbtnPopust.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbtnPopust.Margin = new System.Windows.Forms.Padding(2);
             this.rbtnPopust.Name = "rbtnPopust";
             this.rbtnPopust.Size = new System.Drawing.Size(114, 19);
             this.rbtnPopust.TabIndex = 26;
@@ -202,7 +202,7 @@
             this.rbtnNoviProizodi.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnNoviProizodi.ForeColor = System.Drawing.SystemColors.Control;
             this.rbtnNoviProizodi.Location = new System.Drawing.Point(356, 12);
-            this.rbtnNoviProizodi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbtnNoviProizodi.Margin = new System.Windows.Forms.Padding(2);
             this.rbtnNoviProizodi.Name = "rbtnNoviProizodi";
             this.rbtnNoviProizodi.Size = new System.Drawing.Size(102, 19);
             this.rbtnNoviProizodi.TabIndex = 26;
@@ -216,7 +216,7 @@
             this.btnSortNazivUzlazno.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnSortNazivUzlazno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortNazivUzlazno.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortNazivUzlazno.Location = new System.Drawing.Point(481, 558);
+            this.btnSortNazivUzlazno.Location = new System.Drawing.Point(481, 554);
             this.btnSortNazivUzlazno.Name = "btnSortNazivUzlazno";
             this.btnSortNazivUzlazno.Size = new System.Drawing.Size(75, 37);
             this.btnSortNazivUzlazno.TabIndex = 24;
@@ -229,7 +229,7 @@
             this.btnSortCijenaUzlazno.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnSortCijenaUzlazno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortCijenaUzlazno.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortCijenaUzlazno.Location = new System.Drawing.Point(205, 558);
+            this.btnSortCijenaUzlazno.Location = new System.Drawing.Point(205, 554);
             this.btnSortCijenaUzlazno.Name = "btnSortCijenaUzlazno";
             this.btnSortCijenaUzlazno.Size = new System.Drawing.Size(75, 37);
             this.btnSortCijenaUzlazno.TabIndex = 23;
@@ -242,7 +242,7 @@
             this.btnOsvjeziPopis.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnOsvjeziPopis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOsvjeziPopis.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOsvjeziPopis.Location = new System.Drawing.Point(824, 552);
+            this.btnOsvjeziPopis.Location = new System.Drawing.Point(748, 550);
             this.btnOsvjeziPopis.Name = "btnOsvjeziPopis";
             this.btnOsvjeziPopis.Size = new System.Drawing.Size(107, 44);
             this.btnOsvjeziPopis.TabIndex = 22;
@@ -255,7 +255,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(296, 569);
+            this.label4.Location = new System.Drawing.Point(296, 565);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 15);
             this.label4.TabIndex = 19;
@@ -266,7 +266,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(26, 569);
+            this.label3.Location = new System.Drawing.Point(26, 565);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 15);
             this.label3.TabIndex = 18;
@@ -277,7 +277,7 @@
             this.btnSortNazivSilazno.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnSortNazivSilazno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortNazivSilazno.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortNazivSilazno.Location = new System.Drawing.Point(400, 558);
+            this.btnSortNazivSilazno.Location = new System.Drawing.Point(400, 554);
             this.btnSortNazivSilazno.Name = "btnSortNazivSilazno";
             this.btnSortNazivSilazno.Size = new System.Drawing.Size(75, 37);
             this.btnSortNazivSilazno.TabIndex = 7;
@@ -290,7 +290,7 @@
             this.btnSortCijenaSilazno.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnSortCijenaSilazno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortCijenaSilazno.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortCijenaSilazno.Location = new System.Drawing.Point(124, 558);
+            this.btnSortCijenaSilazno.Location = new System.Drawing.Point(124, 554);
             this.btnSortCijenaSilazno.Name = "btnSortCijenaSilazno";
             this.btnSortCijenaSilazno.Size = new System.Drawing.Size(75, 37);
             this.btnSortCijenaSilazno.TabIndex = 5;
@@ -346,14 +346,14 @@
             this.pnKategorije1.Controls.Add(this.lblProcesori);
             this.pnKategorije1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnKategorije1.Location = new System.Drawing.Point(0, 64);
-            this.pnKategorije1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnKategorije1.Margin = new System.Windows.Forms.Padding(2);
             this.pnKategorije1.Name = "pnKategorije1";
             this.pnKategorije1.Size = new System.Drawing.Size(192, 602);
             this.pnKategorije1.TabIndex = 26;
             // 
             // pbKorisnik
             // 
-            this.pbKorisnik.Location = new System.Drawing.Point(45, 483);
+            this.pbKorisnik.Location = new System.Drawing.Point(57, 471);
             this.pbKorisnik.Name = "pbKorisnik";
             this.pbKorisnik.Size = new System.Drawing.Size(72, 72);
             this.pbKorisnik.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -362,20 +362,21 @@
             // 
             // lblKorisnikoIme
             // 
-            this.lblKorisnikoIme.AutoSize = true;
             this.lblKorisnikoIme.BackColor = System.Drawing.Color.Turquoise;
             this.lblKorisnikoIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKorisnikoIme.Location = new System.Drawing.Point(61, 558);
+            this.lblKorisnikoIme.Location = new System.Drawing.Point(12, 558);
             this.lblKorisnikoIme.Name = "lblKorisnikoIme";
-            this.lblKorisnikoIme.Size = new System.Drawing.Size(44, 20);
+            this.lblKorisnikoIme.Size = new System.Drawing.Size(167, 26);
             this.lblKorisnikoIme.TabIndex = 19;
             this.lblKorisnikoIme.Text = "Gost";
+            this.lblKorisnikoIme.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblKorisnikoIme.Click += new System.EventHandler(this.LblKorisnikoIme_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Teal;
             this.panel2.Controls.Add(this.txbPretraga);
+            this.panel2.Controls.Add(this.btnKontakt);
             this.panel2.Controls.Add(this.btnUpravljajNarudzbama);
             this.panel2.Controls.Add(this.btnPregledajNarudzbe);
             this.panel2.Controls.Add(this.btnArtikli);
@@ -386,14 +387,14 @@
             this.panel2.Controls.Add(this.btnRegistracija);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1142, 64);
+            this.panel2.Size = new System.Drawing.Size(1057, 64);
             this.panel2.TabIndex = 27;
             // 
             // txbPretraga
             // 
-            this.txbPretraga.Location = new System.Drawing.Point(475, 23);
+            this.txbPretraga.Location = new System.Drawing.Point(397, 23);
             this.txbPretraga.Name = "txbPretraga";
             this.txbPretraga.Size = new System.Drawing.Size(331, 20);
             this.txbPretraga.TabIndex = 9;
@@ -405,7 +406,7 @@
             this.btnUpravljajNarudzbama.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnUpravljajNarudzbama.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpravljajNarudzbama.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpravljajNarudzbama.Location = new System.Drawing.Point(282, 12);
+            this.btnUpravljajNarudzbama.Location = new System.Drawing.Point(221, 12);
             this.btnUpravljajNarudzbama.Name = "btnUpravljajNarudzbama";
             this.btnUpravljajNarudzbama.Size = new System.Drawing.Size(83, 41);
             this.btnUpravljajNarudzbama.TabIndex = 8;
@@ -419,7 +420,7 @@
             this.btnPregledajNarudzbe.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnPregledajNarudzbe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPregledajNarudzbe.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPregledajNarudzbe.Location = new System.Drawing.Point(192, 12);
+            this.btnPregledajNarudzbe.Location = new System.Drawing.Point(146, 12);
             this.btnPregledajNarudzbe.Name = "btnPregledajNarudzbe";
             this.btnPregledajNarudzbe.Size = new System.Drawing.Size(69, 41);
             this.btnPregledajNarudzbe.TabIndex = 8;
@@ -433,7 +434,7 @@
             this.btnArtikli.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnArtikli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArtikli.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArtikli.Location = new System.Drawing.Point(386, 12);
+            this.btnArtikli.Location = new System.Drawing.Point(310, 12);
             this.btnArtikli.Name = "btnArtikli";
             this.btnArtikli.Size = new System.Drawing.Size(69, 41);
             this.btnArtikli.TabIndex = 8;
@@ -447,7 +448,7 @@
             this.btnKosarica.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnKosarica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKosarica.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKosarica.Location = new System.Drawing.Point(901, 12);
+            this.btnKosarica.Location = new System.Drawing.Point(811, 12);
             this.btnKosarica.Name = "btnKosarica";
             this.btnKosarica.Size = new System.Drawing.Size(78, 41);
             this.btnKosarica.TabIndex = 6;
@@ -460,7 +461,7 @@
             this.btnOdjava.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnOdjava.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOdjava.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOdjava.Location = new System.Drawing.Point(1068, 12);
+            this.btnOdjava.Location = new System.Drawing.Point(978, 12);
             this.btnOdjava.Name = "btnOdjava";
             this.btnOdjava.Size = new System.Drawing.Size(62, 41);
             this.btnOdjava.TabIndex = 1;
@@ -474,7 +475,7 @@
             this.btnTrazi.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnTrazi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrazi.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTrazi.Location = new System.Drawing.Point(824, 12);
+            this.btnTrazi.Location = new System.Drawing.Point(734, 12);
             this.btnTrazi.Name = "btnTrazi";
             this.btnTrazi.Size = new System.Drawing.Size(71, 41);
             this.btnTrazi.TabIndex = 4;
@@ -487,7 +488,7 @@
             this.btnPrijava.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnPrijava.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrijava.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrijava.Location = new System.Drawing.Point(1068, 12);
+            this.btnPrijava.Location = new System.Drawing.Point(978, 12);
             this.btnPrijava.Name = "btnPrijava";
             this.btnPrijava.Size = new System.Drawing.Size(62, 41);
             this.btnPrijava.TabIndex = 1;
@@ -500,7 +501,7 @@
             this.btnRegistracija.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnRegistracija.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistracija.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistracija.Location = new System.Drawing.Point(985, 12);
+            this.btnRegistracija.Location = new System.Drawing.Point(895, 12);
             this.btnRegistracija.Name = "btnRegistracija";
             this.btnRegistracija.Size = new System.Drawing.Size(77, 41);
             this.btnRegistracija.TabIndex = 3;
@@ -513,9 +514,9 @@
             this.btnKontakt.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnKontakt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKontakt.Font = new System.Drawing.Font("Nirmala UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKontakt.Location = new System.Drawing.Point(17, 12);
+            this.btnKontakt.Location = new System.Drawing.Point(12, 12);
             this.btnKontakt.Name = "btnKontakt";
-            this.btnKontakt.Size = new System.Drawing.Size(100, 41);
+            this.btnKontakt.Size = new System.Drawing.Size(101, 41);
             this.btnKontakt.TabIndex = 7;
             this.btnKontakt.Text = "Kontakt";
             this.btnKontakt.UseVisualStyleBackColor = false;
@@ -526,9 +527,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1142, 666);
+            this.ClientSize = new System.Drawing.Size(1057, 666);
             this.Controls.Add(this.Panel);
-            this.Controls.Add(this.btnKontakt);
             this.Controls.Add(this.pnKategorije1);
             this.Controls.Add(this.panel2);
             this.KeyPreview = true;

@@ -703,7 +703,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.36979in</Height>
+                  <Height>0.76562in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -718,6 +718,7 @@
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>15pt</FontSize>
+                                    <FontWeight>SemiBold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -730,7 +731,7 @@
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -738,6 +739,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -753,6 +755,7 @@
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>15pt</FontSize>
+                                    <FontWeight>SemiBold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -765,7 +768,7 @@
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -773,6 +776,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -807,7 +811,7 @@
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -830,6 +834,7 @@
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>15pt</FontSize>
+                                    <Format>n2</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -842,7 +847,7 @@
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -877,7 +882,7 @@
             <DataSetName>ArtiklDataSet</DataSetName>
             <Top>3.66493in</Top>
             <Left>0.08192in</Left>
-            <Height>0.6875in</Height>
+            <Height>1.08333in</Height>
             <Width>6.12153in</Width>
             <ZIndex>5</ZIndex>
             <Style>
@@ -1205,7 +1210,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.36979in</Height>
+                  <Height>0.76562in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1220,6 +1225,7 @@
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>15pt</FontSize>
+                                    <Format>n2</Format>
                                   </Style>
                                 </TextRun>
                                 <TextRun>
@@ -1227,6 +1233,7 @@
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>15pt</FontSize>
+                                    <Format>n2</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1239,7 +1246,7 @@
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1262,6 +1269,7 @@
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>15pt</FontSize>
+                                    <Format>n2</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1274,7 +1282,7 @@
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1307,7 +1315,7 @@
             <DataSetName>StavkaNarudzbeDataSet</DataSetName>
             <Top>3.66493in</Top>
             <Left>6.20345in</Left>
-            <Height>0.6875in</Height>
+            <Height>1.08333in</Height>
             <Width>2in</Width>
             <ZIndex>14</ZIndex>
             <Style>

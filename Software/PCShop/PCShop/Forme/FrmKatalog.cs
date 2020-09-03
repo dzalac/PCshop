@@ -445,7 +445,7 @@ namespace PCShop
 
             string sortiranjePosebna = sortPosebna;
             string stupci = "slika,opis,naziv,proizvodac,artikl_id,cijena,datumdodavanja,popust,VrstaArtikla";
-            string sortiranjeOpcija = "WHERE(naziv LIKE '%' + @trazilica + '%' or cijena LIKE '%' + @trazilica + '%' or proizvodac LIKE '%' + @trazilica + '%' or opis LIKE '%' + @trazilica + '%') ";
+            string sortiranjeOpcija = "WHERE(naziv LIKE '%' + @trazilica + '%' or cijena LIKE '%' + @trazilica + '%' or proizvodac LIKE '%' + @trazilica + '%' or VrstaArtikla LIKE '%' + @trazilica + '%') ";
             trazilica = txbPretraga.Text;
             upitTrazilicaArtikl = SQLKreator("", stupci, sortiranjeOpcija);
             upitArtikl = upitTrazilicaArtikl;
