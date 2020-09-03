@@ -179,11 +179,11 @@
     <Compile Include="Forme\FrmPregledNarudzbi.Designer.cs">
       <DependentUpon>FrmPregledNarudzbi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forme\frmUpravljajNarudzbama.cs">
+    <Compile Include="Forme\FrmUpravljajNarudzbama.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forme\frmUpravljajNarudzbama.Designer.cs">
-      <DependentUpon>frmUpravljajNarudzbama.cs</DependentUpon>
+    <Compile Include="Forme\FrmUpravljajNarudzbama.Designer.cs">
+      <DependentUpon>FrmUpravljajNarudzbama.cs</DependentUpon>
     </Compile>
     <Compile Include="Klase\ArtiklException.cs" />
     <Compile Include="Klase\ArtiklExtended.cs" />
@@ -270,8 +270,8 @@
     <EmbeddedResource Include="Forme\FrmPrijava.resx">
       <DependentUpon>FrmPrijava.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forme\frmUpravljajNarudzbama.resx">
-      <DependentUpon>frmUpravljajNarudzbama.cs</DependentUpon>
+    <EmbeddedResource Include="Forme\FrmUpravljajNarudzbama.resx">
+      <DependentUpon>FrmUpravljajNarudzbama.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FrmUpravljanjeArtiklima.resx">
       <DependentUpon>FrmUpravljanjeArtiklima.cs</DependentUpon>
