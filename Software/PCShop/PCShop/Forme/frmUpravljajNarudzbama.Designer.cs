@@ -1,6 +1,6 @@
 ﻿namespace PCShop.Forme
 {
-    partial class frmUpravljajNarudzbama
+    partial class FrmUpravljajNarudzbama
     {
         /// <summary>
         /// Required designer variable.

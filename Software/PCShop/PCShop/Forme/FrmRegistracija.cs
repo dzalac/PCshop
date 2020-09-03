@@ -40,6 +40,10 @@ namespace PCShop
             Close();
         }
 
+       //Ako je su svi podaci ispravno unesneni, kreira se novi korisnik pomoću tih podataka.
+       //Kako je svaki korisnik koji se registrira tipa "Korisnik", atribut "TipKorisnika" postavlja se na vrijednost 2 (adminstratoru odgovara vrijednost 1).
+       //Novome se korisniku kreira košarica koja je povezana s korisničkim računom pomoću njegovog Id-a.
+       //Uspješnom registracijom ispisuje se poruka i šalje se e-mail obavijest.
         private void btnRegistriraj_Click(object sender, EventArgs e)
         {
             int vrstaKorisnika = 2;
@@ -61,18 +65,12 @@ namespace PCShop
                         TipKorisnika = vrstaKorisnika
                     };
                     db.Korisniks.Add(noviKorisnik);
-
-                    int korisnikId = 0;
-                    var upit = from korisnik in db.Korisniks where korisnik.KorisnickoIme == txtKorisnickoIme.Text select korisnik;
-                    foreach (var item in upit)
-                    {
-                        korisnikId = item.Korisnik_Id;
-                    }
+                    db.SaveChanges();
 
                     Kosarica novaKosarica = new Data.Kosarica
                     {
                         DatumKreiranja = DateTime.Now,
-                        Korisnik = korisnikId
+                        Korisnik = noviKorisnik.Korisnik_Id
                     };
                     db.Kosaricas.Add(novaKosarica);
                     db.SaveChanges();
@@ -192,9 +190,5 @@ namespace PCShop
 
         }
 
-        private void FrmRegistracija_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

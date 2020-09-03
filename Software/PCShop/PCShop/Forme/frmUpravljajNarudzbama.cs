@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace PCShop.Forme
 {
-    public partial class frmUpravljajNarudzbama : Form
+    public partial class FrmUpravljajNarudzbama : Form
     {
-        public frmUpravljajNarudzbama()
+        public FrmUpravljajNarudzbama()
         {
             InitializeComponent();
         }
@@ -48,7 +48,9 @@ namespace PCShop.Forme
         {
             Close();
         }
-
+        //Pomoću Id-a odabrane narudžbe u DataGridView-u dohvaća se narudžba i provjerava joj se stanje.
+        //Ako je moguće, narudžba se deklarira poslanom tako da se odabrana narudžba kvači na kontekst i mijenja joj se stanje u "U dostavi".
+        //Sprema se promjena i ispisuje se poruka.
         private void btnPoslano_Click(object sender, EventArgs e)
         {
             using (var db = new Entities())
@@ -79,7 +81,9 @@ namespace PCShop.Forme
 
             }
         }
-
+        //Pomoću Id-a odabrane narudžbe u DataGridView-u dohvaća se narudžba i provjerava joj se stanje.
+        //Ako je moguće, narudžba se deklarira dostavljenom tako da se odabrana narudžba kvači na kontekst i mijenja joj se stanje u "Dostavljeno".
+        //Sprema se promjena i ispisuje se poruka.
         private void btnDostavljeno_Click(object sender, EventArgs e)
         {
             using (var db = new Entities())

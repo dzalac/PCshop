@@ -69,9 +69,6 @@ namespace PCShop
             }
         }
 
-        private void FrmPrijava_Load(object sender, EventArgs e)
-        {
-
-        }
+  
     }
 }

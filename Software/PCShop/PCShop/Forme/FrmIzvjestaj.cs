@@ -67,7 +67,13 @@ namespace PCShop.Forme
             this.rvIzvjestaj.LocalReport.SetParameters(new ReportParameter("StanjeNarudzbe", stanje.ToString()));
             this.rvIzvjestaj.RefreshReport();
 
-            if(saljiPdf == 1)
+
+            //Ako je potrebno na e-mail poslati izvještaj u obliku PDF-a koristi se sljedeća funkcija
+            //Metoda generiranja PDF-a i slanja na mail preuzeta je sa:
+            //https://stackoverflow.com/questions/30168597/export-report-from-report-viewer-to-memory-stream-and-then-email-report
+            //Izvještaj se pomoću funkcije Render pretvara u PDF oblik unutar memorije te se pomoću FileStream-a zapisuju podaci u polje bajtova.
+            //Nakon toga se kreira novi MemoryStream iz polja bajtova koji se koristi kao parametar funkcije "PosaljiNarudzbenicu".
+            if (saljiPdf == 1)
             {
                 Warning[] warnings;
                 string[] streamids;

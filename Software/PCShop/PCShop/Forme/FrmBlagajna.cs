@@ -52,44 +52,10 @@ namespace PCShop
                 if(ProvjeraKolicineArtikala())
                 {
                     brojNarudzbe = UnosNarudzbe(datumNarudzbe);
-                    UnosPodatakaOPlacanju(datumNarudzbe, brojNarudzbe);
+                    UnosPodatakaOPlacanju(brojNarudzbe);
                     UnosStavakaNarudzbe(brojNarudzbe);
                     MessageBox.Show("Proizvod je uspješno naručen");
-                    string imeKorisnika = "";
-                    double iznosKn = 0;
-                    int kolicina = 0;
-
-                    Data.Stanje_narudzbe stanje = new Data.Stanje_narudzbe();
-                    Data.Narudzba narudzba = new Data.Narudzba();
-                    Data.Artikl artikl = new Data.Artikl();
-                    List<Data.Stavka_narudzbe> stavke = new List<Stavka_narudzbe>();
-                    List<Data.Stavka_narudzbe> stavka = new List<Data.Stavka_narudzbe>();
-                    List<Artikl> popis = new List<Artikl>();
-                    using (var entities = new Entities())
-                    {
-                        narudzba = entities.Narudzbas.First(X => X.Narudzba_Id == brojNarudzbe);
-                        int usporedba = int.Parse(narudzba.StanjeNarudzbe.ToString());
-                        stavka = entities.Stavka_narudzbe.Where(X => X.Narudzba_Id == brojNarudzbe).ToList();
-                        stanje = entities.Stanje_narudzbe.First(X => X.StanjeNarudzbe_Id == usporedba);
-                        foreach (Artikl ar in entities.Artikls)
-                        {
-                            foreach (Stavka_narudzbe sta in stavka)
-                            {
-                                if (ar.Artikl_Id == sta.Artikl_Id)
-                                {
-                                    popis.Add(ar);
-                                    stavke.Add(sta);
-                                }
-                            }
-                        }
-                        Korisnik korisnik = entities.Korisniks.First(k => k.Korisnik_Id == narudzba.KorisnikId);
-                        imeKorisnika = korisnik.Ime + " " + korisnik.Prezime;
-                    }
-                    
-                    FrmIzvjestaj forma = new FrmIzvjestaj(narudzba, popis, imeKorisnika,korisnik.Email, stavke, stanje.Naziv,1);
-                    this.Hide();
-                    forma.ShowDialog();
-                    Close();
+                    OtvoriIzvjestaj(brojNarudzbe);
                 }
                 else
                 {
@@ -111,6 +77,8 @@ namespace PCShop
             dtpVrijediDo.CustomFormat = "MM/yy";
         }
 
+        //Kada se promijeni stanje radio gumba rbtnPouzece, provjerava se je li označen ili nije.
+        //Ako je označen polja u koja se unose informacije o kartičnom plaćanju se isključuju, inače se uključuju.
         private void rbtnPouzece_CheckedChanged(object sender, EventArgs e)
         {
             if(rbtnPouzece.Checked == true)
@@ -127,6 +95,9 @@ namespace PCShop
             }
         }
 
+        //Kada se promijeni stanje CheckBox-a "cbPostojecaAdresa", provjerava se njegovo stanje.
+        //Ako je CheckBox označen, polja za informacije o adresi dostave se popunjavaju korisnikovim informacijama navedenim pri registraciji.
+        //U slučaju da CheckBox nije označen, polja ostaju prazna.
         private void cbPostojecaAdresa_CheckedChanged(object sender, EventArgs e)
         {
             if(cbPostojecaAdresa.Checked == true)
@@ -200,7 +171,9 @@ namespace PCShop
                 }
             }
         }
-
+        //U novome se kontekstu kreira novi objekt tipa Narudzba. 
+        //Novoj se narudžbi atributi postavljaju na zadane vrijednosti te se narudžba dodaje u bazu i promijene se spremaju.
+        //Zbog toga što ostale funkcije ovise o broju narudžbe, ova funkcija vraća Id novokreirane narudžbe.
         private int UnosNarudzbe(DateTime datumNarudzbe)
         {
             using (var db = new Entities())
@@ -221,7 +194,12 @@ namespace PCShop
             }
         }
 
-        private void UnosPodatakaOPlacanju(DateTime datumNarudzbe, int brojNarudzbe)
+        //Ulazni parametar ove funkcije je brojNarudzbe i tipa je int.
+        //Kreira se novi kontekst i nakon toga se deklarira se objekt tipa "Podaci_o_placanju" naziva "noviPodaciOPlacanju" u kojemu će biti spremljeni podaci o plaćanju.
+        //Ako se narudžba plaća kartičnim plaćanjem, popunjavaju se svi potrebni atributi (BrojNarudzbe, BrojRacuna, KontrolniBroj, NacinPlacanja i VrijediDo).
+        //Međutim, ako se radi o plaćanjem pouzećem, tj. gotovinom pomoću posebnog konstruktora se popnjavaju samo atributi BrojNarudzbe i NacinPlacanja.
+        //Novi se objekt dodaje u bazu i spremaju se promijene.
+        private void UnosPodatakaOPlacanju(int brojNarudzbe)
         {
             using (var db = new Entities())
             {
@@ -246,6 +224,12 @@ namespace PCShop
             }
         }
 
+        //Kako se ne bi dogodilo da kupac naruči više proizoda nego što je dostupno u skladištu, potrebno je napraviti provjeru količine artikala na skladištu.
+        //Pomoću LINQ-a se dohvaćaju potrebni podaci iz tablica "Stavka_kosarice" i "Artikls" gdje stavke odgovaraju korisnikovoj košarici.
+        //Za svaku se stavku računa razlika količine artikla u skladištu i naručenog broja.
+        //Ako je razlika negativna vraća se bool vrijednost "false"; u suprotnom se dohvaća artikl, smanjuje mu se količina te se spremaju promjene i na kraju
+        //se vraća bool vrijednost "true".
+       
         private bool ProvjeraKolicineArtikala()
         {
             using (var db = new Entities())
@@ -275,6 +259,10 @@ namespace PCShop
                 return true;
             }   
         }
+        //Pomoću LINQ-a se dohvaćaju potrebni podaci iz tablica "Stavka_kosarice" i "Artikls" gdje stavke odgovaraju korisnikovoj košarici.
+        //Za svaku zapis iz dohvaćenog popisa kreira se novi objekt tipa "Stavka_narudzbe" i popunjava se dohvaćenim podacima.
+        //Svaki se novi objekt dodaje u bazu podataka, a nakon toga se prazni košarica.
+        //Sve promijene se spremaju.
         private void UnosStavakaNarudzbe(int brojNarudzbe)
         {
             using (var db = new Entities())
@@ -300,5 +288,50 @@ namespace PCShop
                 db.SaveChanges();
             }
         }
+        //Ovom se funkcijom dohvaćaju potrebne informacije za izvještaj te se na kraju otvara izvještaj.
+        //Prvo se deklariraju i alociraju potrebne varijable, a nakon toga se unutar konteksta dohvaća potrebna narudžba. 
+        //Iz baze se dohvaćaju sve stavke tražene narudžbe te se dohvaća naziv stanja narudžbe.
+        //Dohvaćaju se artikli koji odgovaraju stavkama narudžbe te potreban korisnik.
+        //Zatim se otvara forma "frmIzvjestaj" koja sadrži popis stavaka i artikala, broj i stanje narudžbe, email, ime i prezime korisnika te na kraju oznaku
+        // "1" ili "0 " s obzirom treba li se poslati PDF e-mailom.
+        private void OtvoriIzvjestaj(int brojNarudzbe)
+        {
+            string imeKorisnika = "";
+            double iznosKn = 0;
+            int kolicina = 0;
+
+            Data.Stanje_narudzbe stanje = new Data.Stanje_narudzbe();
+            Data.Narudzba narudzba = new Data.Narudzba();
+            Data.Artikl artikl = new Data.Artikl();
+            List<Data.Stavka_narudzbe> stavke = new List<Stavka_narudzbe>();
+            List<Data.Stavka_narudzbe> stavka = new List<Data.Stavka_narudzbe>();
+            List<Artikl> popis = new List<Artikl>();
+            using (var entities = new Entities())
+            {
+                narudzba = entities.Narudzbas.First(X => X.Narudzba_Id == brojNarudzbe);
+                int usporedba = int.Parse(narudzba.StanjeNarudzbe.ToString());
+                stavka = entities.Stavka_narudzbe.Where(X => X.Narudzba_Id == brojNarudzbe).ToList();
+                stanje = entities.Stanje_narudzbe.First(X => X.StanjeNarudzbe_Id == usporedba);
+                foreach (Artikl ar in entities.Artikls)
+                {
+                    foreach (Stavka_narudzbe sta in stavka)
+                    {
+                        if (ar.Artikl_Id == sta.Artikl_Id)
+                        {
+                            popis.Add(ar);
+                            stavke.Add(sta);
+                        }
+                    }
+                }
+                Korisnik korisnik = entities.Korisniks.First(k => k.Korisnik_Id == narudzba.KorisnikId);
+                imeKorisnika = korisnik.Ime + " " + korisnik.Prezime;
+            }
+
+            FrmIzvjestaj forma = new FrmIzvjestaj(narudzba, popis, imeKorisnika, korisnik.Email, stavke, stanje.Naziv, 1);
+            this.Hide();
+            forma.ShowDialog();
+            Close();
+        }
     }
+
 }

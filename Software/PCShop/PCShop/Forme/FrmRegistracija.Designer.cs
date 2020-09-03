@@ -313,7 +313,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmRegistracija";
             this.Text = "Registracija";
-            this.Load += new System.EventHandler(this.FrmRegistracija_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmRegistracija_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();

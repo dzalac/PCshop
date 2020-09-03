@@ -39,6 +39,12 @@ namespace PCShop
             this.trenutniKorisnik = trenutniKorisnik;
         }
 
+        //Otvara se konekcija s bazom podataka i kreira se novi upit kojim se dohvaćaju atributi odabranog artikla.
+        //Naredba se izvršava "ExecuteReader" funkcijom.
+        //Iz readera se dohvaća polje bajtova slike koji se koriste za kreiranje MemoryStreama i zatim Bitmape.
+        //Bitmapa se postavlja kao slika unutar PictureBox elementa.
+        //Nakon toga se sva polja popunjavaju informacijama iz DataReader-a i castaju se na mjestima gdje je potrebno.
+        //Nakon popunjavanja polja zatvara se DataReader i konekcija s bazom.
         private void FrmArtikl_Load(object sender, EventArgs e)
         {
             conn.Open();
@@ -111,15 +117,18 @@ namespace PCShop
                 MessageBox.Show(ex.Poruka);
             }
         }
-
+        
         private void ValidacijaUnosa()
         {
             //Provjera je li korisnik prijavljen
+            //Ako je vrijednost aktivne košarice jednaka null, izbacuje se iznimka
             if (aktivnaKosarica == null)
             {
                 throw new KorisnikException("Za dodavanje artikala u košaricu korisnik mora biti prijavljen.");
             }
             //Provjera količine
+            //Ako je polje prazno, baca se iznimka.
+            //U slučaju da polje ne sadrži vrijednost tipa "int", baca se iznimka.
             int pomocnaVarijabla;
             if (!int.TryParse(txtKolicina.Text, out pomocnaVarijabla))
             {

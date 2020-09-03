@@ -56,32 +56,16 @@ namespace PCShop
         {
             InitializeComponent();
         }
+
         private void FrmKatalog_Load(object sender, EventArgs e)
         {
             rbtnPopust.Checked = true;
             Osvjezi();
             Bitmap img = new Bitmap("../../Slike/UserIcon.png");
             pbKorisnik.Image = img;
-            using (MailMessage mail = new MailMessage())
-            {
-                mail.From = new MailAddress("duckduckdove@gmail.com");
-                mail.To.Add("psikac@foi.hr");
-                mail.Subject = "Vaša narudžba je zaprimljena";
-                mail.Body = "<h1>Narudžbenica</h1>" +
-                    "<p>Narudžba broj 001 je zaprimljena te će nakon obrade biti poslana. " +
-                    "Obavijest o slanju ćete dobiti istoga trena kada se pošalje pošiljka." +
-                    "U nastavku možete pronaći PDF vaše narudžbenice.</p>";
-                mail.IsBodyHtml = true;
-                using (var client = new SmtpClient("smtp.gmail.com", 587))
-                {
-                    client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential("duckduckdove@gmail.com", "applaud.amplify4.kilobyte");
-                    client.EnableSsl = true;
-                    client.Send(mail);
-                }
-            }
-          
         }
+
+
         private void PopisPosebnihPonuda(string upit)
         {
             
@@ -756,7 +740,7 @@ namespace PCShop
 
         private void btnUpravljajNarudzbama_Click(object sender, EventArgs e)
         {
-            frmUpravljajNarudzbama frmUpravljajNarudzbama = new frmUpravljajNarudzbama();
+            FrmUpravljajNarudzbama frmUpravljajNarudzbama = new FrmUpravljajNarudzbama();
             frmUpravljajNarudzbama.ShowDialog();
         }
     }

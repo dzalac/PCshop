@@ -135,7 +135,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPrijava";
             this.Text = "Prijava";
-            this.Load += new System.EventHandler(this.FrmPrijava_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmPrijava_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();

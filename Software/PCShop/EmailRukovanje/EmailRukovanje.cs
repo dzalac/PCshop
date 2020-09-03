@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace EmailRukovanje
 {
+    //Ova klasa služi za slanje e-mail poruka na zadane adrese.
+    //Postoje dvije funkcije, jedna služi za slanje obavijesti o registraciji, druga za slanje narudžbenice u PDF obliku.
+    //Slanje e-maila temelji se na konstruiranju poruke pomoću MailMessage klase. 
+    //Poruke se šalju pomoću STMP protokola koji pripada Gmail-u.
     public static class EmailRukovanje
     {
         public static void PosaljiObavijestORegistraciji(string email, string korisnickoIme)
@@ -37,7 +41,7 @@ namespace EmailRukovanje
             using (MailMessage mail = new MailMessage())
             {
                 mail.From = new MailAddress("duckduckdove@gmail.com");
-                mail.To.Add("patriksikac2@gmail.com");
+                mail.To.Add(email);
                 mail.Subject = "Potvrda o narudžbi";
                 mail.Body = "<h1 style='text - align:center'>Potvrda o narudžbi</h1>" +
                     "<p>Dragi kupče, <br> Vaša narudžba je zabilježena. Bit ćete prvom prilikom obaviješteni kada narudžba bude obrađena i poslana. " +

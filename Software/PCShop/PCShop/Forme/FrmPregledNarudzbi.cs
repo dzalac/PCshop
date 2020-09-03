@@ -81,6 +81,10 @@ namespace PCShop.Forme
             }
         }
 
+
+        //Pomoću Id-a odabrane narudžbe u DataGridView-u dohvaća se narudžba i provjerava joj se stanje.
+        //Ako je moguće, narudžba se otkazuje tako da se odabrana narudžba kvači na kontekst i mijenja joj se stanje da odgovara otkazanom.
+        //Sprema se promjena i ispisuje se poruka.
         private void lblOtkaziNarudzbu_Click(object sender, EventArgs e)
         {
             using (var db = new Entities())
@@ -113,6 +117,12 @@ namespace PCShop.Forme
             Close();
         }
 
+        //Ovom se funkcijom dohvaćaju potrebne informacije za izvještaj te se na kraju otvara izvještaj.
+        //Prvo se deklariraju i alociraju potrebne varijable, a nakon toga se unutar konteksta dohvaća potrebna narudžba. 
+        //Iz baze se dohvaćaju sve stavke tražene narudžbe te se dohvaća naziv stanja narudžbe.
+        //Dohvaćaju se artikli koji odgovaraju stavkama narudžbe te potreban korisnik.
+        //Zatim se otvara forma "frmIzvjestaj" koja sadrži popis stavaka i artikala, broj i stanje narudžbe, email, ime i prezime korisnika te na kraju oznaku
+        // "1" ili "0 " s obzirom treba li se poslati PDF e-mailom.
         private void btnPregled_Click(object sender, EventArgs e)
         {
             int brojNarudzbe = int.Parse(dgvNarudzbe.CurrentRow.Cells[0].Value.ToString());
