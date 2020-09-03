@@ -236,12 +236,9 @@
       <DependentUpon>FrmKatalog.cs</DependentUpon>
     </Compile>
     <Compile Include="Klase\BlagajnaException.cs" />
-    <Compile Include="Klase\KosaricaOld.cs" />
-    <Compile Include="Klase\NarudzbaOld.cs" />
     <Compile Include="Klase\PCShopException.cs" />
     <Compile Include="Klase\KorisnikException.cs" />
     <Compile Include="Klase\PodaciOPlacanjuExt.cs" />
-    <Compile Include="Klase\StavkaNarudzbeOld.cs" />
     <Compile Include="Klase\VrstaArtiklaExt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -307,6 +304,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PCShopModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Data\PCShopModel.edmx.diagram">
       <DependentUpon>PCShopModel.edmx</DependentUpon>
     </None>

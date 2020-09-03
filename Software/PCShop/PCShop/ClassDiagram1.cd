@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical" MembersFormat="NameAndType">
+  <Class Name="PCShop.Data.Entities">
+    <Position X="11.25" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAIABYAAAAAAAAAAEAAABACBgAAAEAAAAAI=</HashCode>
+      <FileName>Data\PCShopModel.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Data.Artikl">
+    <Position X="7" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAABAgAAIAAAIBDAAEACAABCAAAAAQIAAAEAAAAAA=</HashCode>
+      <FileName>Data\Artikl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Data.Korisnik">
+    <Position X="13.75" Y="7" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAQACABBIAAAAAgAAAQAIgAACCAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Korisnik.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Data.Kosarica">
+    <Position X="16.75" Y="9.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAEABAAAAEAAAAAA=</HashCode>
+      <FileName>Data\Kosarica.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Data.Nacin_placanja">
+    <Position X="20.25" Y="9.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAQAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Nacin_placanja.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Data.Narudzba">
+    <Position X="28.25" Y="9.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAIAAAAAAAQAAEAAAAQAQAAABAAQBgAAAAAAAAAA=</HashCode>
+      <FileName>Data\Narudzba.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Data.Podaci_o_placanju">
+    <Position X="32" Y="9.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAQAAAgAAAAAAAAAAACAAgAAAIAAAEI=</HashCode>
+      <FileName>Data\Podaci_o_placanju.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Data.Stanje_narudzbe">
+    <Position X="41.75" Y="9.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAgAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Stanje_narudzbe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Data.Stavka_kosarice">
+    <Position X="44.75" Y="9.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIIAAAAAAAAAAAAAAEAAIAAAAgAAAAA=</HashCode>
+      <FileName>Data\Stavka_kosarice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Data.Stavka_narudzbe">
+    <Position X="6.75" Y="11.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAIAAAAAAAAAAAAAAASAIAAAAgAAAAA=</HashCode>
+      <FileName>Data\Stavka_narudzbe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Data.sysdiagram">
+    <Position X="8.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAIAAAAAAAAAAAAAAAQAAAFAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\sysdiagram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Data.Tip_korisnika">
+    <Position X="10.75" Y="11.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAACAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Tip_korisnika.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Data.Vrsta_artikla">
+    <Position X="16" Y="11.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAEEAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Vrsta_artikla.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.FrmArtikl">
+    <Position X="15" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAQAAAAKAJABAABACIAIACEAZgAAgAABgAAICAAgA=</HashCode>
+      <FileName>Forme\FrmArtikl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.FrmBlagajna">
+    <Position X="18.75" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>lAABCAgAgCApEBAIgAGAIABCAAAAAARQAQYAQQAAACA=</HashCode>
+      <FileName>Forme\FrmBlagajna.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.FrmKatalog">
+    <Position X="25.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>EoA0IEAgKOAAqBoACSeRRhYGfE4gIAxHgiJMKWCoABs=</HashCode>
+      <FileName>Forme\FrmKatalog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.FrmKosarica">
+    <Position X="31.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AgBAAAAAACAJAMAAAgCAAAICAAIAAAAAAAAAIQBCAUE=</HashCode>
+      <FileName>Forme\FrmKosarica.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.FrmPrijava">
+    <Position X="41.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAACAJABAIAACABAICAAAAAAABAAAAgAAAAAA=</HashCode>
+      <FileName>Forme\FrmPrijava.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.FrmRegistracija">
+    <Position X="44.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>sAEAAIAAACAJABBAAAGAAAICAAAQAAAACQIAAAAAACA=</HashCode>
+      <FileName>Forme\FrmRegistracija.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Program">
+    <Position X="34.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Forme.FrmIzvjestaj">
+    <Position X="22.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAiAAAAAgAgCCAAACAAAEAAAAAAAAgQCIAAI=</HashCode>
+      <FileName>Forme\FrmIzvjestaj.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Forme.FrmKorisnik">
+    <Position X="28.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>BAAACAAICCAIABABAQXCIAACJAhBAAAAAAgIAQQAAAA=</HashCode>
+      <FileName>Forme\FrmKorisnik.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Forme.FrmNoviArtikl">
+    <Position X="34" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEIACCJAREQBEGIQAgiAEAAAAAAgAAAQBAAAAA=</HashCode>
+      <FileName>Forme\FrmNoviArtikl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Forme.FrmPregledNarudzbi">
+    <Position X="38.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAOApAAAAAAKBAAyyAAAAAAAEBAAAAwAAAAA=</HashCode>
+      <FileName>Forme\FrmPregledNarudzbi.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Forme.FrmUpravljajNarudzbama">
+    <Position X="6.75" Y="5.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACACAJABAAAAKABAwiAAAAAAIEAAAAAQEAABA=</HashCode>
+      <FileName>Forme\FrmUpravljajNarudzbama.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Forme.FrmUpravljanjeArtiklima">
+    <Position X="10.25" Y="5.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAACAJAEAAQASABAgiAAAAAAAEAACAAwAIAAA=</HashCode>
+      <FileName>Forme\FrmUpravljanjeArtiklima.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Klase.ArtiklException">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Klase\ArtiklException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Klase.BlagajnaException">
+    <Position X="2.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Klase\BlagajnaException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Klase.KorisnikException" Collapsed="true">
+    <Position X="5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Klase\KorisnikException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Klase.PCShopException">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Klase\PCShopException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Properties.Resources">
+    <Position X="36.5" Y="9.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCShop.Properties.Settings">
+    <Position X="39.5" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SqlServerTypes.Utilities">
+    <Position X="13.5" Y="11.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAQAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>SqlServerTypes\Loader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmailRukovanje.EmailRukovanje">
+    <Position X="0.5" Y="5.25" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

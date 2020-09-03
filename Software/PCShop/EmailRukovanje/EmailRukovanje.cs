@@ -36,6 +36,26 @@ namespace EmailRukovanje
             }
         }
 
+        public static void PosaljiObavijestOSlanjuPosiljke(string email)
+        {
+            using (MailMessage mail = new MailMessage())
+            {
+                mail.From = new MailAddress("duckduckdove@gmail.com");
+                mail.To.Add(email);
+                mail.Subject = "Narudžba je poslana";
+                mail.Body = "<h1 style='text - align:center'>Potvrda o slanju pošijke</h1>" +
+                    "<p>Poštovani,<br> Vaša narudžba je obrađena i poslana.<br>-DuckDuckDove</p>";
+                mail.IsBodyHtml = true;
+                using (var client = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = new NetworkCredential("duckduckdove@gmail.com", "applaud.amplify4.kilobyte");
+                    client.EnableSsl = true;
+                    client.Send(mail);
+                }
+            }
+        }
+
         public static void PosaljiNarudzbenicu(MemoryStream ms, string email)
         {
             using (MailMessage mail = new MailMessage())

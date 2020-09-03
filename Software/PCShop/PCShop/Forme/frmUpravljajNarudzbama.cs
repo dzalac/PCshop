@@ -78,7 +78,8 @@ namespace PCShop.Forme
                     MessageBox.Show("Narudžba je poslana.");
                     PrikazNarudzbi();
                 }
-
+                Korisnik korisnik = db.Korisniks.First(k => k.Korisnik_Id == narudzba.KorisnikId);
+                EmailRukovanje.EmailRukovanje.PosaljiObavijestOSlanjuPosiljke(korisnik.Email);
             }
         }
         //Pomoću Id-a odabrane narudžbe u DataGridView-u dohvaća se narudžba i provjerava joj se stanje.
