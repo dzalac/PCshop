@@ -85,9 +85,11 @@ namespace PCShop
                         Korisnik korisnik = entities.Korisniks.First(k => k.Korisnik_Id == narudzba.KorisnikId);
                         imeKorisnika = korisnik.Ime + " " + korisnik.Prezime;
                     }
-
+                    
                     FrmIzvjestaj forma = new FrmIzvjestaj(narudzba, popis, imeKorisnika,korisnik.Email, stavke, stanje.Naziv,1);
+                    this.Hide();
                     forma.ShowDialog();
+                    Close();
                 }
                 else
                 {
