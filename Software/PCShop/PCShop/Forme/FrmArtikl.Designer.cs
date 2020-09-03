@@ -76,7 +76,7 @@
             this.btnDodaj.TabIndex = 27;
             this.btnDodaj.Text = "Dodaj u košaricu";
             this.btnDodaj.UseVisualStyleBackColor = false;
-            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            this.btnDodaj.Click += new System.EventHandler(this.BtnDodaj_Click);
             // 
             // btnOdustani
             // 
@@ -90,7 +90,7 @@
             this.btnOdustani.TabIndex = 26;
             this.btnOdustani.Text = "Odustani";
             this.btnOdustani.UseVisualStyleBackColor = false;
-            this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
+            this.btnOdustani.Click += new System.EventHandler(this.BtnOdustani_Click);
             // 
             // rtbxOpis
             // 

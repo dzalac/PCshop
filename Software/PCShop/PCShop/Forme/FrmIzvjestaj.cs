@@ -15,18 +15,14 @@ namespace PCShop.Forme
 {
     public partial class FrmIzvjestaj : Form
     { 
-        private Narudzba narudzba;
-        private List<Artikl> artikl;
-        private List<Stavka_narudzbe> stavke;
+        private readonly Narudzba narudzba;
+        private readonly List<Artikl> artikl;
+        private readonly List<Stavka_narudzbe> stavke;
 
-        double iznos;
-
-        int kolicina;
-
-        string korisnik;
-        string stanje;
-        string email;
-        int saljiPdf = 0;
+        readonly string korisnik;
+        readonly string stanje;
+        readonly string email;
+        readonly int saljiPdf = 0;
         public FrmIzvjestaj()
         {
             InitializeComponent();
@@ -36,19 +32,20 @@ namespace PCShop.Forme
             InitializeComponent();
             this.narudzba = narudzba;
             this.artikl = artikl;
-            this.iznos = iznos * kolicina;
             this.korisnik = korisnik;
             this.stanje = stanje;
+            this.saljiPdf = saljiPdf;
             this.stavke = stavke;
             this.email = email;
         }
+        //Pri pokretanju forme učitvaju se u nju poslani objekti i varijable odabrane narudžbenice, postavlja se datasource i dodaju se varijable u parametre reportviewera
         private void FrmIzvjestaj_Load(object sender, EventArgs e)
         {
 
-            List<Narudzba> narudzbas = new List<Narudzba>();
-            //List<Artikl> artikls = new List<Artikl>();
-            narudzbas.Add(narudzba);
-            // artikls.Add(artikl);
+            List<Narudzba> narudzbas = new List<Narudzba>
+            {
+                narudzba
+            };
             //datasource
             var rds = new ReportDataSource("NarudzbaDataSet", narudzbas);
             var rds2 = new ReportDataSource("ArtiklDataSet", artikl);
@@ -59,11 +56,7 @@ namespace PCShop.Forme
             this.rvIzvjestaj.LocalReport.DataSources.Add(rds2);
             this.rvIzvjestaj.LocalReport.DataSources.Add(rds3);
             //parametri
-            // var total = (from o in order.Order_Details
-            //  select o.Quantity * o.UnitPrice).Sum();
-            //  this.reportViewer1.LocalReport.SetParameters(new ReportParameter("IznosKn", iznos.ToString()));
             this.rvIzvjestaj.LocalReport.SetParameters(new ReportParameter("Korisnik", korisnik.ToString()));
-            //  this.reportViewer1.LocalReport.SetParameters(new ReportParameter("Kolicina", );
             this.rvIzvjestaj.LocalReport.SetParameters(new ReportParameter("StanjeNarudzbe", stanje.ToString()));
             this.rvIzvjestaj.RefreshReport();
 
@@ -75,15 +68,9 @@ namespace PCShop.Forme
             //Nakon toga se kreira novi MemoryStream iz polja bajtova koji se koristi kao parametar funkcije "PosaljiNarudzbenicu".
             if (saljiPdf == 1)
             {
-                Warning[] warnings;
-                string[] streamids;
-                string mimeType;
-                string encoding;
-                string filenameExtension;
-
                 byte[] bytes = rvIzvjestaj.LocalReport.Render(
-                   "PDF", null, out mimeType, out encoding, out filenameExtension,
-                    out streamids, out warnings);
+                   "PDF", null, out _, out _, out _,
+                    out _, out _);
 
 
                 string filename = Path.Combine(Environment.CurrentDirectory, "..\\..\\Izvjestaj\\Izvjestaj.rdlc");

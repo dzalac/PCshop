@@ -15,8 +15,8 @@ namespace PCShop
 {
     public partial class FrmBlagajna : Form
     {
-        Korisnik korisnik;
-        Kosarica kosarica;
+        readonly Korisnik korisnik;
+        readonly Kosarica kosarica;
         public FrmBlagajna(Korisnik trenutniKorisnik, Kosarica kosarica)
         {
             InitializeComponent();
@@ -37,12 +37,12 @@ namespace PCShop
             }
         }
 
-        private void btnOdustani_Click(object sender, EventArgs e)
+        private void BtnOdustani_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void btnNaruci_Click(object sender, EventArgs e)
+        private void BtnNaruci_Click(object sender, EventArgs e)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace PCShop
 
         //Kada se promijeni stanje radio gumba rbtnPouzece, provjerava se je li označen ili nije.
         //Ako je označen polja u koja se unose informacije o kartičnom plaćanju se isključuju, inače se uključuju.
-        private void rbtnPouzece_CheckedChanged(object sender, EventArgs e)
+        private void RbtnPouzece_CheckedChanged(object sender, EventArgs e)
         {
             if(rbtnPouzece.Checked == true)
             {
@@ -98,7 +98,7 @@ namespace PCShop
         //Kada se promijeni stanje CheckBox-a "cbPostojecaAdresa", provjerava se njegovo stanje.
         //Ako je CheckBox označen, polja za informacije o adresi dostave se popunjavaju korisnikovim informacijama navedenim pri registraciji.
         //U slučaju da CheckBox nije označen, polja ostaju prazna.
-        private void cbPostojecaAdresa_CheckedChanged(object sender, EventArgs e)
+        private void CbPostojecaAdresa_CheckedChanged(object sender, EventArgs e)
         {
             if(cbPostojecaAdresa.Checked == true)
             {
@@ -132,12 +132,11 @@ namespace PCShop
             //Verifikacija poštanskog broja
             //Ako je polje prazno, baca se iznimka.
             //U slučaju da polje ne sadrži vrijednost tipa "int", baca se iznimka.
-            int pomocnaVarijabla;
             if (string.IsNullOrEmpty(txtPostanskiBroj.Text))
             {
                 throw new BlagajnaException("Poštanski broj mora biti definiran.");
             }
-            else if (!int.TryParse(txtPostanskiBroj.Text, out pomocnaVarijabla) || txtPostanskiBroj.Text.Length < 5)
+            else if (!int.TryParse(txtPostanskiBroj.Text, out _) || txtPostanskiBroj.Text.Length < 5)
             {
                 throw new BlagajnaException("Poštanski broj mora biti napisan u ispravnom formatu.");
             }
@@ -158,7 +157,7 @@ namespace PCShop
                 {
                     throw new BlagajnaException("Kontrolni broj mora biti definiran.");
                 }
-                else if (!int.TryParse(txtKontrolniBroj.Text, out pomocnaVarijabla) || txtKontrolniBroj.Text.Length < 3)
+                else if (!int.TryParse(txtKontrolniBroj.Text, out _) || txtKontrolniBroj.Text.Length < 3)
                 {
                     throw new BlagajnaException("Kontrolni broj mora biti napisan u ispravnom formatu.");
                 }
@@ -238,8 +237,12 @@ namespace PCShop
                                      join artikl in db.Artikls
                                      on stavka.Artikl_Id equals artikl.Artikl_Id
                                      where stavka.Kosarica_Id == kosarica.Kosarica_Id
-                                     select new { ArtiklId = stavka.Artikl_Id, Cijena = artikl.Cijena, Popust = artikl.Popust, 
-                                         KolicinaKosarice = stavka.Kolicina, KolicinaArtikla = artikl.Kolicina };
+                                     select new { ArtiklId = stavka.Artikl_Id,
+                                         artikl.Cijena,
+                                         artikl.Popust,
+                                         KolicinaKosarice = stavka.Kolicina,
+                                         KolicinaArtikla = artikl.Kolicina
+                                     };
 
                 foreach (var stavka in stavkeKosarice)
                 {
@@ -271,7 +274,7 @@ namespace PCShop
                                      join artikl in db.Artikls
                                      on stavka.Artikl_Id equals artikl.Artikl_Id
                                      where stavka.Kosarica_Id == kosarica.Kosarica_Id
-                                     select new { ArtiklId = stavka.Artikl_Id, Cijena = artikl.Cijena,Popust = artikl.Popust, Kolicina = stavka.Kolicina };
+                                     select new { ArtiklId = stavka.Artikl_Id, artikl.Cijena, artikl.Popust, stavka.Kolicina };
                 
                 foreach (var stavka in stavkeKosarice)
                 {
@@ -297,8 +300,6 @@ namespace PCShop
         private void OtvoriIzvjestaj(int brojNarudzbe)
         {
             string imeKorisnika = "";
-            double iznosKn = 0;
-            int kolicina = 0;
 
             Data.Stanje_narudzbe stanje = new Data.Stanje_narudzbe();
             Data.Narudzba narudzba = new Data.Narudzba();

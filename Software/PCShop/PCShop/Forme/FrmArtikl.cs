@@ -17,14 +17,16 @@ namespace PCShop
 {
     public partial class FrmArtikl : Form
     {
-        SqlConnection conn = new SqlConnection(@"Data Source=31.147.204.119\PISERVER,1433; Initial Catalog=PI20_011_DB; User ID=PI20_011_User; Password=g{+EKZ99");
+        readonly SqlConnection conn = new SqlConnection(@"Data Source=31.147.204.119\PISERVER,1433; Initial Catalog=PI20_011_DB; User ID=PI20_011_User; Password=g{+EKZ99");
         SqlCommand naredba;
         SqlDataReader dr;
-        Kosarica aktivnaKosarica;
+        readonly Kosarica aktivnaKosarica;
 
-        private PictureBox slika;
-        private string oznaka;
-        private Korisnik trenutniKorisnik;
+
+        private readonly string oznaka;
+        private readonly Korisnik trenutniKorisnik;
+
+        public Korisnik TrenutniKorisnik => trenutniKorisnik;
 
         public FrmArtikl(string tag, Kosarica trenutnaKosarica)
         {
@@ -81,7 +83,7 @@ namespace PCShop
         //Ako postoji na postojeću se stavku dodaje količina zadana u tekstualnom polju,
         //inače se kreira nova stavka košarice u koju se upisuje količina i Id aritkla.
         //Stavka se dodaje u bazu i spremaju se promjene.
-        private void btnDodaj_Click(object sender, EventArgs e)
+        private void BtnDodaj_Click(object sender, EventArgs e)
         {
             try
             {
@@ -129,8 +131,7 @@ namespace PCShop
             //Provjera količine
             //Ako je polje prazno, baca se iznimka.
             //U slučaju da polje ne sadrži vrijednost tipa "int", baca se iznimka.
-            int pomocnaVarijabla;
-            if (!int.TryParse(txtKolicina.Text, out pomocnaVarijabla))
+            if (!int.TryParse(txtKolicina.Text, out _))
             {
                 throw new ArtiklException("Količina mora biti numeričke vrijednosti."); 
             }
@@ -140,7 +141,7 @@ namespace PCShop
             }            
         }
 
-        private void btnOdustani_Click(object sender, EventArgs e)
+        private void BtnOdustani_Click(object sender, EventArgs e)
         {
             Close();
         }

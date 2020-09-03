@@ -191,7 +191,7 @@
             this.btnOdustani.TabIndex = 4;
             this.btnOdustani.Text = "Odustani";
             this.btnOdustani.UseVisualStyleBackColor = false;
-            this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
+            this.btnOdustani.Click += new System.EventHandler(this.BtnOdustani_Click);
             // 
             // btnSpremi
             // 
@@ -205,7 +205,7 @@
             this.btnSpremi.TabIndex = 4;
             this.btnSpremi.Text = "Spremi";
             this.btnSpremi.UseVisualStyleBackColor = false;
-            this.btnSpremi.Click += new System.EventHandler(this.btnSpremi_Click);
+            this.btnSpremi.Click += new System.EventHandler(this.BtnSpremi_Click);
             // 
             // pbSlika
             // 
@@ -227,7 +227,7 @@
             this.btnOdaberiSliku.TabIndex = 4;
             this.btnOdaberiSliku.Text = "Odaberi sliku";
             this.btnOdaberiSliku.UseVisualStyleBackColor = false;
-            this.btnOdaberiSliku.Click += new System.EventHandler(this.btnOdaberiSliku_Click);
+            this.btnOdaberiSliku.Click += new System.EventHandler(this.BtnOdaberiSliku_Click);
             // 
             // openFileDialog1
             // 

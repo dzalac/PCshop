@@ -13,7 +13,7 @@ namespace PCShop.Forme
 {
     public partial class FrmPregledNarudzbi : Form
     {
-        Korisnik korisnik;
+        readonly Korisnik korisnik;
         public FrmPregledNarudzbi(Korisnik korisnik)
         {
             InitializeComponent();
@@ -36,10 +36,10 @@ namespace PCShop.Forme
                                     select new
                                     {
                                         NarudzbaId = narudzba.Narudzba_Id,
-                                        DatumNarudzbe = narudzba.DatumNarudzbe,
+                                        narudzba.DatumNarudzbe,
                                         Grad = narudzba.GradDostave,
                                         Adresa = narudzba.AdresaDostave,
-                                        PostanskiBroj = narudzba.PostanskiBroj,
+                                        narudzba.PostanskiBroj,
                                         StanjeNarudzbe = stanje.Naziv
                                     };
                 dgvNarudzbe.DataSource = null;
@@ -55,13 +55,13 @@ namespace PCShop.Forme
                                     join stavka in db.Stavka_narudzbe
                                     on artikl.Artikl_Id equals stavka.Artikl_Id
                                     where stavka.Narudzba_Id == selektiranaNarudzba
-                                    select new { ArtiklId = stavka.Artikl_Id, Naziv = artikl.Naziv, Kolicina = stavka.Kolicina };
+                                    select new { ArtiklId = stavka.Artikl_Id, artikl.Naziv, stavka.Kolicina };
                 dgvArtikli.DataSource = null;
                 dgvArtikli.DataSource = listaArtikala.ToList();
             }
         }
 
-        private void dgvNarudzbe_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvNarudzbe_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvNarudzbe.SelectedRows.Count > 0)
             {
@@ -71,7 +71,7 @@ namespace PCShop.Forme
             }
         }
 
-        private void dgvNarudzbe_SelectionChanged(object sender, EventArgs e)
+        private void DgvNarudzbe_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvNarudzbe.SelectedRows.Count > 0)
             {
@@ -85,7 +85,7 @@ namespace PCShop.Forme
         //Pomoću Id-a odabrane narudžbe u DataGridView-u dohvaća se narudžba i provjerava joj se stanje.
         //Ako je moguće, narudžba se otkazuje tako da se odabrana narudžba kvači na kontekst i mijenja joj se stanje da odgovara otkazanom.
         //Sprema se promjena i ispisuje se poruka.
-        private void lblOtkaziNarudzbu_Click(object sender, EventArgs e)
+        private void LblOtkaziNarudzbu_Click(object sender, EventArgs e)
         {
             using (var db = new Entities())
             {
@@ -112,7 +112,7 @@ namespace PCShop.Forme
             }
         }
 
-        private void btnOdustani_Click(object sender, EventArgs e)
+        private void BtnOdustani_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -123,12 +123,10 @@ namespace PCShop.Forme
         //Dohvaćaju se artikli koji odgovaraju stavkama narudžbe te potreban korisnik.
         //Zatim se otvara forma "frmIzvjestaj" koja sadrži popis stavaka i artikala, broj i stanje narudžbe, email, ime i prezime korisnika te na kraju oznaku
         // "1" ili "0 " s obzirom treba li se poslati PDF e-mailom.
-        private void btnPregled_Click(object sender, EventArgs e)
+        private void BtnPregled_Click(object sender, EventArgs e)
         {
             int brojNarudzbe = int.Parse(dgvNarudzbe.CurrentRow.Cells[0].Value.ToString());
             string imeKorisnika = "";
-            double iznosKn = 0;
-            int kolicina = 0;
 
             Data.Stanje_narudzbe stanje = new Data.Stanje_narudzbe();
             Data.Narudzba narudzba = new Data.Narudzba();

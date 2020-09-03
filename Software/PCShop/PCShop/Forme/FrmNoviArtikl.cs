@@ -17,8 +17,7 @@ namespace PCShop.Forme
     public partial class FrmNoviArtikl : Form
     {
         //Entities entities;
-        private Artikl selektiraniArtikl;
-        string lokacijaSlike = "";
+        private readonly Artikl selektiraniArtikl;
 
         public FrmNoviArtikl(Artikl selektiraniArtikl)
         {
@@ -48,10 +47,12 @@ namespace PCShop.Forme
 
         //Otvara se novi dijalog kojim se mogu birati samo slike tipa ".png". Ako je rezultat dijaloga OK, slika se učitava; u suprotnom,
         //ispisuje se poruka da slika mora biti izabrana.
-        private void btnOdaberiSliku_Click(object sender, EventArgs e)
+        private void BtnOdaberiSliku_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Filter = "images|*.png";
+            OpenFileDialog dlg = new OpenFileDialog
+            {
+                Filter = "images|*.png"
+            };
             var rezultat = dlg.ShowDialog();
             if (rezultat==DialogResult.OK)
             {   
@@ -63,7 +64,7 @@ namespace PCShop.Forme
             }
         }
 
-        private void btnOdustani_Click(object sender, EventArgs e)
+        private void BtnOdustani_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -72,7 +73,7 @@ namespace PCShop.Forme
         //Kreira se novi tok memorije za rad sa slikama. Slika se sprema u tok memorije.
         //Ako je forma učitana na način da se izmjenjuje postojeći artikl, artikl se kači na konekst i spremaju se promjene,
         //inače se kreira novi artikl koji se dodaje u bazu podataka i sprema se novi zapis u bazi.
-        private void btnSpremi_Click(object sender, EventArgs e)
+        private void BtnSpremi_Click(object sender, EventArgs e)
         {
             try
             {
@@ -157,9 +158,7 @@ namespace PCShop.Forme
             //Verifikacija cijene
             //U slučaju da polje ne sadrži vrijednost tipa "double", baca se iznimka.
             //Ako je vrijednost manja od 0, baca se iznimka.
-            double pomocnaVarijabla;
-            int pomocnaVarijabla2;
-            if (!double.TryParse(txtCijena.Text, out pomocnaVarijabla))
+            if (!double.TryParse(txtCijena.Text, out _))
             {
                 throw new ArtiklException("Cijena mora biti numeričke vrijednosti.");
             }
@@ -170,7 +169,7 @@ namespace PCShop.Forme
             //Verifikacije kolicine
             //U slučaju da polje ne sadrži vrijednost tipa "int", baca se iznimka.
             //Ako je vrijednost manja od 0, baca se iznimka.
-            if (!int.TryParse(txtKolicina.Text, out pomocnaVarijabla2))
+            if (!int.TryParse(txtKolicina.Text, out _))
             {
                 throw new ArtiklException("Količina mora biti numeričke vrijednosti.");
             }
@@ -181,7 +180,7 @@ namespace PCShop.Forme
             //Verifikacija popusta
             //U slučaju da polje ne sadrži vrijednost tipa "double", baca se iznimka.
             //Ako je vrijednost manja od 0, baca se iznimka.
-            if (!double.TryParse(txtPopust.Text, out pomocnaVarijabla))
+            if (!double.TryParse(txtPopust.Text, out _))
             {
                 throw new ArtiklException("Popust mora biti numeričke vrijednosti.");
             }

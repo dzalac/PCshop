@@ -44,12 +44,12 @@ namespace PCShop
 
         private PictureBox slika;
         private PictureBox slikaPosebnaPonuda;
-        //private Image slikaKorisnika = Image.FromFile(@"..\..\Slike\UserIcon.png");
        
         private Label cijena;
         private Label naziv;
         private Label cijenaPosebnaPonuda;
         private Label nazivPosebnaPonuda;
+
         readonly DateTime datum = DateTime.Now.AddDays(-31);
 
         public FrmKatalog()
@@ -65,7 +65,7 @@ namespace PCShop
             pbKorisnik.Image = img;
         }
 
-
+        //Metoda za koristi za kreiranje popisa posebnih(Popust/Datum dodavanja) artikla kataloga, isčitivaju se vrijednosti artibuta skupa sa slikom te se dodaju u flowlayout i slažu u red jedan za drugim
         private void PopisPosebnihPonuda(string upit)
         {
             
@@ -91,14 +91,13 @@ namespace PCShop
                         Cursor = System.Windows.Forms.Cursors.Hand
                     };
 
-                    cijenaPosebnaPonuda = new Label();
+                cijenaPosebnaPonuda = new Label();
                 double praviIznos = ((double)dr["cijena"] - (double)dr["cijena"] * (double)dr["popust"] / 100);
                 cijenaPosebnaPonuda.Text = String.Format("{0:0.00} Kn", praviIznos);
                 cijenaPosebnaPonuda.Width = 100;
                 cijenaPosebnaPonuda.BackColor = Color.FromArgb(46, 134, 222);
                 cijenaPosebnaPonuda.TextAlign = ContentAlignment.MiddleCenter;
                 cijenaPosebnaPonuda.BorderStyle = BorderStyle.FixedSingle;
-
 
                     nazivPosebnaPonuda = new Label
                     {
@@ -115,7 +114,6 @@ namespace PCShop
                 slikaPosebnaPonuda.Controls.Add(cijenaPosebnaPonuda);
                 slikaPosebnaPonuda.Controls.Add(nazivPosebnaPonuda);
 
-                  
                 flpPosebna.Controls.Add(slikaPosebnaPonuda);
               
                 slikaPosebnaPonuda.Click += new EventHandler(OnClick);
@@ -129,7 +127,7 @@ namespace PCShop
             dr.Close();
             conn.Close();
         }
-
+        //Metoda za koristi za kreiranje popisa svih artikla kataloga, isčitivaju se vrijednosti artibuta skupa sa slikom te se dodaju u flowlayout i slažu u red jedan za drugim
         private void PopisArtikla(string upitPopisa)
         {
 
@@ -194,6 +192,7 @@ namespace PCShop
             dr.Close();
             conn.Close();
         }
+        //Metoda se poziva kada se odabere neki od artikala u katalogu te se iz baze povuku informacije o artiklu i prikažu ako je artikl dostupan za prodaju
         public void OnClick(object sender, EventArgs e)
         {
             String oznaka = ((PictureBox)sender).Tag.ToString();
@@ -220,8 +219,10 @@ namespace PCShop
             dr.Close();
             conn.Close();
         }
+        //Osvjezuju se svi podaci kako bi se moglo ponovo ispočetka krenut sortirat
         private void Osvjezi()
         {
+            CiscenjeOznakaKategorije();
             upitVrstaArtikla = "";
             sortiranje = "";
             upitArtikl = "";
@@ -253,14 +254,17 @@ namespace PCShop
                 lblKorisnikoIme.Text = "Gost";
             }
         }
+        //Metoda se poziva kako bi se riječi SQL naredbe spojile u smislenu rečenicu upita
         public string SQLKreator(string vrsta, string stupci, string sortiranje)
         {
             string sqlNaredba = "SELECT " + stupci + " FROM Artikl " + vrsta + " " + sortiranje;
             return sqlNaredba;
         }
+        //Metoda se poziva kad se katalog, odnosno popis artikala treba sortirati na bilo koji način
+        //Preko ispitivanja stanja varijabli kreiraju se dijelovi rečenice za SQL naredbu upita
         public void Sort(string opcija, string vrsta)
         {
-            string sortiranjeOpcija;
+            string sortiranjeOpcija = "";
             string sortiranjePosebna;
             string sortiranjePopust = "popust > 0";
             string sortiranjeNovi = "DatumDodavanja >= @datum ";
@@ -408,26 +412,49 @@ namespace PCShop
                 }
                 else
                 {
+                    Trazilica(sortiranjePosebna, sortiranjeOpcija, sortiranjePopust, sortiranjePosebna);
+
                     upitArtikl = upitTrazilicaArtikl + " AND " + vrsta;
-                    upitPosebna = upitTrazilicaPosebna + " AND " + vrsta + " AND " + sortiranjePosebna;
+                    upitPosebna = upitTrazilicaPosebna + " AND " + vrsta;
                 }
             }
             if (opcija == "Trazilica")
             {
-                stupci = "slika,opis,naziv,proizvodac,artikl_id,cijena,datumdodavanja,popust";
-                sortiranjeOpcija = "WHERE naziv LIKE '%' + @trazilica + '%' or cijena LIKE '%' + @trazilica + '%' or proizvodac LIKE '%' + @trazilica + '%' or opis LIKE '%' + @trazilica + '%' ";
-                trazilica = txbPretraga.Text;
-                upitTrazilicaArtikl = SQLKreator("", stupci, sortiranjeOpcija);
-                upitArtikl = upitTrazilicaArtikl;
-                sortiranjeOpcija = sortiranjeOpcija + "AND " + sortiranjePosebna;
-                upitTrazilicaPosebna = SQLKreator("", stupci, sortiranjeOpcija);
-                upitArtikl = upitTrazilicaArtikl;
-                upitPosebna = upitTrazilicaPosebna;
-                pretraga = true;
+                Trazilica(sortiranjePosebna, sortiranjeOpcija, sortiranjePopust, sortiranjePosebna);
             }
-            sortiranjeOpcija = "";
             PopisArtikla(upitArtikl);
             PopisPosebnihPonuda(upitPosebna);
+        }
+        //Trazilica se koristi kod traženja artikla prema nazivu opisu ili proizvođaču, te kod sortiranja vrste artikla, tako da se ispisuju i kasnije sortiraju samo artikli koji su rezultati pretrage 
+        private void Trazilica(string sortPosebna, string sortOpcija, string sortPopust, string sortNovi)
+        {
+            if (sortOpcija is null)
+            {
+                throw new ArgumentNullException(nameof(sortOpcija));
+            }
+
+            if (sortPopust is null)
+            {
+                throw new ArgumentNullException(nameof(sortPopust));
+            }
+
+            if (sortNovi is null)
+            {
+                throw new ArgumentNullException(nameof(sortNovi));
+            }
+
+            string sortiranjePosebna = sortPosebna;
+            string stupci = "slika,opis,naziv,proizvodac,artikl_id,cijena,datumdodavanja,popust,VrstaArtikla";
+            string sortiranjeOpcija = "WHERE(naziv LIKE '%' + @trazilica + '%' or cijena LIKE '%' + @trazilica + '%' or proizvodac LIKE '%' + @trazilica + '%' or opis LIKE '%' + @trazilica + '%') ";
+            trazilica = txbPretraga.Text;
+            upitTrazilicaArtikl = SQLKreator("", stupci, sortiranjeOpcija);
+            upitArtikl = upitTrazilicaArtikl;
+            sortiranjeOpcija = sortiranjeOpcija + "AND " + sortiranjePosebna;
+            upitTrazilicaPosebna = SQLKreator("", stupci, sortiranjeOpcija);
+            upitArtikl = upitTrazilicaArtikl;
+            upitPosebna = upitTrazilicaPosebna;
+            pretraga = true;
+
         }
 
         //Prvo se provjerava stanje korisnika. Ako funkcija bude uspješna otvara se forma košarice, a prosljeđuje se trenutni korisnik i košarica. 
@@ -497,12 +524,11 @@ namespace PCShop
             
 
         }
-   
+        //Metoda se poziva kod klika na gumb Kontakt i otvara formu za kontakt firme
         private void BtnKontakt_Click(object sender, EventArgs e)
         {
-
-            MessageBox.Show("Ovo je kontakt firme");
-            
+            FrmKontakt forma = new FrmKontakt();
+            forma.ShowDialog();
         }
         private void BtnTrazi_Click(object sender, EventArgs e)
         {
@@ -517,11 +543,13 @@ namespace PCShop
             Osvjezi();
 
         }
+        //Metoda se poziva kod klika na gumb uzlaznog sortiranja prema cijeni
         private void BtnSortCijenaUzlazno_Click(object sender, EventArgs e)
         {
             sortiranje = "Cijena/Uzlazno";
             Sort(sortiranje, upitVrstaArtikla);
         }
+        //Metoda se poziva kod klika na gumb silaznog sortiranja prema cijeni
         private void BtnSortCijenaSilazno_Click(object sender, EventArgs e)
         {
 
@@ -529,6 +557,7 @@ namespace PCShop
             Sort(sortiranje, upitVrstaArtikla);
 
         }
+        //Metoda se poziva kod klika na gumb uzlaznog sortiranja prema nazivu
         private void BtnSortNazivUzlazno_Click(object sender, EventArgs e)
         {
 
@@ -536,6 +565,7 @@ namespace PCShop
             Sort(sortiranje, upitVrstaArtikla);
 
         }
+        //Metoda se poziva kod klika na gumb silaznog sortiranja prema nazivu
         private void BtnSortNazivSilazno_Click(object sender, EventArgs e)
         {
 
@@ -543,6 +573,8 @@ namespace PCShop
             Sort(sortiranje, upitVrstaArtikla);
 
         }
+        //Metoda se poziva kod klika na labelu Grafičke kartice
+        //ovisno o bool vrijednosti pretrage odabire se dio za rečenicu upita te se poziva sortiranje
         private void LblGrafickeKartice_Click(object sender, EventArgs e)
         {
             CiscenjeOznakaKategorije();
@@ -558,6 +590,8 @@ namespace PCShop
             }
             Sort(sortiranje, upitVrstaArtikla);
         }
+        //Metoda se poziva kod klika na labelu Procesori
+        //ovisno o bool vrijednosti pretrage odabire se dio za rečenicu upita te se poziva sortiranje
         private void LblProcesori_Click(object sender, EventArgs e)
         {
             CiscenjeOznakaKategorije();
@@ -573,6 +607,8 @@ namespace PCShop
             }
             Sort(sortiranje, upitVrstaArtikla);
         }
+        //Metoda se poziva kod klika na labelu Matične ploče
+        //ovisno o bool vrijednosti pretrage odabire se dio za rečenicu upita te se poziva sortiranje
         private void LblMaticnePloce_Click(object sender, EventArgs e)
         {
             CiscenjeOznakaKategorije();
@@ -588,6 +624,8 @@ namespace PCShop
             }
             Sort(sortiranje, upitVrstaArtikla);
         }
+        //Metoda se poziva kod klika na labelu Radna memorija
+        //ovisno o bool vrijednosti pretrage odabire se dio za rečenicu upita te se poziva sortiranje
         private void LblRadnaMemorija_Click(object sender, EventArgs e)
         {
             CiscenjeOznakaKategorije();
@@ -603,6 +641,8 @@ namespace PCShop
             }
             Sort(sortiranje, upitVrstaArtikla);
         }
+        //Metoda se poziva kod klika na labelu Tvrdi diskovi
+        //ovisno o bool vrijednosti pretrage odabire se dio za rečenicu upita te se poziva sortiranje
         private void LblTvrdiDiskovi_Click(object sender, EventArgs e)
         {
             CiscenjeOznakaKategorije();
@@ -618,13 +658,25 @@ namespace PCShop
             }
             Sort(sortiranje, upitVrstaArtikla);
         }
+        //Metoda se poziva kod klika na labelu Prebuild PC
+        //ovisno o bool vrijednosti pretrage odabire se dio za rečenicu upita te se poziva sortiranje
         private void LblPC_Click(object sender, EventArgs e)
         {
-            /*
-            TrazenaKategorija(VrstaArtikla.prebuilt);
-            */
+            CiscenjeOznakaKategorije();
+            lblPC.BorderStyle = BorderStyle.Fixed3D;
+            sortiranje = "Vrsta";
+            if (pretraga)
+            {
+                upitVrstaArtikla = "VrstaArtikla = 7";
+            }
+            else
+            {
+                upitVrstaArtikla = "WHERE VrstaArtikla = 7";
+            }
+            Sort(sortiranje, upitVrstaArtikla);
         }
-
+        //Metoda se poziva prilikom pritiska gumba F1
+        //Otvara se chm datoteka s korisničkom dokumentacijom za pomoć
         private void FrmKatalog_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
 
@@ -687,7 +739,8 @@ namespace PCShop
             }
            
         }
-
+        //Metoda se poziva kod promjene odabira posebnih artikala
+        //Ako se već sortira po nećemu, poziva se funkcija sort za daljnje sortiranje, u suprotnom se samo osvježi
         private void RbtnNoviProizodi_Click(object sender, EventArgs e)
         {
             rbtnPopust.Checked = false;
@@ -702,7 +755,8 @@ namespace PCShop
 
             }
         }
-
+        //Metoda se poziva kod promjene odabira posebnih artikala
+        //Ako se već sortira po nećemu, poziva se funkcija sort za daljnje sortiranje, u suprotnom se samo osvježi
         private void RbtnPopust_Click(object sender, EventArgs e)
         {
             rbtnNoviProizodi.Checked = false;
@@ -722,6 +776,8 @@ namespace PCShop
         {
             txbPretraga.Text = "";
         }
+
+        //Metoda se poziva kako bi se ocistile istaknute granice labela
         private void CiscenjeOznakaKategorije()
         {
             lblPC.BorderStyle = BorderStyle.None;
@@ -732,13 +788,13 @@ namespace PCShop
             lblGrafickeKartice.BorderStyle = BorderStyle.None;
         }
 
-        private void btnPregledajNarudzbe_Click(object sender, EventArgs e)
+        private void BtnPregledajNarudzbe_Click(object sender, EventArgs e)
         {
             FrmPregledNarudzbi frmPregledNarudzbi = new FrmPregledNarudzbi(trenutniKorisnik);
             frmPregledNarudzbi.ShowDialog();
         }
 
-        private void btnUpravljajNarudzbama_Click(object sender, EventArgs e)
+        private void BtnUpravljajNarudzbama_Click(object sender, EventArgs e)
         {
             FrmUpravljajNarudzbama frmUpravljajNarudzbama = new FrmUpravljajNarudzbama();
             frmUpravljajNarudzbama.ShowDialog();

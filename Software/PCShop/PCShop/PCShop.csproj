@@ -167,6 +167,12 @@
     <Compile Include="Forme\FrmIzvjestaj.Designer.cs">
       <DependentUpon>FrmIzvjestaj.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\FrmKontakt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\FrmKontakt.Designer.cs">
+      <DependentUpon>FrmKontakt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\FrmKorisnik.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FrmIzvjestaj.resx">
       <DependentUpon>FrmIzvjestaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\FrmKontakt.resx">
+      <DependentUpon>FrmKontakt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FrmKorisnik.resx">
       <DependentUpon>FrmKorisnik.cs</DependentUpon>

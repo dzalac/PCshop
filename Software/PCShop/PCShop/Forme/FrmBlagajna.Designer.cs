@@ -63,7 +63,7 @@
             this.btnOdustani.TabIndex = 40;
             this.btnOdustani.Text = "Odustani";
             this.btnOdustani.UseVisualStyleBackColor = false;
-            this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
+            this.btnOdustani.Click += new System.EventHandler(this.BtnOdustani_Click);
             // 
             // btnNaruci
             // 
@@ -77,7 +77,7 @@
             this.btnNaruci.TabIndex = 39;
             this.btnNaruci.Text = "Naruči proizvod";
             this.btnNaruci.UseVisualStyleBackColor = false;
-            this.btnNaruci.Click += new System.EventHandler(this.btnNaruci_Click);
+            this.btnNaruci.Click += new System.EventHandler(this.BtnNaruci_Click);
             // 
             // label6
             // 
@@ -241,7 +241,7 @@
             this.rbtnPouzece.TabStop = true;
             this.rbtnPouzece.Text = "Plaćanje pouzećem";
             this.rbtnPouzece.UseVisualStyleBackColor = true;
-            this.rbtnPouzece.CheckedChanged += new System.EventHandler(this.rbtnPouzece_CheckedChanged);
+            this.rbtnPouzece.CheckedChanged += new System.EventHandler(this.RbtnPouzece_CheckedChanged);
             // 
             // rbtnKartica
             // 
@@ -282,7 +282,7 @@
             this.cbPostojecaAdresa.TabIndex = 46;
             this.cbPostojecaAdresa.Text = "Koristi adresu definiranu na profilu";
             this.cbPostojecaAdresa.UseVisualStyleBackColor = true;
-            this.cbPostojecaAdresa.CheckedChanged += new System.EventHandler(this.cbPostojecaAdresa_CheckedChanged);
+            this.cbPostojecaAdresa.CheckedChanged += new System.EventHandler(this.CbPostojecaAdresa_CheckedChanged);
             // 
             // FrmBlagajna
             // 

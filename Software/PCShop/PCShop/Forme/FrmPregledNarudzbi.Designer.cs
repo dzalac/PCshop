@@ -90,8 +90,8 @@
             this.dgvNarudzbe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNarudzbe.Size = new System.Drawing.Size(363, 343);
             this.dgvNarudzbe.TabIndex = 24;
-            this.dgvNarudzbe.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNarudzbe_CellContentClick);
-            this.dgvNarudzbe.SelectionChanged += new System.EventHandler(this.dgvNarudzbe_SelectionChanged);
+            this.dgvNarudzbe.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvNarudzbe_CellContentClick);
+            this.dgvNarudzbe.SelectionChanged += new System.EventHandler(this.DgvNarudzbe_SelectionChanged);
             // 
             // panel1
             // 
@@ -118,7 +118,7 @@
             this.btnOdustani.TabIndex = 1;
             this.btnOdustani.Text = "Odustani";
             this.btnOdustani.UseVisualStyleBackColor = false;
-            this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
+            this.btnOdustani.Click += new System.EventHandler(this.BtnOdustani_Click);
             // 
             // lblOtkaziNarudzbu
             // 
@@ -131,7 +131,7 @@
             this.lblOtkaziNarudzbu.Size = new System.Drawing.Size(124, 21);
             this.lblOtkaziNarudzbu.TabIndex = 0;
             this.lblOtkaziNarudzbu.Text = "Otkaži narudžbu";
-            this.lblOtkaziNarudzbu.Click += new System.EventHandler(this.lblOtkaziNarudzbu_Click);
+            this.lblOtkaziNarudzbu.Click += new System.EventHandler(this.LblOtkaziNarudzbu_Click);
             // 
             // dgvArtikli
             // 
@@ -187,7 +187,7 @@
             this.btnPregled.TabIndex = 26;
             this.btnPregled.Text = "Pregled narudžbe";
             this.btnPregled.UseVisualStyleBackColor = false;
-            this.btnPregled.Click += new System.EventHandler(this.btnPregled_Click);
+            this.btnPregled.Click += new System.EventHandler(this.BtnPregled_Click);
             // 
             // FrmPregledNarudzbi
             // 
