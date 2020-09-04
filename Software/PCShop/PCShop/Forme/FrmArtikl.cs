@@ -129,7 +129,7 @@ namespace PCShop
             {
                 throw new KorisnikException("Za dodavanje artikala u košaricu korisnik mora biti prijavljen.");
             }
-            if (int.Parse(tbxDostupnaKolicina.Text) <= int.Parse(txtKolicina.Text)) {
+            if (int.Parse(tbxDostupnaKolicina.Text) < int.Parse(txtKolicina.Text)) {
                 throw new KorisnikException("Odabrana količina proizvoda je trenutno nedostupna!");
             }
             //Provjera količine
